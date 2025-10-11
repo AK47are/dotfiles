@@ -1,0 +1,10 @@
+[user]
+	name = AK47are
+	email = 3318517070@qq.com
+[core]
+	editor = nvim
+	quotepath = false
+	symlinks = true
+	autocrlf = true
+[i18n]
+	logOutputEncoding = utf-8
