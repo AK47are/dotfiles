@@ -7,3 +7,5 @@ function prompt {
 function config {
     git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args
 }
+
+Set-PSReadLineOption -EditMode Emacs
