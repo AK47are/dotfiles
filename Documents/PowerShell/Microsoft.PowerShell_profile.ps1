@@ -9,3 +9,5 @@ function config {
 }
 
 Set-PSReadLineOption -EditMode Emacs
+
+Set-PSReadLineOption -BellStyle None
