@@ -10,4 +10,5 @@ function config {
 
 Set-PSReadLineOption -EditMode Emacs
 
+Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -BellStyle None
