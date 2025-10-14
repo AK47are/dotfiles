@@ -1,0 +1,9 @@
+Set-Alias vi nvim
+
+function prompt {
+      Write-Host("PS: $pwd>")
+}
+
+function config {
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args
+}
