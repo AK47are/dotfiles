@@ -10,5 +10,9 @@ function config {
 
 Set-PSReadLineOption -EditMode Emacs
 
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -BellStyle None
+# PSCompletions: use `psc add *` to init
+Import-Module PSCompletions
+
+# Completion Predictor
+Import-Module CompletionPredictor
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
