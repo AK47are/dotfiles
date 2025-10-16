@@ -1,12 +1,5 @@
-Set-Alias vi nvim
-
-function prompt {
-      Write-Host("PS: $pwd>")
-}
-
-function config {
-    git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args
-}
+function prompt { Write-Host("PS: $pwd>")}
+function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
 
 Set-PSReadLineOption -EditMode Emacs
 
@@ -16,6 +9,25 @@ Import-Module PSCompletions
 # Completion Predictor
 Import-Module CompletionPredictor
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+Set-Alias vi nvim
+
+# Add SymbolicLink Alias
+# https://github.com/cyberodactyl/dotfiles/blob/814985c408b91b6c5fe0de75f10a969ecd724fde/Profile.ps1#L35
+function New-Symlink {
+    param (
+        [string] $Reference,
+        [string] $Origin,
+        [switch] $ExpandSourcePath
+    )
+    if ($ExpandSourcePath) {
+        $wd = Get-Location
+        $Source = "$wd\$Source"
+    }
+
+    New-Item -ItemType SymbolicLink -Value $Origin -Path $Reference
+} 
+Set-Alias ln New-Symlink
 
 # Customized alias https://www.xrgzs.top/posts/scoop-dev-setup
 Set-Alias -Name ping -Value Test-Connection
