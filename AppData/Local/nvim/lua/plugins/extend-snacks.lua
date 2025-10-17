@@ -5,8 +5,10 @@ return {
       picker = {
         sources = {
           projects = {
+            dev = { "~/obsidian/", "~/projects/" },
             patterns = {
               ".git",
+              ".obsidian",
               ".project",
               ".root",
 
