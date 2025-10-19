@@ -4,10 +4,14 @@ function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
 Set-PSReadLineOption -EditMode Emacs
 
 # PSCompletions: use `psc add *` to init
-Import-Module PSCompletions
+if (-not (Get-Module PSCompletions)) {
+  Import-Module PSCompletions
+}
 
 # Completion Predictor
-Import-Module CompletionPredictor
+if (-not (Get-Module CompletionPredictor)) {
+  Import-Module CompletionPredictor
+}
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 
 Set-Alias vi nvim
