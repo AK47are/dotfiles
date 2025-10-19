@@ -29,7 +29,8 @@ local opts = {
       end,
     },
     -- java 一开始可以检测到 Vector 等包，但添加了后面注释语句就会在格式化后失效
-    -- 可能是 LSP 的 Bug，重启 LSP 可修复
+    -- 可能是 LSP 的 Bug，重启 LSP 可修复，仅在首次格式化后会失效，修复后再格式化就没事
+    -- 似乎是被缓存了。
     ["java"] = {
       imports = function()
         return { "import java.util.*;", "import java.lang.*;" }
@@ -60,5 +61,15 @@ return {
     -- 关闭保存文件格式化，如果本身 leetcode 模板格式和自己应用格式一样，则可以启用
     -- vim.g.autoformat = false
   end,
-  lazy = leet_arg ~= vim.fn.argv(0, -1),
+  keys = {
+    { "<localleader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
+    { "<localleader>lr", "<Cmd>Leet run<Cr>", desc = "Leet: Run" },
+    { "<localleader>ls", "<Cmd>Leet submit<Cr>", desc = "Leet: Submit" },
+    { "<localleader>lL", "<Cmd>Leet list<Cr>", desc = "Leet: Select question (all)" },
+    { "<localleader>ll", "<Cmd>Leet list status=notac<Cr>", desc = "Leet: Select question (in progress)" },
+    { "<localleader>lo", "<Cmd>Leet open<Cr>", desc = "Leet: Open in browser" },
+    { "<localleader>ly", "<Cmd>Leet yank<Cr>", desc = "Leet: Yank code" },
+    { "<localleader>lf", "<Cmd>Leet fold<Cr>", desc = "Leet: Fold imports" },
+    { "<localleader>ld", "<Cmd>Leet desc<Cr>", desc = "Leet: Toggle description" },
+  },
 }
