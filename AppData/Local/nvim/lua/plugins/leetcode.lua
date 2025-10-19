@@ -60,16 +60,17 @@ return {
     vim.diagnostic.enable(false)
     -- 关闭保存文件格式化，如果本身 leetcode 模板格式和自己应用格式一样，则可以启用
     -- vim.g.autoformat = false
+    require("which-key").add({ "<leader>l", group = "leetcode" })
   end,
   keys = {
-    { "<localleader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
-    { "<localleader>lr", "<Cmd>Leet run<Cr>", desc = "Leet: Run" },
-    { "<localleader>ls", "<Cmd>Leet submit<Cr>", desc = "Leet: Submit" },
-    { "<localleader>lL", "<Cmd>Leet list<Cr>", desc = "Leet: Select question (all)" },
-    { "<localleader>ll", "<Cmd>Leet list status=notac<Cr>", desc = "Leet: Select question (in progress)" },
-    { "<localleader>lo", "<Cmd>Leet open<Cr>", desc = "Leet: Open in browser" },
-    { "<localleader>ly", "<Cmd>Leet yank<Cr>", desc = "Leet: Yank code" },
-    { "<localleader>lf", "<Cmd>Leet fold<Cr>", desc = "Leet: Fold imports" },
-    { "<localleader>ld", "<Cmd>Leet desc<Cr>", desc = "Leet: Toggle description" },
+    { "<leader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
+    { "<leader>lr", "<Cmd>Leet run<Cr>", desc = "Leet: Run" },
+    { "<leader>ls", "<Cmd>Leet submit<Cr>", desc = "Leet: Submit" },
+    { "<leader>lL", "<Cmd>Leet list<Cr>", desc = "Leet: Select question (all)" },
+    { "<leader>ll", "<Cmd>Leet list status=notac<Cr>", desc = "Leet: Select question (in progress)" },
+    { "<leader>lo", "<Cmd>Leet open<Cr>", desc = "Leet: Open in browser" },
+    { "<leader>ly", "<Cmd>Leet yank<Cr>", desc = "Leet: Yank code" },
+    { "<leader>le", "<Cmd>Leet exit<Cr>", desc = "Leet: Exit" },
+    { "<leader>ld", "<Cmd>Leet desc<Cr>", desc = "Leet: Toggle description" },
   },
 }
