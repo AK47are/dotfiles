@@ -28,12 +28,13 @@ local opts = {
         }
       end,
     },
-    --   java 一开始可以检测到 Vector 等包，但添加了 import java.util.* 就会失效
-    --   ["java"] = {
-    --     imports = function()
-    --       return { "import java.util.*;", "import java.lang.*;" }
-    --     end,
-    --   },
+    -- java 一开始可以检测到 Vector 等包，但添加了后面注释语句就会在格式化后失效
+    -- 可能是 LSP 的 Bug，重启 LSP 可修复
+    ["java"] = {
+      imports = function()
+        return { "import java.util.*;", "import java.lang.*;" }
+      end,
+    },
     --   kotlin 未测试
     -- ["kotlin"] = {
     --   imports = function()
@@ -46,6 +47,7 @@ local opts = {
 return {
   "kawre/leetcode.nvim",
   build = ":TSUpdate html",
+  lazy = leet_arg ~= vim.fn.argv(0, -1),
   dependencies = {
     "folke/snacks.nvim",
     "nvim-lua/plenary.nvim",
