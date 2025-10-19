@@ -15,6 +15,8 @@ if (-not (Get-Module CompletionPredictor)) {
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 
 Set-Alias vi nvim
+function leet { nvim leetcode }
+$NVIM = "~/AppData/Local/nvim/"
 
 # Add SymbolicLink Alias
 # https://github.com/cyberodactyl/dotfiles/blob/814985c408b91b6c5fe0de75f10a969ecd724fde/Profile.ps1#L35
