@@ -22,3 +22,6 @@ vim.o.shellpipe = '2>&1 | %{ "$_" } | Tee-Object %s; exit $LastExitCode'
 -- Setting shell quote options
 vim.o.shellquote = ""
 vim.o.shellxquote = ""
+
+-- hide tabline
+vim.opt.showtabline = 0
