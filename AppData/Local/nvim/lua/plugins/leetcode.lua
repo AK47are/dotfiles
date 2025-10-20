@@ -43,6 +43,9 @@ local opts = {
     --   end,
     -- },
   },
+  editor = {
+    reset_previous_code = false,
+  },
 }
 
 return {
@@ -64,13 +67,13 @@ return {
     require("which-key").add({ "<leader>l", group = "leetcode" })
     local keys = {
       { "<leader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
-      { "<leader>lr", "<Cmd>Leet run<Cr>", desc = "Leet: Run" },
+      { "<leader>lt", "<Cmd>Leet test<Cr>", desc = "Leet: Test" },
       { "<leader>ls", "<Cmd>Leet submit<Cr>", desc = "Leet: Submit" },
-      { "<leader>lL", "<Cmd>Leet list<Cr>", desc = "Leet: Select question (all)" },
       { "<leader>ll", "<Cmd>Leet list status=notac<Cr>", desc = "Leet: Select question (in progress)" },
+      { "<leader>lL", "<Cmd>Leet list status=ac<Cr>", desc = "Leet: Select question (ac)" },
+      { "<leader>lm", "<Cmd>Leet menu<Cr>", desc = "Leet: Menu" },
       { "<leader>lo", "<Cmd>Leet open<Cr>", desc = "Leet: Open in browser" },
       { "<leader>ly", "<Cmd>Leet yank<Cr>", desc = "Leet: Yank code" },
-      { "<leader>le", "<Cmd>Leet exit<Cr>", desc = "Leet: Exit" },
       { "<leader>ld", "<Cmd>Leet desc<Cr>", desc = "Leet: Toggle description" },
     }
     for _, key in ipairs(keys) do
