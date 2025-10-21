@@ -6,6 +6,16 @@
 ; 右Ctrl+Alt+[ 切换最近窗口，基于系统 API，重载不会消失
 >^![::activateLastActiveWindow()
 
+; 窗口绑定切换，重载会消失
+Wins := {}
+WinKeys := ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+For Key, Value in WinKeys {
+  realKey := "LAlt & " . Value
+  Wins.%realKey% := ""
+  Hotkey realKey, bindWindow
+}
+
+
 ; === 窗口置顶函数 ===
 toggleAlwaysOnTop() {
   try {
@@ -50,4 +60,25 @@ isWindow(hWnd) {
 isWindowCloaked(hwnd) {
   cloaked := 0
   return DllCall("dwmapi\DwmGetWindowAttribute", "ptr", hwnd, "int", 14, "ptr", cloaked, "int", 4) >= 0 && cloaked
+}
+
+; 窗口绑定函数
+bindWindow(key) {
+  If (GetKeyState("LCtrl")){
+    Wins.%key% := ""
+    Return
+  }
+  If (Wins.%key%!==""){
+    try
+    {
+      WinActivate "ahk_id " . Wins.%key%
+    }
+    catch as e
+    {
+      SoundBeep 888, 300
+      Wins.%key% := ""
+    }
+    Return
+  }
+  Wins.%key% := WinGetID("A")
 }
