@@ -6,11 +6,11 @@
 ; 右Ctrl+Alt+[ 切换最近窗口，基于系统 API，重载不会消失
 >^![::activateLastActiveWindow()
 
-; 窗口绑定切换，重载会消失
+; 窗口绑定切换，重载会消失 https://meta.appinn.net/t/topic/39693
 Wins := {}
 WinKeys := ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 For Key, Value in WinKeys {
-  realKey := "LAlt & " . Value
+  realKey := "<!" . Value
   Wins.%realKey% := ""
   Hotkey realKey, bindWindow
 }
@@ -64,21 +64,12 @@ isWindowCloaked(hwnd) {
 
 ; 窗口绑定函数
 bindWindow(key) {
-  If (GetKeyState("LCtrl")){
+  if (Wins.%key% == "") {
+    Wins.%key% := WinGetID("A")
+  } else if (WinExist("ahk_id " . Wins.%key%) && Wins.%Key% !== WinGetID("A")) {
+    WinActivate "ahk_id " . Wins.%key%
+  } else {
+    SoundBeep 888, 300
     Wins.%key% := ""
-    Return
   }
-  If (Wins.%key%!==""){
-    try
-    {
-      WinActivate "ahk_id " . Wins.%key%
-    }
-    catch as e
-    {
-      SoundBeep 888, 300
-      Wins.%key% := ""
-    }
-    Return
-  }
-  Wins.%key% := WinGetID("A")
 }
