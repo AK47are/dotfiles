@@ -10,7 +10,7 @@
 Wins := {}
 WinKeys := ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 For Key, Value in WinKeys {
-  realKey := "<!" . Value
+  realKey := "#^" . Value
   Wins.%realKey% := ""
   Hotkey realKey, bindWindow
 }
