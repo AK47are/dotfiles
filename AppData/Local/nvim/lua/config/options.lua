@@ -25,3 +25,5 @@ vim.o.shellxquote = ""
 
 -- hide tabline
 vim.opt.showtabline = 0
+
+vim.opt.wrap = true
