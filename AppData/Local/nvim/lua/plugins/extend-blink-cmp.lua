@@ -2,7 +2,8 @@ return {
   "saghen/blink.cmp",
   opts = {
     keymap = {
-      preset = "default",
+      ["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
+      -- https://cmp.saghen.dev/recipes.html#select-nth-item-from-the-list
       ["<A-1>"] = {
         function(cmp)
           cmp.accept({ index = 1 })
