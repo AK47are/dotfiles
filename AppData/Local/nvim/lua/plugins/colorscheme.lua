@@ -7,6 +7,8 @@ return {
         light = "latte",
         dark = "frappe",
       },
+      -- terminal must support and enable
+      transparent_background = true,
     },
   },
   {
