@@ -2,9 +2,9 @@ return {
   "folke/flash.nvim",
   keys = {
     -- 禁用默认的 s 和 S
-    { "s", false },
-    { "S", false },
-    { "<c-space>", false },
+    { "s", mode = { "n", "x", "o" }, false },
+    { "S", mode = { "n", "x", "o" }, false },
+    { "<c-space>", mode = { "n", "o", "x" }, false },
 
     -- 添加新的键位绑定
     {
