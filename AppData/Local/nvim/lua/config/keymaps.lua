@@ -26,7 +26,4 @@ vim.keymap.del("i", "<A-k>") -- <C-k> 和 Lsp 默认快捷键冲突
 map("v", "<C-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down", silent = true })
 map("v", "<C-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up", silent = true })
 
--- 删除打开插件管理器界面的快捷键
-vim.keymap.del("n", "<leader>l")
-
 map({ "n", "x" }, "s", "ciw", { silent = true })
