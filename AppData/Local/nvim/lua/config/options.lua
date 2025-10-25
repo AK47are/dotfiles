@@ -27,3 +27,5 @@ vim.o.shellxquote = ""
 vim.opt.showtabline = 0
 
 vim.opt.wrap = true
+-- 保证中文 wrap 正常，虽然会使得英文可读性降低
+vim.opt.linebreak = false
