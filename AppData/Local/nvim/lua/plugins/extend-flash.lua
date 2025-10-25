@@ -3,6 +3,8 @@ return {
   keys = {
     -- 禁用默认的 s 和 S
     { "s", mode = { "n", "x", "o" }, false },
+    -- 注释掉后原生的 `s` 会无法使用，除非重映射
+    -- { "s", false },
     { "S", mode = { "n", "x", "o" }, false },
     { "<c-space>", mode = { "n", "o", "x" }, false },
 

@@ -28,3 +28,5 @@ map("v", "<C-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 
 -- 删除打开插件管理器界面的快捷键
 vim.keymap.del("n", "<leader>l")
+
+map({ "n", "x" }, "s", "ciw", { silent = true })
