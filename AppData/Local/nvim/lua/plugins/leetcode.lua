@@ -56,6 +56,7 @@ return {
     "folke/snacks.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    "folke/which-key.nvim",
   },
   config = function()
     require("leetcode").setup(opts)
