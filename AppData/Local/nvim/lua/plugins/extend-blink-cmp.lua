@@ -1,7 +1,11 @@
 return {
   "saghen/blink.cmp",
   opts = {
+    cmdline = {
+      keymap = { preset = "inherit" },
+    },
     keymap = {
+      ["<C-Space>"] = false,
       ["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
       -- https://cmp.saghen.dev/recipes.html#select-nth-item-from-the-list
       -- stylua: ignore start
