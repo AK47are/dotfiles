@@ -65,6 +65,13 @@ return {
     -- 关闭保存文件格式化，如果本身 leetcode 模板格式和自己应用格式一样，则可以启用
     -- vim.g.autoformat = false
 
+    -- 避免按太快触发 <leader>l 对应功能，延迟删除保证全部快捷键配置完毕
+    vim.schedule(function()
+      vim.defer_fn(function()
+        vim.keymap.del("n", "<leader>l")
+      end, 100)
+    end)
+
     require("which-key").add({ "<leader>l", group = "leetcode" })
     local keys = {
       { "<leader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
