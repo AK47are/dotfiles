@@ -10,8 +10,7 @@ else
 end
 
 -- Setting shell command flags
-vim.o.shellcmdflag =
-  "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
+vim.o.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command;"
 
 -- Setting shell redirection
 vim.o.shellredir = '2>&1 | %{ "$_" } | Out-File %s; exit $LastExitCode'
