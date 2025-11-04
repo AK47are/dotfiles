@@ -1,26 +1,49 @@
-function prompt { Write-Host("PS: $pwd>")}
-function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
-Set-Alias -Name dot -Value config
-
-Set-PSReadLineOption -EditMode Emacs
+# ==================================
+# 模块导入
+# ==================================
 
 # PSCompletions: use `psc add *` to init
 if (-not (Get-Module PSCompletions)) {
-  Import-Module PSCompletions
+    Import-Module PSCompletions
 }
 
 # Completion Predictor
 if (-not (Get-Module CompletionPredictor)) {
-  Import-Module CompletionPredictor
+    Import-Module CompletionPredictor
 }
-Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 
-Set-Alias vi nvim
-function leet { nvim leetcode }
+
+# ==================================
+# 环境变量
+# ==================================
+
 $NVIM = "$env:USERPROFILE\AppData\Local\nvim"
 
-# Add SymbolicLink Alias
-# https://github.com/cyberodactyl/dotfiles/blob/814985c408b91b6c5fe0de75f10a969ecd724fde/Profile.ps1#L35
+
+# ==================================
+# 核心函数与别名
+# ==================================
+
+function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
+Set-Alias -Name dot -Value config
+
+function leet { nvim leetcode }
+Set-Alias vi nvim
+
+
+# ==================================
+# 命令行交互设置
+# ==================================
+
+function prompt { Write-Host("PS: $pwd>")}
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+
+# ==================================
+# 自定义通用函数
+# ==================================
+
 function New-Symlink {
     param (
         [string] $Reference,
@@ -33,8 +56,17 @@ function New-Symlink {
     }
 
     New-Item -ItemType SymbolicLink -Value $Origin -Path $Reference
-} 
+}
 Set-Alias ln New-Symlink
+
+function .. { cd .. }
+function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
+function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
+
+
+# ==================================
+# 兼容性别名
+# ==================================
 
 # Customized alias https://www.xrgzs.top/posts/scoop-dev-setup
 Set-Alias -Name ping -Value Test-Connection
@@ -44,7 +76,3 @@ Set-Alias -Name netstat -Value Get-NetTCPConnection
 Set-Alias -Name zip -Value Compress-Archive
 Set-Alias -Name unzip -Value Expand-Archive
 Set-Alias -Name which -Value Get-Command
-
-function .. { cd .. }
-function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
-function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
