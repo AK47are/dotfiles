@@ -1,5 +1,6 @@
 function prompt { Write-Host("PS: $pwd>")}
 function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
+Set-Alias -Name dot -Value config
 
 Set-PSReadLineOption -EditMode Emacs
 
