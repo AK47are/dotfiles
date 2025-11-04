@@ -8,3 +8,5 @@
 	autocrlf = true
 [i18n]
 	logOutputEncoding = utf-8
+[credential "helperselector"]
+	selected = manager
