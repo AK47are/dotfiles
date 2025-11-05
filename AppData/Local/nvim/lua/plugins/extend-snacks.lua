@@ -2,6 +2,17 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      terminal = {
+        win = {
+          keys = {
+            term_normal = false,
+            nav_h = { "<C-h>", mode = "t", false },
+            nav_j = { "<C-j>", mode = "t", false },
+            nav_k = { "<C-k>", mode = "t", false },
+            nav_l = { "<C-l>", mode = "t", false },
+          },
+        },
+      },
       picker = {
         sources = {
           projects = {
