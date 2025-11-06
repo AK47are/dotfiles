@@ -20,8 +20,8 @@ map("t", "<A-k>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window" })
 map("t", "<A-l>", [[<C-\><C-n><C-w>l]], { desc = "Go to Right Window" })
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
--- 删除 insert 模式下的行移动映射
-vim.keymap.del("i", "<A-j>") -- 和原生 <C-j> -> <CR> 冲突
+-- 删除 insert 模式下默认的行移动映射，由于冲突而重新映射
+vim.keymap.del("i", "<A-j>") -- <C-j> 和原生 <C-j> -> <CR> 冲突
 vim.keymap.del("i", "<A-k>") -- <C-k> 和 Lsp 默认快捷键冲突
 
 -- 重映射行移动快捷键
