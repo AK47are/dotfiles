@@ -51,3 +51,5 @@ vim.api.nvim_create_user_command("ClearShada", function()
     vim.print("Successfully deleted all temporary shada files")
   end
 end, { desc = "Clears all the .tmp shada files" })
+
+vim.g.snacks_animate = false
