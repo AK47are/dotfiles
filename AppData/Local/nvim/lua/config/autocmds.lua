@@ -15,6 +15,8 @@ end
 
 -- 自动切换输入法，需要微软美式键盘和微软拼音
 -- 可选：打开输入法设置的「为不同应用使用不同输入法」
+-- 不设置可选功能，可能导致中文输入法受到外部应用影响，一直处于中文状态
+-- 必须修改外部应用（如浏览器）输入框时中文输入法状态才能解决
 local imselect = vim.fn.stdpath("config") .. "/tools/im-select.exe"
 if vim.fn.executable(imselect) == 0 then
   vim.notify("im-select.exe 未找到：" .. imselect, vim.log.levels.WARN)
@@ -39,3 +41,15 @@ else
     end,
   })
 end
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  group = augroup("save_settings"),
+  callback = function()
+    Settings.colorscheme = vim.g.colors_name
+    local file = io.open(SETTINGS_PATH, "w")
+    if file then
+      file:write(vim.json.encode(Settings))
+      file:close()
+    end
+  end,
+})

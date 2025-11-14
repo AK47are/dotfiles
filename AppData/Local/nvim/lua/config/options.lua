@@ -2,6 +2,21 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- 持久化一些配置选项，全局可用
+SETTINGS_PATH = vim.fn.stdpath("cache") .. "/settings.json"
+Settings = {}
+do
+  local f = io.open(SETTINGS_PATH, "r")
+  if f then
+    local content = f:read("*a")
+    f:close()
+    local ok, data = pcall(vim.json.decode, content)
+    if ok then
+      Settings = data
+    end
+  end
+end
+
 -- use pwsh or powershell
 require("lazyvim.util.terminal").setup("pwsh")
 vim.o.shellcmdflag =

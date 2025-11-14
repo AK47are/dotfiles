@@ -12,7 +12,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = Settings.colorscheme or "catppuccin",
     },
   },
 }
