@@ -13,6 +13,7 @@
 - 安装软件：最好提前将配置文件拉取过来
   1. pwsh：Windows Shell
   2. Wezterm：终端仿真器
+    - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
   3. nvim：代码编辑器
     - 依赖上面的输入法设置：自动切换输入法需要
     - curl：一般原生自带
@@ -30,3 +31,4 @@
 ## 相关资源
 
 - [Scoop 搭建 Windows 开发环境 | 潇然工作室](https://www.xrgzs.top/posts/scoop-dev-setup)
+- [你需要掌握的Scoop技巧和知识 - 知乎](https://zhuanlan.zhihu.com/p/135278662)
