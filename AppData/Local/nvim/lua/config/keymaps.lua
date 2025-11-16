@@ -4,20 +4,25 @@
 
 local map = vim.keymap.set
 
--- 重映射窗口聚焦快捷键
+-- 删除窗口聚焦快捷键
 vim.keymap.del("n", "<C-h>")
 vim.keymap.del("n", "<C-j>")
 vim.keymap.del("n", "<C-k>")
 vim.keymap.del("n", "<C-l>")
-map("n", "<A-h>", "<C-W>h", { desc = "Go to Left Window", remap = true })
-map("n", "<A-j>", "<C-W>j", { desc = "Go to Upper Window", remap = true })
-map("n", "<A-k>", "<C-W>k", { desc = "Go to Lower Window", remap = true })
-map("n", "<A-l>", "<C-W>l", { desc = "Go to Right Window", remap = true })
+-- 删除默认窗口调整快捷键
+vim.keymap.del("n", "<C-Right>")
+vim.keymap.del("n", "<C-Left>")
+vim.keymap.del("n", "<C-Up>")
+vim.keymap.del("n", "<C-Down>")
+-- map("n", "<A-h>", "<C-W>h", { desc = "Go to Left Window", remap = true })
+-- map("n", "<A-j>", "<C-W>j", { desc = "Go to Upper Window", remap = true })
+-- map("n", "<A-k>", "<C-W>k", { desc = "Go to Lower Window", remap = true })
+-- map("n", "<A-l>", "<C-W>l", { desc = "Go to Right Window", remap = true })
 
-map("t", "<A-h>", [[<C-\><C-n><C-w>h]], { desc = "Go to Left Window" })
-map("t", "<A-j>", [[<C-\><C-n><C-w>j]], { desc = "Go to Lower Window" })
-map("t", "<A-k>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window" })
-map("t", "<A-l>", [[<C-\><C-n><C-w>l]], { desc = "Go to Right Window" })
+-- map("t", "<A-h>", [[<C-\><C-n><C-w>h]], { desc = "Go to Left Window" })
+-- map("t", "<A-j>", [[<C-\><C-n><C-w>j]], { desc = "Go to Lower Window" })
+-- map("t", "<A-k>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window" })
+-- map("t", "<A-l>", [[<C-\><C-n><C-w>l]], { desc = "Go to Right Window" })
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
 -- 删除 insert 模式下默认的行移动映射，由于冲突而重新映射
