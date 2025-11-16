@@ -1,5 +1,6 @@
 Wezterm = require("wezterm")
 Config = Wezterm.config_builder()
+Cache = require("utils.persist").setup()
 
 local LOAD_FILE = {
   "ui.lua",

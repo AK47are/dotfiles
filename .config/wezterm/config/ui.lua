@@ -16,10 +16,17 @@ local colorscheme = {
   dark = "Catppuccin Frappe",
   light = "Catppuccin Latte",
 }
-if Wezterm.gui.get_appearance():find("Dark") then
-  Config.color_scheme = colorscheme.dark
+
+local cached_scheme = Cache.get("colorscheme")
+if cached_scheme then
+  Config.color_scheme = cached_scheme
 else
-  Config.color_scheme = colorscheme.light
+  if Wezterm.gui.get_appearance():find("Dark") then
+    Config.color_scheme = colorscheme.dark
+  else
+    Config.color_scheme = colorscheme.light
+  end
+  Cache.save("colorscheme", Config.color_scheme)
 end
 
 Wezterm.on("augment-command-palette", function(window, _)
@@ -28,12 +35,14 @@ Wezterm.on("augment-command-palette", function(window, _)
       brief = "Switch to Light Colorscheme",
       action = Wezterm.action_callback(function()
         window:set_config_overrides({ color_scheme = colorscheme.light })
+        Cache.save("colorscheme", colorscheme.light)
       end),
     },
     {
       brief = "Switch to Dark Colorscheme",
       action = Wezterm.action_callback(function()
         window:set_config_overrides({ color_scheme = colorscheme.dark })
+        Cache.save("colorscheme", colorscheme.dark)
       end),
     },
   }
