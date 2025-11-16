@@ -1,12 +1,17 @@
--- 可以提供 profiles.lua 来添加特殊 profiles
-local ok, result = pcall(require, "profiles")
-Config.launch_menu = ok and result or {}
-for _, item in ipairs({
+-- 通过修改 profiles 来添加依赖系统的 profiles
+local profiles = Cache.get("profiles")
+local default_profiles = {
   { label = "Windows PowerShell", args = { "pwsh" } },
   { label = "命令提示符", args = { "cmd.exe" } },
-}) do
+}
+if not profiles then
+  profiles = default_profiles
+  Cache.save("profiles", profiles)
+end
+Config.launch_menu = Config.launch_menu or {}
+for _, item in ipairs(profiles) do
   table.insert(Config.launch_menu, item)
 end
 
-Config.default_prog = Config.launch_menu[1].args
+Config.default_prog = profiles[1].args
 Config.default_cwd = Wezterm.home_dir .. "/projects"
