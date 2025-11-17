@@ -36,7 +36,20 @@ Set-Alias vi nvim
 # ==================================
 
 function prompt { Write-Host("PS: $pwd>")}
-Set-PSReadLineOption -EditMode Emacs
+# use <C-A-S-/> or Get-PSReadLineKeyHandler show all key bindings, it't useful
+Set-PSReadLineOption -EditMode vi
+Write-Host -NoNewline "`e[5 q"
+function OnViModeChange {
+    if ($args[0] -eq 'Command') {
+        # Set the cursor to a blinking block.
+        Write-Host -NoNewline "`e[1 q"
+    } else {
+        # Set the cursor to a blinking line.
+        Write-Host -NoNewline "`e[5 q"
+    }
+}
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
+
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 
 
