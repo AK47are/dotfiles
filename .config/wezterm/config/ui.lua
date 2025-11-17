@@ -7,11 +7,8 @@ Config.window_padding = {
 }
 
 Config.hide_tab_bar_if_only_one_tab = true
+Config.bold_brightens_ansi_colors = true
 
--- Config.font = Wezterm.font("0xProto Nerd Font")
--- Config.font_size = 12.0
--- Config.line_height = 1.2
--- Config.cell_width = 0.8
 local colorscheme = {
   dark = "Catppuccin Frappe",
   light = "Catppuccin Latte",
