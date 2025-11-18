@@ -17,30 +17,34 @@ end
 -- 可选：打开输入法设置的「为不同应用使用不同输入法」
 -- 不设置可选功能，可能导致中文输入法受到外部应用影响，一直处于中文状态
 -- 必须修改外部应用（如浏览器）输入框时中文输入法状态才能解决
-local imselect = vim.fn.stdpath("config") .. "/tools/im-select.exe"
-if vim.fn.executable(imselect) == 0 then
-  vim.notify("im-select.exe 未找到：" .. imselect, vim.log.levels.WARN)
-else
-  vim.system({ imselect, "1033" }) -- 刚进入 Vim 切换英文，VimEnter 无法触发，原因未知
-  local imselect_augroup = augroup("ime-select")
-
-  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-    pattern = { "*" },
-    group = imselect_augroup,
-    callback = function()
-      vim.system({ imselect, "1033" }) -- 切换英文
-    end,
-  })
-
-  vim.api.nvim_create_autocmd({ "InsertEnter", "VimLeave" }, {
-    pattern = { "*" },
-    group = imselect_augroup,
-    callback = function(_)
-      -- 使用同步函数来保证退出前执行成功
-      vim.system({ imselect, "2052" }):wait()
-    end,
-  })
-end
+--
+-- 暂时注释原因：
+--  Wezterm 不设置 WebGpu 会导致画面部分闪烁；设置 WebGpu，程序切换输入法会导致 Wezterm 卡死
+--  Autohotkey PostMessage(0x50, 0, 0x4090409, , "A") 也会卡死
+-- local imselect = vim.fn.stdpath("config") .. "/tools/im-select.exe"
+-- if vim.fn.executable(imselect) == 0 then
+--   vim.notify("im-select.exe 未找到：" .. imselect, vim.log.levels.WARN)
+-- else
+--   vim.system({ imselect, "1033" }) -- 刚进入 Vim 切换英文，VimEnter 无法触发，原因未知
+--   local imselect_augroup = augroup("ime-select")
+--
+--   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+--     pattern = { "*" },
+--     group = imselect_augroup,
+--     callback = function()
+--       vim.system({ imselect, "1033" }) -- 切换英文
+--     end,
+--   })
+--
+--   vim.api.nvim_create_autocmd({ "InsertEnter", "VimLeave" }, {
+--     pattern = { "*" },
+--     group = imselect_augroup,
+--     callback = function(_)
+--       -- 使用同步函数来保证退出前执行成功
+--       vim.system({ imselect, "2052" }):wait()
+--     end,
+--   })
+-- end
 
 vim.api.nvim_create_autocmd("VimLeave", {
   group = augroup("save_settings"),
