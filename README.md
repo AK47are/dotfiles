@@ -1,5 +1,6 @@
 ## 配置检查清单
 
+- 输入法：微软拼音
 - 准备 VPN：[Clash Verge](https://github.com/clash-verge-rev/clash-verge-rev)
 - 安装 [scoop](https://github.com/ScoopInstaller/Scoop)：包管理器
 - 配置 [dotfiles](https://github.com/AK47are/dotfiles)
@@ -9,12 +10,15 @@
   1. pwsh：Windows Shell
   2. Wezterm：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
-  3. nvim：代码编辑器
+  3. AutoHotkey：映射快捷键
+  4. nvim：代码编辑器
     - curl：一般原生自带
     - tree-sitter：语法解析器
     - C 编译器：gnu 或 [msvc](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
     - 可选见 [LazyVim](https://www.lazyvim.org/#%EF%B8%8F-requirements)
-  4. AutoHotkey：映射快捷键
+    - 输入法自动切换依赖：只简单切换成英文模式，不记忆上次状态
+      - 微软拼音
+      - AutoHotkey
 - 可选：若长期使用推荐添加，大部分可通过 scoop 安装，没有配置文件
   - [Pot Desktop](https://github.com/pot-app/pot-desktop/)：OCR / 翻译软件
   - [Obsidian](https://obsidian.md/)：笔记软件
