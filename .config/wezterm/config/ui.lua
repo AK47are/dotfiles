@@ -8,6 +8,7 @@ Config.window_padding = {
 
 Config.hide_tab_bar_if_only_one_tab = true
 Config.bold_brightens_ansi_colors = true
+Config.front_end = "WebGpu"
 
 local colorscheme = {
   dark = "Catppuccin Frappe",
