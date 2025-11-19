@@ -1,24 +1,25 @@
 ## 配置检查清单
 
 - 输入法：微软拼音
-- 准备 VPN：[Clash Verge](https://github.com/clash-verge-rev/clash-verge-rev)
+- 准备 [VPN](https://clashverge.net/)：后续大部分下载都需要翻墙
 - 安装 [scoop](https://github.com/ScoopInstaller/Scoop)：包管理器
-- 配置 [dotfiles](https://github.com/AK47are/dotfiles)
-  1. 安装 `git`：`scoop install git`
-  2. `git clone --bare git@github.com:AK47are/dotfiles.git $HOME/.cfg`
-- 安装软件：最好提前将配置文件拉取过来
+  - 后续大部分程序都可通过 scoop 安装，如果安装不了，可尝试[国内特供版](https://github.com/xrgzs/scoop)
+- 拉取 [dotfiles](https://github.com/AK47are/dotfiles)
+  - 安装 `git`：`scoop install git`
+  - 拉取仓库：`git clone --bare git@github.com:AK47are/dotfiles.git $HOME/.cfg`
+  - 读取仓库：`git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
+    - 可能会存在冲突文件，需要手动处理或者添加 `-f` 强行覆盖
+- 安装软件：部分软件配置需要翻墙下载插件
   1. pwsh：Windows Shell
-  2. Wezterm：终端仿真器
+  2. wezterm-nightly：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
-  3. AutoHotkey：映射快捷键
+  3. autohotkey：映射快捷键（`~/scripts/setup.ahk`）或实现特殊功能（如切换输入法模式）
   4. nvim：代码编辑器
-    - curl：一般原生自带
+    - fd：搜索文件
+    - ripgrep：搜索文件内容
+    - lazygit：可视化 git
     - tree-sitter：语法解析器
-    - C 编译器：gnu 或 [msvc](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
-    - 可选见 [LazyVim](https://www.lazyvim.org/#%EF%B8%8F-requirements)
-    - 输入法自动切换依赖：只简单切换成英文模式，不记忆上次状态
-      - 微软拼音
-      - AutoHotkey
+    - C 工具链：MinGW 或 [MSVC](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
 - 可选：若长期使用推荐添加，大部分可通过 scoop 安装，没有配置文件
   - [Pot Desktop](https://github.com/pot-app/pot-desktop/)：OCR / 翻译软件
   - [Obsidian](https://obsidian.md/)：笔记软件
