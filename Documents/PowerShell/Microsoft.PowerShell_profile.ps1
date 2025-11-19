@@ -2,15 +2,20 @@
 # 模块导入
 # ==================================
 
-# PSCompletions: use `psc add *` to init
-if (-not (Get-Module PSCompletions)) {
-    Import-Module PSCompletions
+# PSCompletions
+if (-not (Get-Module -ListAvailable PSCompletions)) {
+  Write-Host "Installing PSCompletions..."
+  Install-Module PSCompletions -Repository PSGallery -Force
 }
 
 # Completion Predictor
-if (-not (Get-Module CompletionPredictor)) {
-    Import-Module CompletionPredictor
+if (-not (Get-Module -ListAvailable CompletionPredictor)) {
+  Write-Host "Installing CompletionPredictor..."
+  Install-Module CompletionPredictor -Repository PSGallery -Force
 }
+
+Import-Module PSCompletions
+Import-Module CompletionPredictor
 
 
 # ==================================
