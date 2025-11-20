@@ -2,6 +2,16 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      dashboard = {
+        preset = {
+          header = (function()
+            if vim.fn.winheight(0) <= 30 then
+              return ""
+            end
+            return nil
+          end)(),
+        },
+      },
       terminal = {
         win = {
           keys = {
