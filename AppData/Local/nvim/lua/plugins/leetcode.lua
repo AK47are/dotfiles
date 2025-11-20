@@ -53,6 +53,7 @@ return {
   build = ":TSUpdate html",
   lazy = leet_arg ~= vim.fn.argv(0, -1),
   dependencies = {
+    "nvim-treesitter/nvim-treesitter",
     "folke/snacks.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
