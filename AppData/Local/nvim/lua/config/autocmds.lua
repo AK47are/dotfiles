@@ -15,7 +15,7 @@ end
 
 local switchToEN = vim.fn.stdpath("config") .. "/utils/switchToEN.ahk"
 if vim.fn.filereadable(switchToEN) == 1 then
-  vim.api.nvim_create_autocmd("InsertLeave", {
+  vim.api.nvim_create_autocmd({ "FocusGained", "InsertLeave" }, {
     group = augroup("english_mode"),
     callback = function()
       vim.system({ "autohotkey", switchToEN }) -- 切换英文
