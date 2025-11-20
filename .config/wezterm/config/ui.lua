@@ -6,6 +6,21 @@ Config.window_padding = {
   bottom = 0,
 }
 
+Wezterm.on("gui-startup", function(_)
+  local screen = Wezterm.gui.screens().active
+  local ratio = 0.7
+  local width, height = screen.width * ratio, screen.height * ratio
+  local _, _, window = Wezterm.mux.spawn_window({
+    position = {
+      x = (screen.width - width) / 2,
+      y = (screen.height - height) / 2,
+      origin = "ActiveScreen",
+    },
+  })
+  -- window:gui_window():maximize()
+  window:gui_window():set_inner_size(width, height)
+end)
+
 Config.hide_tab_bar_if_only_one_tab = true
 Config.bold_brightens_ansi_colors = true
 Config.front_end = "WebGpu"
