@@ -1,4 +1,6 @@
 ﻿#Requires AutoHotkey v2.0
+#SingleInstance Force 
+
 SetCapsLockState "AlwaysOff"
 
 ; 定期检查 CapsLock 状态，确保 AlwaysOff

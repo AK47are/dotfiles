@@ -1,4 +1,6 @@
 ; https://www.cnblogs.com/yf-zhao/p/16018481.html
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 DetectHiddenWindows True
 hWnd := winGetID("A")
 SendMessage(

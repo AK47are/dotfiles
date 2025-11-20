@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2.0
+#SingleInstance Force 
 
 ; Win+Ctrl+T 窗口置顶
 #^t::toggleAlwaysOnTop()
