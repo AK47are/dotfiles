@@ -29,7 +29,15 @@ $NVIM = "$env:USERPROFILE\AppData\Local\nvim"
 # 核心函数与别名
 # ==================================
 
-function config { git --git-dir=$HOME/.cfg/ --work-tree=$HOME @args }
+function config {
+  if ($args.Count -eq 0) {
+    config add -u
+    config commit
+  } else {
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME $args
+  }
+}
+
 Set-Alias -Name dot -Value config
 
 function leet { nvim leetcode }
