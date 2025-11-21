@@ -65,12 +65,15 @@ isWindowCloaked(hwnd) {
 
 ; 窗口绑定函数
 bindWindow(key) {
+  DetectHiddenWindows(true) ; 检查被 WinHide() 隐藏的窗口
   if (Wins.%key% == "") {
     Wins.%key% := WinGetID("A")
-  } else if (WinExist("ahk_id " . Wins.%key%) && Wins.%Key% !== WinGetID("A")) {
+  } else if (WinExist("ahk_id " . Wins.%key%) && Wins.%key% !== WinGetID("A")) {
+    WinShow "ahk_id " . Wins.%key%
     WinActivate "ahk_id " . Wins.%key%
   } else {
     SoundBeep 888, 300
     Wins.%key% := ""
   }
+  DetectHiddenWindows(false)
 }
