@@ -2,7 +2,7 @@
 #SingleInstance Force 
 
 ; Win+Ctrl+T 窗口置顶
-#^t::toggleAlwaysOnTop()
+#^t::WinSetAlwaysOnTop(-1, "A")
 
 ; 右Ctrl+Alt+[ 切换最近窗口，基于系统 API，重载不会消失
 >^![::activateLastActiveWindow()
@@ -14,19 +14,6 @@ For Key, Value in WinKeys {
   realKey := "#^" . Value
   Wins.%realKey% := ""
   Hotkey realKey, bindWindow
-}
-
-
-; === 窗口置顶函数 ===
-toggleAlwaysOnTop() {
-  try {
-    currentWindow := WinGetID("A")
-    if !currentWindow
-        return
-    isTopmost := WinGetExStyle(currentWindow) & 0x8
-    WinSetAlwaysOnTop (!isTopmost), currentWindow
-    ; TrayTip "窗口置顶", isTopmost ? "已取消置顶" : "已置顶", 500
-  }
 }
 
 ; 本段代码来自 https://www.autohotkey.com/boards/viewtopic.php?style=23&p=548496# 让我们心怀感激之情！
