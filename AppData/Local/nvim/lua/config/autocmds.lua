@@ -28,7 +28,7 @@ else
   )
 end
 
-vim.api.nvim_create_autocmd("VimLeave", {
+vim.api.nvim_create_autocmd("VimLeavePre", {
   group = augroup("save_settings"),
   callback = function()
     Settings.colorscheme = vim.g.colors_name
