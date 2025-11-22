@@ -26,11 +26,9 @@ return {
       picker = {
         sources = {
           projects = {
-            dev = { "~/obsidian/", "~/projects/" },
             max_depth = 3,
             patterns = {
               ".git",
-              ".obsidian",
               ".project",
               ".root",
 
