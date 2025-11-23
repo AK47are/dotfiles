@@ -13,21 +13,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("AK47are_" .. name, { clear = true })
 end
 
-if vim.fn.executable("autohotkey") == 1 then
-  local switchToEN = vim.fn.stdpath("config") .. "/utils/switchToEN.ahk"
-  vim.api.nvim_create_autocmd({ "FocusGained", "InsertLeave" }, {
-    group = augroup("english_mode"),
-    callback = function()
-      vim.system({ "autohotkey", switchToEN }) -- 切换英文
-    end,
-  })
-else
-  vim.notify(
-    "AutoHotkey 未找到，请确保已安装 AutoHotkey 并添加到 PATH 中。输入法切换功能未启用。",
-    vim.log.levels.WARN
-  )
-end
-
 vim.api.nvim_create_autocmd("VimLeavePre", {
   group = augroup("save_settings"),
   callback = function()
