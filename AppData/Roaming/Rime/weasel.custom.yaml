@@ -1,0 +1,25 @@
+patch:
+  style/+:
+    font_point: 12
+    label_font_point: 12
+    comment_font_point: 10
+
+  app_options/+:
+    windowsterminal.exe:
+      ascii_mode: true
+      vim_mode: true
+    obsidian.exe:
+      ascii_mode: true
+      vim_mode: true
+    wezterm-gui.exe:
+      ascii_mode: true
+      vim_mode: true
+    pwsh.exe:
+      ascii_mode: true
+      vim_mode: true
+    powershell.exe:
+      ascii_mode: true
+      vim_mode: true
+
+  show_notifications: false
+  show_notifications_time: 300

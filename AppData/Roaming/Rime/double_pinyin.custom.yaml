@@ -1,0 +1,3 @@
+# 設輸入方案裏 {name: ascii_mode} 在 switches: 列表中爲第一項，即下標 0
+patch:
+  switches/@0/reset: 1
