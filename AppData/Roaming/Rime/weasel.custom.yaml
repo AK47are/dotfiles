@@ -3,6 +3,7 @@ patch:
     font_point: 12
     label_font_point: 12
     comment_font_point: 10
+    inline_preedit: false
 
   app_options/+:
     windowsterminal.exe:
