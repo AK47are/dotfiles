@@ -2,7 +2,8 @@
 
 - 准备 [VPN](https://clashverge.net/)：后续大部分下载都需要翻墙
 - 输入法：[RIME](https://rime.im/)-[雾凇拼音](https://github.com/iDvel/rime-ice)
-  - 行为更符合预期，跨平台，可配置性高（vim_mode, 自定义按键，支持 lua 等等）
+  - 行为更符合预期，跨平台，可配置性高
+  - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别
   - 如果受得了微软拼音乱切换输入法状态可以跳过
 - 安装 [scoop](https://github.com/ScoopInstaller/Scoop)：包管理器
   - 后续大部分程序都可通过 scoop 安装，如果安装不了，可尝试[国内特供版](https://github.com/xrgzs/scoop)
