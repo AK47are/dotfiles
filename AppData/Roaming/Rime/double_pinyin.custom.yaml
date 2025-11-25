@@ -10,3 +10,8 @@ patch:
   translator/contextual_suggestions: true
   translator/max_homophones: 7
   translator/max_homographs: 7
+
+  key_binder/search: "~" # 辅码引导符
+
+  # 去除 ` 换成 ~，和 inline_code 匹配冲突，如果添加则末尾必须多按一次空格
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA~
