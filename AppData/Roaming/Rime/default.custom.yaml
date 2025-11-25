@@ -8,9 +8,9 @@ patch:
   menu:
     page_size: 7
 
-  key_binder/bindings:
-    - { when: has_menu, accept: minus, send: Page_Up }
-    - { when: has_menu, accept: equal, send: Page_Down }
+  recognizer/patterns: # 转换成临时英文模式
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    underscore: "^[A-Za-z]+_.*"
 
   punctuator/half_shape:
     "|": "|"
@@ -44,3 +44,7 @@ patch:
     "]": ["】", "]"]
     "{": ["「", "{"]
     "}": ["」", "}"]
+
+  key_binder/bindings:
+    - { when: has_menu, accept: minus, send: Page_Up }
+    - { when: has_menu, accept: equal, send: Page_Down }
