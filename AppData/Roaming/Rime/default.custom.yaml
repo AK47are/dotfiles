@@ -11,6 +11,8 @@ patch:
   recognizer/patterns: # 转换成临时英文模式
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     underscore: "^[A-Za-z]+_.*"
+    inline_latex: "^\\$[^\\$]*$"
+    inline_code: "^`[^`]*$"
 
   punctuator/half_shape:
     "|": "|"
