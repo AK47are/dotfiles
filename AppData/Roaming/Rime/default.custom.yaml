@@ -14,6 +14,9 @@ patch:
     inline_latex: "^\\$[^\\$]*$"
     inline_code: "^`[^`]*$"
 
+  punctuator/half_shape/+:
+    "$": "$"
+
   key_binder:
     # 和上面 inline_code 冲突，例如打 `[[Prototype]]`
     # 改成小键盘的 -= 和翻页快捷键对应
