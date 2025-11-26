@@ -15,3 +15,15 @@ patch:
 
   # 去除 ` 换成 ~，和 inline_code 匹配冲突，如果添加则末尾必须多按一次空格
   speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA~
+
+  engine/processors: # 有顺序要求
+    - lua_processor@*handle_pattern_space # 当符合特定模式时拦截空格向下传递
+    - lua_processor@*select_character # 以词定字
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
