@@ -22,6 +22,6 @@ patch:
     # 改成小键盘的 -= 和翻页快捷键对应
     select_first_character: "KP_Subtract"
     select_last_character: "KP_Add"
-  bindings:
-    - { when: has_menu, accept: minus, send: Page_Up }
-    - { when: has_menu, accept: equal, send: Page_Down }
+    bindings:
+      - { when: has_menu, accept: minus, send: Page_Up }
+      - { when: has_menu, accept: equal, send: Page_Down }
