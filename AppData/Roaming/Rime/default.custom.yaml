@@ -16,6 +16,7 @@ patch:
 
   punctuator/half_shape/+:
     "$": "$"
+    "`": "`"
 
   key_binder:
     # 和上面 inline_code 冲突，例如打 `[[Prototype]]`
@@ -23,5 +24,7 @@ patch:
     select_first_character: "KP_Subtract"
     select_last_character: "KP_Add"
     bindings:
-      - { when: has_menu, accept: minus, send: Page_Up }
-      - { when: has_menu, accept: equal, send: Page_Down }
+      # 使用左右箭头换页，副作用是左右箭头不能再移动光标，不过双拼一个词只有两个键，使用
+      # Ctrl + Left/Right 移动绰绰有余。
+      - { when: has_menu, accept: Left, send: Page_Up }
+      - { when: has_menu, accept: Right, send: Page_Down }
