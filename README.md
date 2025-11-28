@@ -1,20 +1,19 @@
 ## 检查清单
 
 - 准备 [VPN](https://clashverge.net/)：后续大部分下载都需要翻墙
-- 输入法：[RIME](https://rime.im/)-[雾凇拼音](https://github.com/iDvel/rime-ice)
-  - 行为更符合预期，跨平台，可配置性高
-  - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别
-  - 如果受得了微软拼音乱切换输入法状态可以跳过
 - 安装 [scoop](https://github.com/ScoopInstaller/Scoop)：包管理器
-  - 后续大部分程序都可通过 scoop 安装，如果安装不了，可尝试[国内特供版](https://github.com/xrgzs/scoop)
+  - 后续大部分程序都可通过 scoop 安装，如果安装不了，尝试[国内特供版](https://github.com/xrgzs/scoop)
 - 拉取 [dotfiles](https://github.com/AK47are/dotfiles)
   1. 安装 `git`：`scoop install git`
   2. 拉取仓库：`git clone --bare https://github.com/AK47are/dotfiles.git $HOME/.cfg`
   3. 读取仓库：`git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
     - 可能会存在冲突文件，需要手动处理或者添加 `-f` 强行覆盖
-  4. 重启终端
-  5. 忽略未追踪文件：`dot config --local status.showUntrackedFiles no`
-- 安装软件：`scoop pwsh wezterm-nightly autohotkey neovim fd ripgrep lazygit tree-sitter nodejs mingw`
+  4. 忽略未追踪文件：`git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
+- 输入法：[RIME](https://rime.im/)-[雾凇拼音](https://github.com/iDvel/rime-ice)
+  - 行为更符合预期，跨平台，可配置性高
+  - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别
+  - 如果受得了微软拼音乱切换输入法状态可以跳过
+- 安装软件：`scoop install pwsh wezterm-nightly autohotkey neovim fd ripgrep lazygit tree-sitter nodejs mingw`
   1. pwsh：Windows Shell
   2. wezterm-nightly：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
