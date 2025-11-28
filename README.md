@@ -1,6 +1,13 @@
+## 快速配置
+
+```powershell
+irm https://github.com/AK47are/dotfiles/raw/refs/heads/windows/scripts/startup.ps1 | iex
+
+```
+
 ## 检查清单
 
-- 准备 [VPN](https://clashverge.net/)：后续大部分下载都需要翻墙
+- 准备 [VPN](https://clashverge.net/)
 - 安装 [scoop](https://github.com/ScoopInstaller/Scoop)：包管理器
   - 后续大部分程序都可通过 scoop 安装，如果安装不了，尝试[国内特供版](https://github.com/xrgzs/scoop)
 - 拉取 [dotfiles](https://github.com/AK47are/dotfiles)
@@ -11,14 +18,14 @@
   4. 忽略未追踪文件：`git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
 - 输入法：[RIME](https://rime.im/)-[雾凇拼音](https://github.com/iDvel/rime-ice)
   - 行为更符合预期，跨平台，可配置性高
-  - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别
+  - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别，放在用户文件夹
   - 如果受得了微软拼音乱切换输入法状态可以跳过
 - 安装软件：`scoop install pwsh wezterm-nightly autohotkey neovim fd ripgrep lazygit tree-sitter nodejs mingw`
-  1. pwsh：Windows Shell
+  1. pwsh：Shell
   2. wezterm-nightly：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
   3. autohotkey：映射快捷键（`~/scripts/setup.ahk`）
-  4. neovim：代码编辑器
+  4. neovim：代码编辑器，初始化时需要 VPN
     - fd：搜索文件
     - ripgrep：搜索文件内容
     - lazygit：可视化 git
