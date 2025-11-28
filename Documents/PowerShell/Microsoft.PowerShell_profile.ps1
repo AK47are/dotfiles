@@ -7,6 +7,7 @@ if (-not (Get-Module -ListAvailable PSCompletions)) {
   Write-Host "Installing PSCompletions..."
   Install-Module PSCompletions -Scope CurrentUser
   Import-Module PSCompletions
+  psc add git scoop 7z cargo docker node npm powershell python pwsh pnpm pip
 } else {
   Import-Module PSCompletions
 }
