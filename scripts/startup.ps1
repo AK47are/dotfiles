@@ -1,14 +1,5 @@
 # This script is for automatically setting up dotfiles
 
-function Get-ProxiedURL {
-  param([string]$OriginalURL)
-  if ($proxyURL) {
-    return $proxyURL + $OriginalURL
-  } else {
-    return $OriginalURL
-  }
-}
-
 function Write-Success { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor Green }
 function Write-Info { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor Cyan }
 function Write-Warning { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor Yellow }
@@ -25,7 +16,7 @@ if (-not ([bool](Get-Command scoop -ErrorAction SilentlyContinue))) {
       irm c.xrgzs.top/c/scoop | iex
     } else {
       Write-Info "Installing official scoop..."
-      Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+      irm https://get.scoop.sh | iex
     }
     Write-Success "Scoop installed successfully"
   } catch {
@@ -39,7 +30,7 @@ if (-not ([bool](Get-Command scoop -ErrorAction SilentlyContinue))) {
 Write-Info "Checking and installing git"
 if (-not ([bool](Get-Command git -ErrorAction SilentlyContinue))) {
   try {
-    scoop install git 2>&1 | Out-Null
+    scoop install git
     Write-Success "Git installed successfully"
   } catch {
     Write-Error "Git installation failed: $($_.Exception.Message)"
@@ -53,6 +44,20 @@ $proxyURL = ""
 $proxyResponse = Read-Host "Set up Github proxy? [Y/N]"
 if ($proxyResponse -eq "Y" -or $proxyResponse -eq "y") {
   $proxyURL = Read-Host "Enter proxy URL"
+
+  if (-not [string]::IsNullOrWhiteSpace($proxyURL)) {
+    $proxyURL = if (-not $proxyURL.StartsWith("https")) { "https://" + $proxyURL } else { $proxyURL }
+    $proxyURL = if (-not $proxyURL.EndsWith("/")) { $proxyURL + "/" } else { $proxyURL }
+  }
+}
+
+function Get-ProxiedURL {
+  param([string]$OriginalURL)
+  if ($proxyURL) {
+    return $proxyURL + $OriginalURL
+  } else {
+    return $OriginalURL
+  }
 }
 
 if (-not (Test-Path "$HOME\.cfg")) {
@@ -71,7 +76,7 @@ if (-not (Test-Path "$HOME\.cfg")) {
 }
 
 Write-Info "Setting up Rime input method configuration..."
-if (-not ((Test-Path "$env:APPDATA\Rime") -and (Test-Path "$env:APPDATA\Rime\.git"))) {
+if (-not Test-Path "$env:APPDATA\Rime\.git") {
   try {
     Write-Info "Pulling rime-ice configuration..."
     git clone (Get-ProxiedURL "https://github.com/iDvel/rime-ice.git") $env:APPDATA\Rime --depth 1
@@ -81,7 +86,7 @@ if (-not ((Test-Path "$env:APPDATA\Rime") -and (Test-Path "$env:APPDATA\Rime\.gi
     exit 1
   }
 } else {
-  Write-Warning "Rime configuration already exists, skipping"
+  Write-Warning "rime-ice configuration(.git) already exists, skipping"
 }
 
 if (-not (Test-Path "$env:APPDATA\Rime\wanxiang-lts-zh-hans.gram")) {
@@ -121,6 +126,6 @@ autohotkey "$HOME\scripts\setup.ahk"
 Write-Success "Autohotkey setup completed"
 
 Write-Info "Installing other programs"
-scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw 2>&1 | Out-Null
+scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw
 
 Write-Success "=== All components installed successfully! ==="
