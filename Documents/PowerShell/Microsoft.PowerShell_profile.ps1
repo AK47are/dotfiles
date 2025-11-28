@@ -5,18 +5,20 @@
 # PSCompletions
 if (-not (Get-Module -ListAvailable PSCompletions)) {
   Write-Host "Installing PSCompletions..."
-  Install-Module PSCompletions -Repository PSGallery -Force
+  Install-Module PSCompletions -Scope CurrentUser
+  Import-Module PSCompletions
+} else {
+  Import-Module PSCompletions
 }
 
 # Completion Predictor
 if (-not (Get-Module -ListAvailable CompletionPredictor)) {
   Write-Host "Installing CompletionPredictor..."
-  Install-Module CompletionPredictor -Repository PSGallery -Force
+  Install-Module PSCompletions -Scope CurrentUser
+  Import-Module CompletionPredictor
+} else {
+  Import-Module CompletionPredictor
 }
-
-Import-Module PSCompletions
-Import-Module CompletionPredictor
-
 
 # ==================================
 # 环境变量
