@@ -10,13 +10,15 @@ Write-Info "=== Auto Setup ==="
 Write-Info "Checking and installing scoop..."
 if (-not ([bool](Get-Command scoop -ErrorAction SilentlyContinue))) {
   try {
-    $response = Read-Host "Install Chinese version of scoop? [Y/N]"
+    $response = Read-Host "Install Chinese version of scoop(Recommanded)? [Y/N]"
     if ($response -eq "Y" -or $response -eq "y") {
       Write-Info "Installing Chinese version of scoop..."
       irm c.xrgzs.top/c/scoop | iex
     } else {
       Write-Info "Installing official scoop..."
       irm https://get.scoop.sh | iex
+      scoop bucket add extras
+      scoop bucket add versions
     }
     Write-Success "Scoop installed successfully"
   } catch {
@@ -60,23 +62,8 @@ function Get-ProxiedURL {
   }
 }
 
-if (-not (Test-Path "$HOME\.cfg")) {
-  try {
-    Write-Info "Pulling dotfiles..."
-    git clone --bare (Get-ProxiedURL "https://github.com/AK47are/dotfiles.git") $HOME\.cfg
-    git --git-dir=$HOME\.cfg\ --work-tree=$HOME checkout -f
-    git --git-dir=$HOME\.cfg\ --work-tree=$HOME config --local status.showUntrackedFiles no
-    Write-Success "Dotfiles pulled successfully"
-  } catch {
-    Write-Error "Failed to pull dotfiles: $($_.Exception.Message)"
-    exit 1
-  }
-} else {
-  Write-Warning ".cfg already exists, skipping dotfiles pull"
-}
-
 Write-Info "Setting up Rime input method configuration..."
-if (-not (Test-Path "$env:APPDATA\Rime\.git")) {
+if (-not (Test-Path "$env:APPDATA\Rime")) {
   try {
     Write-Info "Pulling rime-ice configuration..."
     git clone (Get-ProxiedURL "https://github.com/iDvel/rime-ice.git") $env:APPDATA\Rime --depth 1
@@ -100,6 +87,21 @@ if (-not (Test-Path "$env:APPDATA\Rime\wanxiang-lts-zh-hans.gram")) {
   }
 } else {
   Write-Warning "Wanxiang language model already exists, skipping"
+}
+
+if (-not (Test-Path "$HOME\.cfg")) {
+  try {
+    Write-Info "Pulling dotfiles..."
+    git clone --bare (Get-ProxiedURL "https://github.com/AK47are/dotfiles.git") $HOME\.cfg
+    git --git-dir=$HOME\.cfg\ --work-tree=$HOME checkout -f
+    git --git-dir=$HOME\.cfg\ --work-tree=$HOME config --local status.showUntrackedFiles no
+    Write-Success "Dotfiles pulled successfully"
+  } catch {
+    Write-Error "Failed to pull dotfiles: $($_.Exception.Message)"
+    exit 1
+  }
+} else {
+  Write-Warning ".cfg already exists, skipping dotfiles pull"
 }
 
 Write-Info "Installing Rime Weasel..."
@@ -126,6 +128,7 @@ autohotkey "$HOME\scripts\setup.ahk"
 Write-Success "Autohotkey setup completed"
 
 Write-Info "Installing other programs"
-scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw
-
+scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev
 Write-Success "=== All components installed successfully! ==="
+
+Write-Info "Note: Neovim initialization requires VPN connection"
