@@ -76,7 +76,7 @@ if (-not (Test-Path "$HOME\.cfg")) {
 }
 
 Write-Info "Setting up Rime input method configuration..."
-if (-not Test-Path "$env:APPDATA\Rime\.git") {
+if (-not (Test-Path "$env:APPDATA\Rime\.git")) {
   try {
     Write-Info "Pulling rime-ice configuration..."
     git clone (Get-ProxiedURL "https://github.com/iDvel/rime-ice.git") $env:APPDATA\Rime --depth 1
