@@ -1,7 +1,7 @@
 ## 快速配置
 
 ```powershell
-irm https://github.com/AK47are/dotfiles/raw/refs/heads/windows/scripts/startup.ps1 | iex
+irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
 
 ```
 
