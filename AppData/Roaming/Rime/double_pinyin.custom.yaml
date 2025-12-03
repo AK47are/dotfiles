@@ -1,6 +1,23 @@
-# 設輸入方案裏 {name: ascii_mode} 在 switches: 列表中爲第一項，即下標 0
 patch:
-  switches/@0/reset: 1
+  switches:
+    - name: ascii_mode
+      states: [中, Ａ]
+      reset: 1
+    - name: always_english # 打游戏可以打开
+      states: [正常, 锁定英]
+    - name: ascii_punct # 中英标点
+      states: [¥, $]
+    - name: traditionalization
+      states: [简, 繁]
+    - name: emoji
+      states: [💀, 😄]
+      reset: 1
+    - name: full_shape
+      states: [半角, 全角]
+    - name: search_single_char # search.lua 的功能开关，辅码查词时是否单字优先
+      states: [正常, 单字]
+      abbrev: [词, 单]
+
   # 语言模型
   grammar/language: wanxiang-lts-zh-hans
   grammar/collocation_max_length: 5
@@ -17,6 +34,7 @@ patch:
   speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA~
 
   engine/processors: # 有顺序要求
+    - lua_processor@*always_english
     - lua_processor@*handle_pattern_space # 当符合特定模式时拦截空格向下传递
     - lua_processor@*select_character # 以词定字
     - ascii_composer
