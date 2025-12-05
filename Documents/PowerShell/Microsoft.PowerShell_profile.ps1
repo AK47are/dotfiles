@@ -52,7 +52,7 @@ Set-Alias vi nvim
 # ==================================
 
 function prompt { Write-Host("PS: $pwd>")}
-# use <C-A-S-/> or Get-PSReadLineKeyHandler show all key bindings, it't useful
+# use <C-A-S-/> or Get-PSReadLineKeyHandler show all key bindings
 Set-PSReadLineOption -EditMode vi
 Write-Host -NoNewline "`e[5 q"
 function OnViModeChange {

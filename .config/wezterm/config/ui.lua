@@ -60,3 +60,5 @@ Wezterm.on("augment-command-palette", function(window, _)
     },
   }
 end)
+
+Config.default_cursor_style = "BlinkingBar"
