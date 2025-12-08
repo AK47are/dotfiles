@@ -73,7 +73,7 @@ return {
       end, 100)
     end)
 
-    require("which-key").add({ "<leader>l", group = "leetcode" })
+    require("which-key").add({ "<leader>l", group = "+leetcode" })
     local keys = {
       { "<leader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
       { "<leader>lt", "<Cmd>Leet test<Cr>", desc = "Leet: Test" },
