@@ -5,7 +5,7 @@ return {
     "folke/which-key.nvim",
   },
   opts = {
-    cmake_build_directory = "build",
+    cmake_build_directory = "build\\${variant:buildType}",
     cmake_runner = {
       name = "terminal",
       opts = {
