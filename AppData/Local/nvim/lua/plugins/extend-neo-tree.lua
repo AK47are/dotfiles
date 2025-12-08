@@ -7,6 +7,9 @@ return {
   },
   lazy = false,
   opts = {
+    window = {
+      width = 35,
+    },
     filesystem = {
       -- 折叠空文件夹
       group_empty_dirs = true,
