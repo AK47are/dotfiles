@@ -53,3 +53,11 @@ vim.api.nvim_create_user_command("ClearShada", function()
 end, { desc = "Clears all the .tmp shada files" })
 
 vim.g.snacks_animate = false
+
+-- 设置命令行模式为竖线，其他模式保持原样
+vim.o.guicursor = table.concat({
+  "n-v-sm:block",
+  "i-c-ci-ve:ver25",
+  "r-cr-o:hor20",
+  "t:block-blinkon500-blinkoff500-TermCursor",
+}, ",")
