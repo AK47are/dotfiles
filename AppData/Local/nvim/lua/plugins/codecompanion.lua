@@ -21,6 +21,17 @@ return {
             name = "deepseek",
             model = "deepseek-chat",
           },
+          opts = {
+            system_prompt = (function()
+              local file = io.open(vim.fn.stdpath("config") .. "/assets/ai-rules.md", "r")
+              if not file then
+                return ""
+              end
+              local content = file:read("*all")
+              file:close()
+              return content
+            end)(),
+          },
         },
         inline = { adapter = "deepseek" },
         cmd = { adapter = "deepseek" },
