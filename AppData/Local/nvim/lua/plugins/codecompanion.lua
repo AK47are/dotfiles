@@ -62,10 +62,6 @@ return {
     },
   },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
-  },
-  {
     "HakonHarnes/img-clip.nvim",
     opts = {
       filetypes = {
