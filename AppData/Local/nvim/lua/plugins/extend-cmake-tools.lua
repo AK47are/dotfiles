@@ -21,6 +21,10 @@ return {
   },
   config = function(_, opts)
     require("cmake-tools").setup(opts)
+
+    -- https://github.com/Civitasv/cmake-tools.nvim/blob/02d109f18ccbfc527d70f14fefa226d20c014924/docs/howto.md#fix-errors-in-quickfix-list-windowsmsvc
+    vim.opt.errorformat:append([[\ %#%f(%l\,%c):\ %m]])
+    vim.opt.errorformat:append([[\ %#%f(%l)\ :\ %#%t%[A-z]%#\ %m]])
     require("which-key").add({ "<leader>m", group = "+cmake" })
     local keys = {
       { "<leader>mc", "<cmd>CMakeClean<cr>", desc = "CMake: Clean" },
