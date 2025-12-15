@@ -23,6 +23,7 @@ return {
           },
           auto_scroll = false,
           opts = {
+            -- log_level = "DEBUG",
             system_prompt = (function()
               local file = io.open(vim.fn.stdpath("config") .. "/assets/ai-rules.md", "r")
               if not file then
@@ -34,8 +35,24 @@ return {
             end)(),
           },
         },
-        inline = { adapter = "deepseek" },
-        cmd = { adapter = "deepseek" },
+        inline = {
+          adapter = {
+            name = "deepseek",
+            model = "deepseek-chat",
+          },
+        },
+        cmd = {
+          adapter = {
+            name = "deepseek",
+            model = "deepseek-chat",
+          },
+        },
+        background = {
+          adapter = {
+            name = "deepseek",
+            model = "deepseek-chat",
+          },
+        },
       },
       adapters = {
         acp = { opts = { show_defaults = false } },
