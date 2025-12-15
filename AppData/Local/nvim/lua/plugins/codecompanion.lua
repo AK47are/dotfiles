@@ -21,6 +21,7 @@ return {
             name = "deepseek",
             model = "deepseek-chat",
           },
+          auto_scroll = false,
           opts = {
             system_prompt = (function()
               local file = io.open(vim.fn.stdpath("config") .. "/assets/ai-rules.md", "r")
