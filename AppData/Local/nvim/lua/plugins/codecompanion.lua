@@ -1,7 +1,6 @@
 return {
   {
     "olimorris/codecompanion.nvim",
-    version = "v17.33.0",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -15,7 +14,7 @@ return {
       { "<leader>ai", mode = { "n", "v" }, "<cmd>CodeCompanion<cr>", desc = "AI: Inline Chat" },
     },
     opts = {
-      strategies = {
+      interactions = {
         chat = {
           adapter = {
             name = "deepseek",
