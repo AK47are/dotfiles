@@ -63,6 +63,6 @@ vim.o.guicursor = table.concat({
 }, ",")
 
 -- use unix style to parse file
-vim.opt.fileformats = { "unix" }
+vim.opt.fileformats = { "unix", "dos", "mac" }
 -- set unix style to save file
 vim.opt.fileformat = "unix"
