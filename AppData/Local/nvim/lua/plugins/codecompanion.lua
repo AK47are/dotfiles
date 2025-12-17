@@ -1,3 +1,6 @@
+local adapter_name = "aliyun_deepseek"
+local adapter_model = "deepseek-v3.2"
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -24,8 +27,8 @@ return {
       interactions = {
         chat = {
           adapter = {
-            name = "deepseek",
-            model = "deepseek-chat",
+            name = adapter_name,
+            model = adapter_model,
           },
           variables = {
             ["buffer"] = {
@@ -43,20 +46,20 @@ return {
         },
         inline = {
           adapter = {
-            name = "deepseek",
-            model = "deepseek-chat",
+            name = adapter_name,
+            model = adapter_model,
           },
         },
         cmd = {
           adapter = {
-            name = "deepseek",
-            model = "deepseek-chat",
+            name = adapter_name,
+            model = adapter_model,
           },
         },
         background = {
           adapter = {
-            name = "deepseek",
-            model = "deepseek-chat",
+            name = adapter_name,
+            model = adapter_model,
           },
         },
       },
