@@ -30,6 +30,12 @@ return {
               },
             },
           },
+          tools = {
+            opts = {
+              auto_submit_errors = true,
+              auto_submit_success = true,
+            },
+          },
         },
         inline = {
           adapter = {
