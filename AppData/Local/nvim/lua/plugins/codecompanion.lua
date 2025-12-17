@@ -20,7 +20,6 @@ return {
             name = "deepseek",
             model = "deepseek-chat",
           },
-          auto_scroll = false,
           keymaps = {
             previous_header = {
               modes = { n = "[[" },
@@ -129,7 +128,10 @@ return {
         acp = { opts = { show_defaults = false } },
         http = { opts = { show_defaults = false } },
       },
-      display = { action_palette = { provider = "snacks" } },
+      display = {
+        chat = { auto_scroll = false },
+        action_palette = { provider = "snacks" },
+      },
     },
   },
   {
