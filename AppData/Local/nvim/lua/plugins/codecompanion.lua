@@ -14,6 +14,9 @@ return {
       { "<leader>ai", mode = { "n", "v" }, "<cmd>CodeCompanion<cr>", desc = "AI: Inline Chat" },
     },
     opts = {
+      opts = {
+        language = "Chinese",
+      },
       interactions = {
         chat = {
           adapter = {
@@ -91,18 +94,6 @@ return {
               end,
               description = "Next header",
             },
-          },
-          opts = {
-            -- log_level = "DEBUG",
-            system_prompt = (function()
-              local file = io.open(vim.fn.stdpath("config") .. "/assets/ai-rules.md", "r")
-              if not file then
-                return ""
-              end
-              local content = file:read("*all")
-              file:close()
-              return content
-            end)(),
           },
         },
         inline = {
