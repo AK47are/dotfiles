@@ -61,3 +61,8 @@ vim.o.guicursor = table.concat({
   "r-cr-o:hor20",
   "t:block-blinkon500-blinkoff500-TermCursor",
 }, ",")
+
+-- use unix style to parse file
+vim.opt.fileformats = { "unix" }
+-- set unix style to save file
+vim.opt.fileformat = "unix"
