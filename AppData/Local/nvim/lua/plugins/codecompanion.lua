@@ -24,6 +24,9 @@ return {
         chat = { auto_scroll = false },
         action_palette = { provider = "snacks" },
       },
+      prompt_library = {
+        markdown = { dirs = { vim.fn.stdpath("config") .. "/assets/prompts" } },
+      },
       interactions = {
         chat = {
           adapter = {
