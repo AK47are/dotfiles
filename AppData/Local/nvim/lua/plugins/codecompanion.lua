@@ -23,6 +23,13 @@ return {
             name = "deepseek",
             model = "deepseek-chat",
           },
+          variables = {
+            ["buffer"] = {
+              opts = {
+                default_params = "diff",
+              },
+            },
+          },
         },
         inline = {
           adapter = {
