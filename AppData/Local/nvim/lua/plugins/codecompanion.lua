@@ -33,19 +33,6 @@ return {
             name = adapter_name,
             model = adapter_model,
           },
-          variables = {
-            ["buffer"] = {
-              opts = {
-                default_params = "diff",
-              },
-            },
-          },
-          tools = {
-            opts = {
-              auto_submit_errors = true,
-              auto_submit_success = true,
-            },
-          },
         },
         inline = {
           adapter = {
@@ -67,9 +54,7 @@ return {
         },
       },
       adapters = {
-        acp = { opts = { show_defaults = false } },
         http = {
-          opts = { show_defaults = false },
           siliconflow_deepseek = function()
             return require("codecompanion.adapters").extend("deepseek", {
               name = "siliconflow_deepseek",
