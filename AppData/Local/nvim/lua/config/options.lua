@@ -66,3 +66,5 @@ vim.o.guicursor = table.concat({
 vim.opt.fileformats = { "unix", "dos", "mac" }
 -- set unix style to save file
 vim.opt.fileformat = "unix"
+
+vim.g.lazyvim_prettier_needs_config = true
