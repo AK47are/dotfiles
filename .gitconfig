@@ -5,7 +5,7 @@
 	editor = nvim
 	quotepath = false
 	symlinks = true
-	autocrlf = true
+	autocrlf = input
 [i18n]
 	logOutputEncoding = utf-8
 [difftool]
