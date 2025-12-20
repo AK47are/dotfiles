@@ -86,11 +86,11 @@ return {
                   choices = {
                     ["qwen-plus"] = {
                       formatted_name = "DashScope",
-                      opts = { can_reason = true, can_use_tools = false },
+                      opts = { can_reason = false, can_use_tools = false },
                     },
                     ["qwen-flash"] = {
                       formatted_name = "DashScope",
-                      opts = { can_reason = true, can_use_tools = true },
+                      opts = { can_reason = false, can_use_tools = true },
                     },
                     ["qwen3-max"] = { formatted_name = "DashScope", opts = { can_use_tools = true } },
                     ["qwen3-coder-plus"] = { formatted_name = "DashScope", opts = { can_use_tools = true } },
