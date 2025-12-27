@@ -69,6 +69,10 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnVi
 
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 
+# 添加插入模式快捷键，和 Neovim 体验统一
+Set-PSReadLineKeyHandler -Chord "Ctrl+h" -Function BackwardDeleteChar -ViMode Insert
+Set-PSReadLineKeyHandler -Chord "Ctrl+w" -Function BackwardDeleteWord -ViMode Insert
+
 # ==================================
 # 自定义通用函数
 # ==================================
