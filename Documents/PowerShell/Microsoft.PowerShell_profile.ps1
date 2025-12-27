@@ -1,3 +1,4 @@
+Set-PSReadLineOption -EditMode vi
 # ==================================
 # 模块导入
 # ==================================
@@ -44,7 +45,6 @@ Set-Alias vi nvim
 
 function prompt { Write-Host("PS: $pwd>")}
 # use <C-A-S-/> or Get-PSReadLineKeyHandler show all key bindings
-Set-PSReadLineOption -EditMode vi
 Write-Host -NoNewline "`e[5 q"
 function OnViModeChange {
     if ($args[0] -eq 'Command') {
