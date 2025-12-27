@@ -9,16 +9,7 @@ if (-not (Get-Module -ListAvailable PSCompletions)) {
   Import-Module PSCompletions
   psc add git scoop 7z cargo docker node npm powershell python pwsh pnpm pip
 } else {
-  Import-Module PSCompletions
-}
-
-# Completion Predictor
-if (-not (Get-Module -ListAvailable CompletionPredictor)) {
-  Write-Host "Installing CompletionPredictor..."
-  Install-Module PSCompletions -Scope CurrentUser
-  Import-Module CompletionPredictor
-} else {
-  Import-Module CompletionPredictor
+  import-Module PSCompletions
 }
 
 # ==================================
@@ -67,7 +58,6 @@ function OnViModeChange {
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-
 
 # ==================================
 # 自定义通用函数
