@@ -109,3 +109,6 @@ Set-Alias -Name netstat -Value Get-NetTCPConnection
 Set-Alias -Name zip -Value Compress-Archive
 Set-Alias -Name unzip -Value Expand-Archive
 Set-Alias -Name which -Value Get-Command
+
+# 初始化 zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
