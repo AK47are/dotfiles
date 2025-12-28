@@ -93,7 +93,10 @@ autohotkey "$HOME\scripts\setup.ahk"
 Write-Success "Autohotkey setup completed"
 
 Write-Info "Installing other programs"
-scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev
+scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev yazi zoxide
 Write-Success "=== All components installed successfully! ==="
+
+# 配置 yazi
+[Environment]::SetEnvironmentVariable("YAZI_FILE_ONE", (scoop prefix git) + "\usr\bin\file.exe", "User")
 
 Write-Info "Note: Neovim, Wezterm initialization requires VPN connection"

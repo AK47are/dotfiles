@@ -20,7 +20,7 @@ irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
   - 行为更符合预期，跨平台，可配置性高
   - 下载[万象语言模型](https://github.com/amzxyz/RIME-LMDG)：优化长句识别，放在用户文件夹
   - 如果受得了微软拼音乱切换输入法状态可以跳过
-- 安装软件：`scoop install pwsh wezterm-nightly autohotkey neovim fd ripgrep lazygit tree-sitter nodejs mingw`
+- 安装软件：
   1. pwsh：Shell
   2. wezterm-nightly：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
@@ -32,6 +32,8 @@ irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
     - tree-sitter：语法解析器
     - nodejs: mason 安装部分程序需要
     - C 工具链：MinGW 或 [MSVC](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
+  5. yazi：终端文件管理器，替换掉 windows 难用的文件管理器
+    - zoxide：增强目录切换功能
 - 可选：若长期使用推荐添加，大部分可通过 scoop 安装
   - [Pot Desktop](https://github.com/pot-app/pot-desktop/)：OCR / 翻译软件
   - [Obsidian](https://obsidian.md/)：笔记软件
