@@ -25,15 +25,18 @@ irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
   2. wezterm-nightly：终端仿真器
     - 注意：Wezterm 稳定版很久没更新，最好使用 wezterm-nightly，避免 nvim 渲染问题
   3. autohotkey：映射快捷键（`~/scripts/setup.ahk`）
-  4. neovim：代码编辑器，初始化时需要 VPN
+  4. 终端工具：被很多终端程序需要或支持
     - fd：搜索文件
     - ripgrep：搜索文件内容
     - lazygit：可视化 git
+    - zoxide：增强目录切换功能
+    - jq：JSON 预览
+    - resvg：SVG 预览
+  4. neovim：代码编辑器，初始化时需要 VPN
     - tree-sitter：语法解析器
     - nodejs: mason 安装部分程序需要
     - C 工具链：MinGW 或 [MSVC](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
   5. yazi：终端文件管理器，替换掉 windows 难用的文件管理器
-    - zoxide：增强目录切换功能
 - 可选：若长期使用推荐添加，大部分可通过 scoop 安装
   - [Pot Desktop](https://github.com/pot-app/pot-desktop/)：OCR / 翻译软件
   - [Obsidian](https://obsidian.md/)：笔记软件

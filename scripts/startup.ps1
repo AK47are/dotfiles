@@ -93,7 +93,7 @@ autohotkey "$HOME\scripts\setup.ahk"
 Write-Success "Autohotkey setup completed"
 
 Write-Info "Installing other programs"
-scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev yazi zoxide
+scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev yazi zoxide jq resvg
 Write-Success "=== All components installed successfully! ==="
 
 # 配置 yazi
