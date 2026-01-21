@@ -1,6 +1,9 @@
 return {
   "folke/snacks.nvim",
   keys = {
+    -- disable scratch
+    { "<leader>S", false },
+    { "<leader>.", false },
     -- disable explorer
     { "<leader>e", false },
     { "<leader>E", false },
