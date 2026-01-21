@@ -1,6 +1,14 @@
 return {
   "folke/snacks.nvim",
+  keys = {
+    -- disable explorer
+    { "<leader>e", false },
+    { "<leader>E", false },
+    { "<leader>fe", false },
+    { "<leader>fE", false },
+  },
   opts = {
+    explorer = { enabled = false },
     dashboard = {
       preset = {
         header = (function()
