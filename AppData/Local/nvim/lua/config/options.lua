@@ -68,3 +68,4 @@ vim.opt.fileformats = { "unix", "dos", "mac" }
 vim.opt.fileformat = "unix"
 
 vim.g.lazyvim_prettier_needs_config = true
+vim.opt.swapfile = false
