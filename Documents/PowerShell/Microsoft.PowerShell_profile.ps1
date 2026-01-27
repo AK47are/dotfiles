@@ -33,6 +33,10 @@ function config {
   }
 }
 
+function lzdot {
+    lazygit --git-dir="$HOME\.cfg" --work-tree="$HOME"
+}
+
 function y {
     $tmp = (New-TemporaryFile).FullName
     yazi $args --cwd-file="$tmp"
