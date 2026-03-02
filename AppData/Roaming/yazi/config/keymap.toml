@@ -1,4 +1,5 @@
 [mgr]
 append_keymap = [
   { on = [ "g", "p" ], run = "cd ~/projects", desc = "Go to Projects" },
+  { on = "e", run = "shell --orphan \"cmd.exe /c start \"\" \"%1\"\"", desc = "Open with default app" },
 ]
