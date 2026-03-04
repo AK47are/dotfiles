@@ -67,7 +67,7 @@ vim.opt.fileformats = { "unix", "dos", "mac" }
 -- set unix style to save file
 vim.opt.fileformat = "unix"
 
-vim.g.lazyvim_prettier_needs_config = true
+-- vim.g.lazyvim_prettier_needs_config = true
 vim.opt.swapfile = false
 
 vim.opt.tabstop = 4
