@@ -77,6 +77,7 @@ return {
     local keys = {
       { "<leader>lc", "<Cmd>Leet console<Cr>", desc = "Leet: Console" },
       { "<leader>lt", "<Cmd>Leet test<Cr>", desc = "Leet: Test" },
+      { "<leader>lT", "<Cmd>Leet tabs<Cr>", desc = "Leet: Select tabs" },
       { "<leader>ls", "<Cmd>Leet submit<Cr>", desc = "Leet: Submit" },
       { "<leader>ll", "<Cmd>Leet list status=notac<Cr>", desc = "Leet: Select question (in progress)" },
       { "<leader>lL", "<Cmd>Leet list status=ac<Cr>", desc = "Leet: Select question (ac)" },
@@ -84,6 +85,8 @@ return {
       { "<leader>lo", "<Cmd>Leet open<Cr>", desc = "Leet: Open in browser" },
       { "<leader>ly", "<Cmd>Leet yank<Cr>", desc = "Leet: Yank code" },
       { "<leader>ld", "<Cmd>Leet desc<Cr>", desc = "Leet: Toggle description" },
+      { "<leader>lr", "<Cmd>Leet random status=ac<Cr>", desc = "Leet: Random question (ac)" },
+      { "<leader>lR", "<Cmd>Leet reset<Cr>", desc = "Leet: Reset code" },
     }
     for _, key in ipairs(keys) do
       vim.keymap.set("n", key[1], key[2], { desc = key.desc, silent = true })
