@@ -1,8 +1,8 @@
 local function resize_window_to_ratio(window, ratio)
   local screen = Wezterm.gui.screens().active
   local width, height = screen.width * ratio, screen.height * ratio
-  window:set_inner_size(width, height)
-  window:set_position((screen.width - width) / 2, (screen.height - height) / 2)
+  window:set_inner_size(width, height - 10)
+  window:set_position((screen.width - width) / 2, (screen.height - height) / 2 - 5)
   Cache.save("window_ratio", ratio)
 end
 
