@@ -2,3 +2,6 @@
 edit = [
     { run = 'nvim "%*"', block = true, desc = "Neovim" }
 ]
+
+[mgr]
+show_hidden = true
