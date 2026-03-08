@@ -1,6 +1,11 @@
 [opener]
 edit = [
-    { run = 'nvim "%*"', block = true, desc = "Neovim" }
+    { run = "nvim %s", block = true, desc = "Edit" },
+]
+
+[open]
+prepend_rules = [
+    { url = "*.html", use = [ "edit", "open" ] },
 ]
 
 [mgr]
