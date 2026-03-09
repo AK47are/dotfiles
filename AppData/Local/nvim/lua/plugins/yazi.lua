@@ -11,13 +11,7 @@ return {
     {
       "<leader>e",
       function()
-        local yazi = require("yazi")
-        local path = yazi.previous_state and yazi.previous_state.last_hovered
-        if path then
-          yazi.yazi(nil, path, { reveal_path = path })
-        else
-          yazi.yazi(nil, LazyVim.root())
-        end
+        require("yazi").yazi(nil, vim.g.yazi_last_directory or LazyVim.root())
       end,
       desc = "Resume Yazi (or Root)",
     },
@@ -38,8 +32,14 @@ return {
   },
   opts = {
     open_for_directories = false,
+    -- log_level = vim.log.levels.DEBUG,
     keymaps = {
       show_help = "<f1>",
+    },
+    hooks = {
+      yazi_closed_successfully = function(_, _, state)
+        vim.g.yazi_last_directory = tostring(state.last_directory)
+      end,
     },
   },
   init = function()
