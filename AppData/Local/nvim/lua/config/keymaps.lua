@@ -14,15 +14,6 @@ vim.keymap.del("n", "<C-Right>")
 vim.keymap.del("n", "<C-Left>")
 vim.keymap.del("n", "<C-Up>")
 vim.keymap.del("n", "<C-Down>")
--- map("n", "<A-h>", "<C-W>h", { desc = "Go to Left Window", remap = true })
--- map("n", "<A-j>", "<C-W>j", { desc = "Go to Upper Window", remap = true })
--- map("n", "<A-k>", "<C-W>k", { desc = "Go to Lower Window", remap = true })
--- map("n", "<A-l>", "<C-W>l", { desc = "Go to Right Window", remap = true })
-
--- map("t", "<A-h>", [[<C-\><C-n><C-w>h]], { desc = "Go to Left Window" })
--- map("t", "<A-j>", [[<C-\><C-n><C-w>j]], { desc = "Go to Lower Window" })
--- map("t", "<A-k>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window" })
--- map("t", "<A-l>", [[<C-\><C-n><C-w>l]], { desc = "Go to Right Window" })
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
 -- 删除 insert 模式下默认的行移动映射，由于冲突而重新映射
@@ -37,3 +28,14 @@ map("v", "<C-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc 
 map("v", "<C-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up", silent = true })
 
 map({ "n", "x" }, "s", "ciw", { silent = true })
+
+if vim.fn.executable("lazygit") == 1 then
+  map("n", "<leader>gc", function()
+    local home = vim.fn.expand("$HOME")
+    Snacks.terminal({
+      "lazygit",
+      "--git-dir=" .. home .. "/.cfg",
+      "--work-tree=" .. home,
+    }, { cwd = home })
+  end, { desc = "Lazygit (Dotfiles)" })
+end
