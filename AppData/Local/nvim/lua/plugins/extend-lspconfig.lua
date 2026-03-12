@@ -4,6 +4,16 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      vue_ls = {
+        settings = {
+          vue = {
+            suggest = {
+              componentNameCasing = "preferKebabCase",
+              propNameCasing = "preferKebabCase",
+            },
+          },
+        },
+      },
       html = {},
       clangd = {
         cmd = {
