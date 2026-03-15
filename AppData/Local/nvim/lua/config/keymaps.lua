@@ -39,3 +39,6 @@ if vim.fn.executable("lazygit") == 1 then
     }, { cwd = home })
   end, { desc = "Lazygit (Dotfiles)" })
 end
+
+map("n", "q", "<Nop>")
+map("n", "<leader>Q", "q", { desc = "Record Macro" })
