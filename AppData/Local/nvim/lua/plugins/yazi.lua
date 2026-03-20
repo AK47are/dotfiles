@@ -25,9 +25,9 @@ return {
     {
       "<leader>fE",
       function()
-        require("yazi").yazi(nil, vim.fn.getcwd())
+        require("yazi").yazi(nil, vim.fn.expand("%:p:h"))
       end,
-      desc = "Explorer Yazi (cwd)",
+      desc = "Explorer Yazi (File Dir)",
     },
   },
   opts = {
