@@ -39,7 +39,7 @@ irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
   - C 工具链：MinGW 或 [MSVC](https://gist.github.com/mmozeiko/7f3162ec2988e81e56d5c4e22cde9977)
   5. yazi：终端文件管理器，替换掉 windows 难用的文件管理器
 - 可选：若长期使用推荐添加，大部分可通过 scoop 安装
-  - [Pot Desktop](https://github.com/pot-app/pot-desktop/)：OCR / 翻译软件
+  - [STranslate](https://stranslate.zggsong.com/)：OCR / 翻译软件
   - [Obsidian](https://obsidian.md/)：笔记软件
     - 需要[坚果云插件](https://github.com/nutstore/obsidian-nutstore-sync)同步笔记
   - [Bitwarden](https://bitwarden.com/)：密码管理器
