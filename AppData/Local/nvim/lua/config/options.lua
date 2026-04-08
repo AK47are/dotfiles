@@ -19,13 +19,12 @@ end
 
 -- use pwsh or powershell
 require("lazyvim.util.terminal").setup("pwsh")
-vim.o.shellcmdflag =
-  "-NoProfile -NoLogo -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
 
 -- hide tabline
 -- vim.opt.showtabline = 0
 
 -- vim.opt.wrap = true
+
 -- 保证中文 wrap 正常，虽然会使得英文可读性降低
 vim.opt.linebreak = false
 
