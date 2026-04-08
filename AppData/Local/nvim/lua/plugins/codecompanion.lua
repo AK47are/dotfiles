@@ -272,6 +272,9 @@ return {
   {
     "HakonHarnes/img-clip.nvim",
     opts = {
+      default = {
+        verbose = false, -- 关闭警告消息
+      },
       filetypes = {
         codecompanion = {
           prompt_for_file_name = false,
