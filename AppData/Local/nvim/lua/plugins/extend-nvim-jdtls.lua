@@ -2,6 +2,12 @@ return {
   "mfussenegger/nvim-jdtls",
   opts = {
 
+    jdtls = function(config)
+      config.handlers = config.handlers or {}
+      config.handlers["$/progress"] = function() end -- 静音进度通知
+      -- config.handlers["language/status"] = function() end  -- 静音状态通知
+    end,
+
     on_attach = function(args)
       local buf = args.buf
 
