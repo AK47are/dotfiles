@@ -15,7 +15,9 @@ return {
         buffer = buf,
         callback = function()
           if LazyVim.format.enabled(buf) then
-            require("jdtls").organize_imports()
+            require("jdtls.async").run(function()
+              require("jdtls").organize_imports()
+            end)
           end
         end,
       })
