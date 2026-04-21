@@ -18,7 +18,7 @@ if (-not (Get-Module -ListAvailable PSCompletions)) {
 # ==================================
 
 $NVIM = "$env:USERPROFILE\AppData\Local\nvim"
-
+$env:Editor = 'nvim'
 
 # ==================================
 # 核心函数与别名
