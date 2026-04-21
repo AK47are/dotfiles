@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 })
 
 -- 修复退出后终端光标保持块状的问题
-vim.api.nvim_create_autocmd({ "VimLeave", "VimLeavePre" }, {
-  callback = function()
-    vim.opt.guicursor = "a:ver1"
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimLeave", "VimLeavePre" }, {
+--   callback = function()
+--     vim.opt.guicursor = "a:ver1"
+--   end,
+-- })
