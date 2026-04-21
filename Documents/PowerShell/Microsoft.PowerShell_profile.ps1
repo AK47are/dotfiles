@@ -82,21 +82,6 @@ Set-PSReadLineKeyHandler -Key "Shift+Enter" -Function AddLine
 # 自定义通用函数
 # ==================================
 
-function New-Symlink {
-    param (
-        [string] $Reference,
-        [string] $Origin,
-        [switch] $ExpandSourcePath
-    )
-    if ($ExpandSourcePath) {
-        $wd = Get-Location
-        $Source = "$wd\$Source"
-    }
-
-    New-Item -ItemType SymbolicLink -Value $Origin -Path $Reference
-}
-Set-Alias ln New-Symlink
-
 function .. { cd .. }
 function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
 function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
