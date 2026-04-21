@@ -21,7 +21,7 @@ $NVIM = "$env:USERPROFILE\AppData\Local\nvim"
 $env:Editor = 'nvim'
 
 # ==================================
-# 核心函数与别名
+# 自定义函数
 # ==================================
 
 function config {
@@ -35,6 +35,10 @@ function config {
 
 function lzdot {
     lazygit --git-dir="$HOME\.cfg" --work-tree="$HOME"
+}
+
+function cc {
+    claude -c
 }
 
 function y {
@@ -51,6 +55,10 @@ Set-Alias -Name dot -Value config
 
 function leet { nvim leetcode }
 Set-Alias vi nvim
+
+function .. { cd .. }
+function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
+function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
 
 
 # ==================================
@@ -77,15 +85,6 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 # Set-PSReadLineKeyHandler -Chord "Ctrl+h" -Function BackwardDeleteChar -ViMode Insert
 # Set-PSReadLineKeyHandler -Chord "Ctrl+w" -Function BackwardDeleteWord -ViMode Insert
 Set-PSReadLineKeyHandler -Key "Shift+Enter" -Function AddLine
-
-# ==================================
-# 自定义通用函数
-# ==================================
-
-function .. { cd .. }
-function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
-function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
-
 
 # ==================================
 # 兼容性别名
