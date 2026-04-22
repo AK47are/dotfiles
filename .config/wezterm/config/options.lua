@@ -15,3 +15,4 @@ end
 
 Config.default_prog = profiles[1].args
 Config.default_cwd = WezTerm.home_dir .. "/projects"
+Config.enable_kitty_keyboard = true
