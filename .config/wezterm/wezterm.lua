@@ -1,5 +1,5 @@
-Wezterm = require("wezterm")
-Config = Wezterm.config_builder()
+WezTerm = require("wezterm")
+Config = WezTerm.config_builder()
 Cache = require("utils.persist").setup()
 
 local LOAD_FILE = {
@@ -9,7 +9,7 @@ local LOAD_FILE = {
 }
 
 for _, item in ipairs(LOAD_FILE) do
-  dofile(Wezterm.config_dir .. "/config/" .. item)
+  dofile(WezTerm.config_dir .. "/config/" .. item)
 end
 
 return Config

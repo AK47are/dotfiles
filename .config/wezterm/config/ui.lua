@@ -1,5 +1,5 @@
 local function resize_window_to_ratio(window, ratio)
-  local screen = Wezterm.gui.screens().active
+  local screen = WezTerm.gui.screens().active
   local width, height = screen.width * ratio, screen.height * ratio
   window:set_inner_size(width, height - 10)
   window:set_position((screen.width - width) / 2, (screen.height - height) / 2 - 5)
@@ -14,9 +14,9 @@ Config.window_padding = {
   bottom = 0,
 }
 
-Wezterm.on("gui-startup", function(cmd)
+WezTerm.on("gui-startup", function(cmd)
   -- 用 cmd 确保系统默认启动参数被传递
-  local _, _, window = Wezterm.mux.spawn_window(cmd or {})
+  local _, _, window = WezTerm.mux.spawn_window(cmd or {})
   resize_window_to_ratio(window:gui_window(), Cache.get("window_ratio") or 0.70)
 end)
 
@@ -33,7 +33,7 @@ local cached_scheme = Cache.get("colorscheme")
 if cached_scheme then
   Config.color_scheme = cached_scheme
 else
-  if Wezterm.gui.get_appearance():find("Dark") then
+  if WezTerm.gui.get_appearance():find("Dark") then
     Config.color_scheme = colorscheme.dark
   else
     Config.color_scheme = colorscheme.light
@@ -41,31 +41,31 @@ else
   Cache.save("colorscheme", Config.color_scheme)
 end
 
-Wezterm.on("augment-command-palette", function(window, _)
+WezTerm.on("augment-command-palette", function(window, _)
   return {
     {
       brief = "Switch to Light Colorscheme",
-      action = Wezterm.action_callback(function()
+      action = WezTerm.action_callback(function()
         window:set_config_overrides({ color_scheme = colorscheme.light })
         Cache.save("colorscheme", colorscheme.light)
       end),
     },
     {
       brief = "Switch to Dark Colorscheme",
-      action = Wezterm.action_callback(function()
+      action = WezTerm.action_callback(function()
         window:set_config_overrides({ color_scheme = colorscheme.dark })
         Cache.save("colorscheme", colorscheme.dark)
       end),
     },
     {
       brief = "Set Window Size (100%)",
-      action = Wezterm.action_callback(function(_)
+      action = WezTerm.action_callback(function(_)
         resize_window_to_ratio(window, 1.00)
       end),
     },
     {
       brief = "Set Window Size (70%)",
-      action = Wezterm.action_callback(function(_)
+      action = WezTerm.action_callback(function(_)
         resize_window_to_ratio(window, 0.70)
       end),
     },

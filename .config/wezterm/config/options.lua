@@ -14,4 +14,4 @@ for _, item in ipairs(profiles) do
 end
 
 Config.default_prog = profiles[1].args
-Config.default_cwd = Wezterm.home_dir .. "/projects"
+Config.default_cwd = WezTerm.home_dir .. "/projects"
