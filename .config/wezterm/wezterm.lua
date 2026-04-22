@@ -5,6 +5,7 @@ Cache = require("utils.persist").setup()
 local LOAD_FILE = {
   "ui.lua",
   "options.lua",
+  "keymaps.lua",
   "smart-split.lua",
 }
 
