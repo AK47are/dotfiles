@@ -1,33 +1,44 @@
 local act = WezTerm.action
-local function extend_copy_mode(keys)
-  local copy_mode = WezTerm.gui.default_key_tables().copy_mode
+Config.key_tables = {}
+
+local function extend_key_table(mode, keys)
+  local target = WezTerm.gui.default_key_tables()[mode]
   for _, k in ipairs(keys) do
-    table.insert(copy_mode, {
-      key = k.key,
-      mods = k.mods,
-      action = k.action,
+    table.insert(target, {
+      key = k[1],
+      mods = k[2],
+      action = k[3],
     })
   end
-  Config.key_tables = {
-    copy_mode = copy_mode,
-  }
+  Config.key_tables[mode] = target
 end
 
-extend_copy_mode({
+extend_key_table("copy_mode", {
   {
-    key = "y",
-    mods = "NONE",
-    action = act.Multiple({
+    "y",
+    "NONE",
+    act.Multiple({
       act.CopyTo("ClipboardAndPrimarySelection"),
       act.CopyMode("ClearSelectionMode"),
     }),
   },
-  { key = "Escape", mods = "NONE", action = act.CopyMode("ClearSelectionMode") },
   {
-    key = "i",
-    mods = "NONE",
-    action = act.Multiple({
+    "i",
+    "NONE",
+    act.Multiple({
       act.ScrollToBottom,
+      act.CopyMode("Close"),
+    }),
+  },
+  { "Escape", "NONE", act.CopyMode("ClearSelectionMode") },
+})
+
+extend_key_table("search_mode", {
+  {
+    "Escape",
+    "NONE",
+    act.Multiple({
+      act.CopyMode("ClearPattern"),
       act.CopyMode("Close"),
     }),
   },
