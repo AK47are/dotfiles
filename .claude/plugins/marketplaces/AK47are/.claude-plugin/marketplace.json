@@ -1,0 +1,12 @@
+{
+  "name": "AK47are",
+  "owner": {
+    "name": "AK47are"
+  },
+  "plugins": [
+    {
+      "name": "nvim-mason-jdtls-lombok-scoop",
+      "source": "./jdtls-lombok"
+    }
+  ]
+}
