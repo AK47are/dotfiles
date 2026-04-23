@@ -1,0 +1,34 @@
+{
+  "env": {
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1",
+    "CLAUDE_CODE_NEW_INIT": "1",
+    "DISABLE_INSTALLATION_CHECKS": "1"
+  },
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "defaultShell": "powershell",
+  "disableAutoMode": "disable",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"[System.Console]::Beep()\""
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"[System.Console]::Beep()\""
+          }
+        ]
+      }
+    ]
+  }
+}
