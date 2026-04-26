@@ -31,6 +31,7 @@
       }
     ]
   },
+  "defaultShell": "powershell",
   "enabledPlugins": {
     "nvim-mason-jdtls-lombok-scoop@AK47are": true
   },
@@ -38,11 +39,10 @@
     "AK47are": {
       "source": {
         "source": "directory",
-        "path": "C:\\Users\\ASUS1\\.claude\\plugins\\marketplaces\\AK47are"
+        "path": "~\\.claude\\plugins\\marketplaces\\AK47are"
       }
     }
   },
   "disableAutoMode": "disable",
-  "defaultShell": "powershell",
   "defaultMode": "plan"
 }
