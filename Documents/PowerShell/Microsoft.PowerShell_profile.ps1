@@ -84,7 +84,6 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 # 添加插入模式快捷键，和 Neovim 体验统一
 # Set-PSReadLineKeyHandler -Chord "Ctrl+h" -Function BackwardDeleteChar -ViMode Insert
 # Set-PSReadLineKeyHandler -Chord "Ctrl+w" -Function BackwardDeleteWord -ViMode Insert
-Set-PSReadLineKeyHandler -Key "Shift+Enter" -Function AddLine
 
 # ==================================
 # 兼容性别名
