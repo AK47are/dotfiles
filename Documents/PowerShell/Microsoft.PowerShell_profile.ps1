@@ -11,6 +11,7 @@ if (-not (Get-Module -ListAvailable PSCompletions)) {
   psc add git scoop 7z cargo docker node npm powershell python pwsh pnpm pip
 } else {
   import-Module PSCompletions
+  wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
 }
 
 # ==================================
