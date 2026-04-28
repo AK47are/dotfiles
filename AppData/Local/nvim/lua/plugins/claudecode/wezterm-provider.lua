@@ -100,4 +100,19 @@ function M.is_available()
   return vim.fn.executable("wezterm") ~= 0
 end
 
+function M.send(text)
+  if not claude_pane_id or not pane_exists(claude_pane_id) then
+    return false, "Claude pane not available"
+  end
+
+  local cmd = wezterm({ "send-text", "--pane-id", claude_pane_id, "--no-paste", "--", text })
+  local result = vim.fn.system(cmd)
+
+  if vim.v.shell_error == 0 then
+    return true
+  else
+    return false, "Failed to send text: " .. result
+  end
+end
+
 return M
