@@ -1,5 +1,6 @@
 return {
   "mrjones2014/smart-splits.nvim",
+  lazy = false,
   keys = {
     -- stylua: ignore start
     { "<A-Left>", function() require("smart-splits").resize_left() end, mode = { "n", "t" },desc = "Smart Splits: Resize Left" },
