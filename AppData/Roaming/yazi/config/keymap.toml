@@ -3,4 +3,8 @@ append_keymap = [
   { on = [ "g", "p" ], run = "cd ~/projects", desc = "Go to Projects" },
   { on = [ "g", "o" ], run = "cd ~/obsidian", desc = "Go to Obsidian" },
   { on = [ "g", "a" ], run = "cd ~/AppData", desc = "Go to AppData" },
+  { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Go to Git root"},
+  {on = ["u", "p"], run  = "plugin toggle-pane min-preview", desc = "Show or hide the preview pane"},
+  {on = ["u", "c"], run  = "plugin toggle-pane min-current", desc = "Show or hide the current pane"},
+  {on = ["u", "P"], run  = "plugin toggle-pane min-parent", desc = "Show or hide the parent pane"},
 ]
