@@ -1,4 +1,6 @@
 [mgr]
 append_keymap = [
   { on = [ "g", "p" ], run = "cd ~/projects", desc = "Go to Projects" },
+  { on = [ "g", "o" ], run = "cd ~/obsidian", desc = "Go to Obsidian" },
+  { on = [ "g", "a" ], run = "cd ~/AppData", desc = "Go to AppData" },
 ]
