@@ -4,7 +4,7 @@
 SetCapsLockState "AlwaysOff"
 
 ; 定期检查 CapsLock 状态，确保 AlwaysOff
-SetTimer CheckCapsLockState, 1000
+; SetTimer CheckCapsLockState, 1000
 
 ; 核心映射：CapsLock 永久作为 RCtrl 使用
 CapsLock::RCtrl
