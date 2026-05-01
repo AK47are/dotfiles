@@ -60,5 +60,6 @@
     }
   },
   "disableAutoMode": "disable",
-  "defaultMode": "plan"
+  "defaultMode": "plan",
+  "tui": "fullscreen"
 }
