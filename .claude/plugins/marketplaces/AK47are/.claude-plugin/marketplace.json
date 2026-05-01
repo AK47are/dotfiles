@@ -7,6 +7,10 @@
     {
       "name": "jdtls-lombok",
       "source": "./jdtls-lombok"
+    },
+    {
+      "name": "rtk",
+      "source": "./rtk"
     }
   ]
 }

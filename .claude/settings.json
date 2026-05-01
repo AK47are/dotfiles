@@ -39,7 +39,8 @@
     "learning-output-style@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
-    "plugin-dev@claude-plugins-official": true
+    "plugin-dev@claude-plugins-official": true,
+    "rtk@AK47are": true
   },
   "extraKnownMarketplaces": {
     "AK47are": {
