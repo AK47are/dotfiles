@@ -11,6 +11,10 @@
     {
       "name": "rtk",
       "source": "./rtk"
+    },
+    {
+      "name": "officecli",
+      "source": "./officecli"
     }
   ]
 }
