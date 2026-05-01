@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "nvim-mason-jdtls-lombok-scoop",
+      "name": "jdtls-lombok",
       "source": "./jdtls-lombok"
     }
   ]
