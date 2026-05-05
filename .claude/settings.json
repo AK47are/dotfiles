@@ -6,12 +6,12 @@
     "CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK": "1",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
-  "permissions": {
-    "defaultMode": "plan"
-  },
   "attribution": {
     "commit": "",
     "pr": ""
+  },
+  "permissions": {
+    "defaultMode": "plan"
   },
   "hooks": {
     "Stop": [
@@ -47,7 +47,8 @@
     "rtk@AK47are": true,
     "officecli@AK47are": true,
     "gitnexus@gitnexus-marketplace": true,
-    "obsidian@obsidian-skills": true
+    "obsidian@obsidian-skills": true,
+    "context7@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "AK47are": {
