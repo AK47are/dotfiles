@@ -46,7 +46,6 @@
     "plugin-dev@claude-plugins-official": true,
     "rtk@AK47are": true,
     "officecli@AK47are": true,
-    "gitnexus@gitnexus-marketplace": true,
     "obsidian@obsidian-skills": true,
     "context7@claude-plugins-official": true
   },
@@ -55,12 +54,6 @@
       "source": {
         "source": "directory",
         "path": "~\\.claude\\plugins\\marketplaces\\AK47are"
-      }
-    },
-    "gitnexus-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "abhigyanpatwari/GitNexus"
       }
     },
     "obsidian-skills": {
