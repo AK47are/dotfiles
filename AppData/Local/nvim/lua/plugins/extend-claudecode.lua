@@ -5,6 +5,10 @@ return {
       cwd = LazyVim.root(),
       provider = require("plugins.claudecode.wezterm-provider"),
     },
+    diff_opts = {
+      layout = "horizontal",
+      open_in_new_tab = true,
+    },
   },
   keys = {
     { "<leader>aq", "<cmd>ClaudeCodeClose<cr>", desc = "Quit Claude" },
