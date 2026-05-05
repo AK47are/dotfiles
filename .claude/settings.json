@@ -42,7 +42,8 @@
     "plugin-dev@claude-plugins-official": true,
     "rtk@AK47are": true,
     "officecli@AK47are": true,
-    "gitnexus@gitnexus-marketplace": true
+    "gitnexus@gitnexus-marketplace": true,
+    "obsidian@obsidian-skills": true
   },
   "extraKnownMarketplaces": {
     "AK47are": {
@@ -56,11 +57,17 @@
         "source": "github",
         "repo": "abhigyanpatwari/GitNexus"
       }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
     }
   },
+  "language": "Simplified Chinese",
   "tui": "fullscreen",
   "disableAutoMode": "disable",
   "preferredNotifChannel": "notifications_disabled",
-  "language": "Simplified Chinese",
   "_comment": "gitnexus 需要修改 cache 里的 .mcp.json 配置才能正常连接，最好 npm -g gitnexus 安装配置"
 }
