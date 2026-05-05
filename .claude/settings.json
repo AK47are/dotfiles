@@ -32,7 +32,6 @@
     ]
   },
   "defaultShell": "powershell",
-  "_comment": "gitnexus 需要修改 cache 里的 .mcp.json 配置才能正常连接，最好 npm -g gitnexus 安装配置",
   "enabledPlugins": {
     "jdtls-lombok@AK47are": true,
     "frontend-design@claude-plugins-official": true,
@@ -59,6 +58,9 @@
       }
     }
   },
+  "tui": "fullscreen",
   "disableAutoMode": "disable",
-  "tui": "fullscreen"
+  "preferredNotifChannel": "notifications_disabled",
+  "language": "Simplified Chinese",
+  "_comment": "gitnexus 需要修改 cache 里的 .mcp.json 配置才能正常连接，最好 npm -g gitnexus 安装配置"
 }
