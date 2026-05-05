@@ -73,6 +73,5 @@
   "language": "Simplified Chinese",
   "tui": "fullscreen",
   "disableAutoMode": "disable",
-  "preferredNotifChannel": "notifications_disabled",
-  "_comment": "gitnexus 需要修改 cache 里的 .mcp.json 配置才能正常连接，最好 npm -g gitnexus 安装配置"
+  "preferredNotifChannel": "notifications_disabled"
 }
