@@ -63,6 +63,7 @@
       }
     }
   },
+  "outputStyle": "Design & Review",
   "language": "Simplified Chinese",
   "tui": "fullscreen",
   "disableAutoMode": "disable",
