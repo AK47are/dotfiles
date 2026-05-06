@@ -12,8 +12,9 @@ return {
   },
   keys = {
     { "<leader>aq", "<cmd>ClaudeCodeClose<cr>", desc = "Quit Claude" },
+    { "<leader>as", mode = { "v" }, false },
     {
-      "<leader>as",
+      "<leader>ai",
       function()
         local visual_commands = require("claudecode.visual_commands")
         local is_visual, _ = visual_commands.validate_visual_mode()
