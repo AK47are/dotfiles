@@ -25,6 +25,8 @@ $env:Editor = 'nvim'
 # 自定义函数
 # ==================================
 
+Set-Alias claude happy
+
 function config {
   if ($args.Count -eq 0) {
     config add -u
