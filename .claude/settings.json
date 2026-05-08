@@ -66,6 +66,8 @@
   "outputStyle": "Design & Review",
   "language": "Simplified Chinese",
   "tui": "fullscreen",
-  "disableAutoMode": "disable",
-  "preferredNotifChannel": "notifications_disabled"
+  "preferredNotifChannel": "notifications_disabled",
+  "skipAutoPermissionPrompt": true,
+  "theme": "auto",
+  "autoCompactEnabled": false
 }
