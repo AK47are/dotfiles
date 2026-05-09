@@ -1,3 +1,3 @@
 1. Prefer Windows Scoop for installing and checking tools
 2. Prefer AskUserQuestion tool for asking questions
-3. Prefer making CLAUDE.md in .claude/ instead of project root
+3. Prefer placing all Claude Code related files – including CLAUDE.md and any AI-generated files (e.g., markdown reports, analysis notes, or other output files) – inside the .claude/ instead of the project root
