@@ -63,6 +63,7 @@
     }
   },
   "language": "Simplified Chinese",
+  "additionalDirectories": ["~/obsidian/notes/"],
   "tui": "fullscreen",
   "theme": "auto",
   "preferredNotifChannel": "notifications_disabled",
