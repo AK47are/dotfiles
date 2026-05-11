@@ -1,2 +1,2 @@
 vim.b.autoformat = false
-vim.opt.wrap = true
+vim.opt_local.wrap = true
