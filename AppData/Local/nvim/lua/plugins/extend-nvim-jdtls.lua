@@ -17,18 +17,6 @@ return {
 
     on_attach = function(args)
       local buf = args.buf
-
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = buf,
-        callback = function()
-          if LazyVim.format.enabled(buf) then
-            require("jdtls.async").run(function()
-              require("jdtls").organize_imports()
-            end)
-          end
-        end,
-      })
-
       local filename = vim.fn.expand("#" .. buf .. ":t:r")
       if filename:match("Mapper") then
         vim.keymap.set("n", "<leader>cgm", function()
