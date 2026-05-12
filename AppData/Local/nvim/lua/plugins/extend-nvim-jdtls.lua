@@ -2,17 +2,19 @@ return {
   "mfussenegger/nvim-jdtls",
   opts = {
 
+    settings = {
+      java = {
+        format = { comments = { enabled = false } },
+        saveActions = {
+          organizeImports = true,
+        },
+      },
+    },
+
     jdtls = function(config)
       config.handlers = config.handlers or {}
       config.handlers["$/progress"] = function() end -- 静音进度通知
       -- config.handlers["language/status"] = function() end  -- 静音状态通知
-      config.settings.java = vim.tbl_deep_extend("force", config.settings.java or {}, {
-        format = {
-          comments = {
-            enabled = false,
-          },
-        },
-      })
     end,
 
     on_attach = function(args)
