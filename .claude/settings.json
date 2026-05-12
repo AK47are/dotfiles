@@ -12,7 +12,8 @@
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "plan"
+    "defaultMode": "plan",
+    "additionalDirectories": ["~/obsidian/notes/"]
   },
   "hooks": {
     "Stop": [
@@ -61,8 +62,5 @@
   "theme": "auto",
   "preferredNotifChannel": "notifications_disabled",
   "autoCompactEnabled": false,
-  "skipAutoPermissionPrompt": true,
-  "additionalDirectories": [
-    "~/obsidian/notes/"
-  ]
+  "skipAutoPermissionPrompt": true
 }
