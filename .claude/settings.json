@@ -44,7 +44,6 @@
     "skill-creator@claude-plugins-official": true,
     "rtk@AK47are": true,
     "officecli@AK47are": true,
-    "obsidian@obsidian-skills": true,
     "context7@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true
@@ -55,19 +54,15 @@
         "source": "directory",
         "path": "~\\.claude\\plugins\\marketplaces\\AK47are"
       }
-    },
-    "obsidian-skills": {
-      "source": {
-        "source": "github",
-        "repo": "kepano/obsidian-skills"
-      }
     }
   },
   "language": "Simplified Chinese",
-  "additionalDirectories": ["~/obsidian/notes/"],
   "tui": "fullscreen",
   "theme": "auto",
   "preferredNotifChannel": "notifications_disabled",
   "autoCompactEnabled": false,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "additionalDirectories": [
+    "~/obsidian/notes/"
+  ]
 }
