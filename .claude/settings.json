@@ -13,7 +13,9 @@
   },
   "permissions": {
     "defaultMode": "plan",
-    "additionalDirectories": ["~/obsidian/notes/"]
+    "additionalDirectories": [
+      "~/obsidian/notes/"
+    ]
   },
   "hooks": {
     "Stop": [
@@ -64,5 +66,11 @@
   "model": "opusplan",
   "preferredNotifChannel": "notifications_disabled",
   "autoCompactEnabled": false,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0,
+    "refreshInterval": 10
+  }
 }

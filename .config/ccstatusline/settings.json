@@ -1,0 +1,78 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "",
+        "rawValue": true
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "83642e63-fc6c-450f-a7db-60d65c8a6a0d",
+        "type": "tokens-cached",
+        "color": "yellow"
+      },
+      {
+        "id": "f58b74ff-52ed-4286-a6af-fe3d52da5bd1",
+        "type": "separator"
+      },
+      {
+        "id": "b36dbdc5-93be-4cb1-aa51-0fb5a5bcceff",
+        "type": "tokens-input",
+        "color": "brightBlue"
+      },
+      {
+        "id": "2d48aac4-b3a9-42df-9a18-da50e8f7080b",
+        "type": "separator"
+      },
+      {
+        "id": "871de644-cd99-4e6e-8360-3d86d673f13f",
+        "type": "tokens-output",
+        "color": "cyan"
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
+        "id": "c292d963-6b8d-4da2-bd13-aadb4dcaaca2",
+        "type": "context-bar",
+        "color": "white",
+        "rawValue": true,
+        "metadata": {
+          "display": "slider"
+        }
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  },
+  "installation": {
+    "method": "auto-update",
+    "packageManager": "npm"
+  }
+}
