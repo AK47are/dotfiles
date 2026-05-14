@@ -12,7 +12,7 @@
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "plan",
+    "defaultMode": "default",
     "additionalDirectories": [
       "~/obsidian/notes/"
     ]
@@ -40,6 +40,12 @@
     ]
   },
   "defaultShell": "powershell",
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0,
+    "refreshInterval": 10
+  },
   "enabledPlugins": {
     "jdtls-lombok@AK47are": true,
     "frontend-design@claude-plugins-official": true,
@@ -63,14 +69,7 @@
   "alwaysThinkingEnabled": false,
   "tui": "fullscreen",
   "theme": "auto",
-  "model": "opusplan",
   "preferredNotifChannel": "notifications_disabled",
   "autoCompactEnabled": false,
-  "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "npx -y ccstatusline@latest",
-    "padding": 0,
-    "refreshInterval": 10
-  }
+  "skipAutoPermissionPrompt": true
 }
