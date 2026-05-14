@@ -6,6 +6,13 @@ local opts = {
   cn = {
     enabled = true,
   },
+  injector = {
+    ["java"] = {
+      -- 默认 import 格式化后可能导致补全消失，非常奇葩，找过好几次都找不到原因
+      -- 需要重启才能解决
+      imports = {},
+    },
+  },
   editor = {
     reset_previous_code = false,
   },
