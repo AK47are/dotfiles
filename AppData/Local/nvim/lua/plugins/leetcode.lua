@@ -1,47 +1,10 @@
 local leet_arg = "leetcode"
 
 local opts = {
-  -- lang = "cpp",
   lang = "java",
-  -- kotlin LSP 暂时无法使用
-  -- lang = "kotlin",
   arg = leet_arg,
   cn = {
     enabled = true,
-  },
-  injector = {
-    ["cpp"] = {
-      imports = function()
-        -- 欺骗 LSP，让它不要随意 #include 和添加 std::
-        return {
-          "#include <iostream>",
-          "#include <vector>",
-          "#include <string>",
-          "#include <algorithm>",
-          "#include <map>",
-          "#include <set>",
-          "#include <queue>",
-          "#include <stack>",
-          "#include <unordered_map>",
-          "#include <unordered_set>",
-          "using namespace std;",
-        }
-      end,
-    },
-    -- java 一开始可以检测到 Vector 等包，但添加了后面注释语句就会在格式化后失效
-    -- 可能是 LSP 的 Bug，重启 LSP 可修复，仅在首次格式化后会失效，修复后再格式化就没事
-    -- 似乎是被缓存了。
-    ["java"] = {
-      imports = function()
-        return { "import java.util.*;", "import java.lang.*;" }
-      end,
-    },
-    --   kotlin 未测试
-    -- ["kotlin"] = {
-    --   imports = function()
-    --     return { "import java.util.*", "import kotlin.math.*" }
-    --   end,
-    -- },
   },
   editor = {
     reset_previous_code = false,
