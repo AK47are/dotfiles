@@ -12,7 +12,9 @@ local opts = {
 }
 
 return {
-  "kawre/leetcode.nvim",
+  -- 该 fork 仓库主要实现了将不同题分配到专属的子目录中。因为子目录包含 `.`
+  -- 对于 jdtls 来说每个 Solution.java 都是相互隔离的，所以可以正常使用 Diagnostic
+  "AK47are/leetcode.nvim",
   build = ":TSUpdate html",
   lazy = leet_arg ~= vim.fn.argv(0, -1),
   dependencies = {
@@ -24,11 +26,6 @@ return {
   },
   config = function()
     require("leetcode").setup(opts)
-    -- 关闭诊断显示
-    vim.diagnostic.enable(false)
-    -- 关闭保存文件格式化，如果本身 leetcode 模板格式和自己应用格式一样，则可以启用
-    -- vim.g.autoformat = false
-
     -- 避免按太快触发 <leader>l 对应功能，延迟删除保证全部快捷键配置完毕
     vim.schedule(function()
       vim.defer_fn(function()
