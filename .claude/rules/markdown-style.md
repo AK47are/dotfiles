@@ -3,41 +3,41 @@ paths:
   - "**/*.md"
 ---
 
-## 列表
+## Lists
 
-- 列表项末尾不加任何符号
-- 若列表项内容过长或需插入图片/代码块：
-  - 图片：放在当前列表项下**一行**，不缩进
-  - 代码块：放在当前列表项下**两行**，不缩进
-  - 多行文字：拆分子列表或改用标题
+- Do not add any punctuation at the end of list items
+- If a list item is long or needs to contain images/code blocks:
+  - Images: Place on the **next line** under the current list item, no indentation
+  - Code blocks: Place **two lines** under the current list item, no indentation
+  - Multi-line text: Use sub-lists or headings instead
 
-## 链接
+## Links
 
-- 中英文混合时加空格，否则不加
-- 使用标准内联链接 `[text](url)`，禁止使用 Wiki 链接
+- Add spaces between Chinese and English text, otherwise do not add spaces
+- Use standard inline links `[text](url)`, do not use Wiki links
 
-## 粗体
+## Bold text
 
-- 仅用于关键词强调，禁止对句子或列表项整体加粗
-- 一句话中避免多次粗体
+- Only use for keyword emphasis, do not bold entire sentences or list items
+- Avoid multiple bold words in a single sentence
 
-## 中文引号
+## Chinese quotes
 
-- 统一使用 `「」`，不使用 `“ ”`
+- Always use `「」`, do not use `“ ”`
 
-## 额外扩展
+## Extended syntax
 
-- 仅使用必要的扩展语法（表格、列表等）
-- 例外：可使用旁注（callout）
+- Only use necessary extended syntax (tables, lists, etc.)
+- Exception: Callouts are allowed
 
-## 冒号
+## Colons
 
-- 段落未结束但需插入其他元素（如代码块、图片）时，末尾添加 `:` 或 `：`
+- When a paragraph is not finished but needs to insert other elements (e.g., code blocks, images), add `:` at the end
 
-## 内容概述
+## Content overview
 
-- 每个标题（含文件名）下方应有一段概述，再放置下一级标题
+- Each heading (including the filename) should have an overview paragraph before the next level heading
 
-## 表格
+## Tables
 
-- 单元格末尾不加标点符号
+- Do not add any punctuation at the end of table cells

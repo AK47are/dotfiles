@@ -1,27 +1,27 @@
-# 注释规范
+# Comment Specification
 
-所有 Claude 生成的代码注释统一采用 `标签: 说明` 格式。`[]` 标签可选，一个注释块中可以使用多个 `[]` 标签。关键词必选，每个注释块只有一个关键词，放在最后一行。
+All Claude-generated code comments must uniformly adopt the `tag: description` format. `[]` tags are optional, and a comment block may use multiple `[]` tags. The keyword is mandatory, with only one keyword per comment block, placed on the last line.
 
-| 标签 | 用途 |
+| Tag | Purpose |
 |------|------|
-| `[DESIGN]` | 架构、模式、数据流、组件边界 |
-| `[IMPL]` | 函数签名、关键逻辑、边界条件 |
-| `[WHY]` | 非显而易见的理由：权衡、替代方案、约束 |
-| `[REVIEW]` | 实现后需验证的点：bug、性能、安全、覆盖盲区 |
-| `NOTE` | 设计说明——仅用于非显而易见的决策理由 |
-| `TODO` | 待实现 |
-| `FIX` | 需修复 |
-| `WARN` | 注意事项、陷阱 |
-| `PERF` | 性能关注点 |
-| `TEST` | 测试要求 |
-| `HACK` | 临时方案 |
+| `[DESIGN]` | Architecture, patterns, data flow, component boundaries |
+| `[IMPL]` | Function signature, key logic, edge cases |
+| `[WHY]` | Non-obvious reasons: trade-offs, alternatives, constraints |
+| `[REVIEW]` | Points to verify after implementation: bugs, performance, security, blind spots |
+| `NOTE` | Design explanation — only for non-obvious decisions or reasons |
+| `TODO` | To be implemented |
+| `FIX` | Needs to be fixed |
+| `WARN` | Caveats, pitfalls |
+| `PERF` | Performance concerns |
+| `TEST` | Testing requirements |
+| `HACK` | Temporary workaround |
 
-## 规则
+## Rules
 
-- `[]` 标签可选，一个注释块中可以使用多个 `[]` 标签（如 `[DESIGN]` + `[WHY]` + `[IMPL]` 组合），用于从不同角度描述设计意图
-- 关键词后续必须跟着一段说明，不能 `// NOTE`，而是 `// NOTE: xxxx`
-- 关键词不可作为通用注释**滥用**，尤其是 `NOTE`，一旦滥用会非常混乱，仅用于有记录价值的非显而易见的决策理由
-- 关键词必选——每个注释块只有一个关键词，不要在多行上分散关键词，例如：
+- `[]` tags are optional; a comment block may use multiple `[]` tags (e.g., `[DESIGN]` + `[WHY]` + `[IMPL]` combination) to describe design intent from different perspectives
+- The keyword must be followed by a description, e.g., `// NOTE: xxxx`, not just `// NOTE`
+- Keywords must not be **abused** as generic comments, especially `NOTE`. Once abused, it becomes very confusing. Only use for non-obvious decisions worth documenting
+- The keyword is mandatory — only one keyword per comment block. Do not spread keywords across multiple lines, e.g.:
 
 ```
 // NOTE: xxxx
@@ -31,7 +31,7 @@
 // TODO: xxxx
 ```
 
-应该改成：
+Should be:
 
 ```
 // NOTE: xxxx
@@ -41,40 +41,40 @@
 //       xxxx
 ```
 
+## File References
 
-## 文件引用
-
-引用其他文件时使用 `文件:行号` 格式：
-
-```
-参见 auth.js:42
-路由定义 routes/user.js:15
-```
-
-## 示例
-
-单标签 + 关键词：
+When referencing other files, use the `file:line` format:
 
 ```
-// NOTE: 此处必须使用线程安全集合
-
-// TODO: 实现 JWT 认证中间件
-
-// [DESIGN]: 使用策略模式处理三种支付渠道
-// NOTE: 运行时根据 type 字段分发到具体策略
-
-// [REVIEW]: 扩容后 null key 的处理
-// FIX: 当前会抛 NPE
+See auth.js:42
+Route definition routes/user.js:15
 ```
 
-多标签 + 关键词（一个注释块中使用多个 `[]` 标签）：
+## Examples
+
+Single tag + keyword:
 
 ```
-// [DESIGN]: JWT 认证中间件——无状态，无服务端会话
-// [WHY]: API 服务移动端，cookie 在移动端不可靠
-// [IMPL]: 解析 Authorization: Bearer <token>，用 jsonwebtoken 验证
-// [IMPL]: 两种错误分支——TokenExpiredError → 401，JsonWebTokenError → 403
-// [REVIEW]: 检查 refresh token 流程——token 15 分钟过期
-// [REVIEW]: 确保设置了 req.user——下游路由处理器依赖它
-// TODO: 实现 JWT 认证中间件
+// NOTE: Must use thread-safe collection here
+
+// TODO: Implement JWT authentication middleware
+
+// [DESIGN]: Use strategy pattern to handle three payment channels
+// NOTE: Dispatch to specific strategy at runtime based on type field
+
+// [REVIEW]: Handling of null key after capacity expansion
+// FIX: Currently throws NPE
 ```
+
+Multiple tags + keyword (using multiple `[]` tags in one comment block):
+
+```
+// [DESIGN]: JWT authentication middleware — stateless, no server-side session
+// [WHY]: API service for mobile clients, cookies are unreliable on mobile
+// [IMPL]: Parse Authorization: Bearer <token>, verify with jsonwebtoken
+// [IMPL]: Two error branches — TokenExpiredError → 401, JsonWebTokenError → 403
+// [REVIEW]: Check refresh token flow — token expires in 15 minutes
+// [REVIEW]: Ensure req.user is set — downstream route handlers depend on it
+// TODO: Implement JWT authentication middleware
+```
+Same as above
