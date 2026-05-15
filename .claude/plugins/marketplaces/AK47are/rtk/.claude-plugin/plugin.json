@@ -1,1 +1,5 @@
-{"author":{"name":"ASUS1"},"description":"RTK - Rust Token Killer integration. Token-optimized CLI proxy (60-90% savings on dev operations). Hooks Bash commands through rtk for transparent output compression.","keywords":["rtk","token","optimization","proxy","cli"],"name":"rtk","version":"0.1.0"}
+{
+  "name": "rtk",
+  "description": "RTK - Rust Token Killer integration. Token-optimized CLI proxy (60-90% savings on dev operations). Hooks Bash commands through rtk for transparent output compression.",
+  "version": "1.0.0"
+}

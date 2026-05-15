@@ -1,1 +1,6 @@
-{"description":"JDTLS with Lombok via scoop + mason","name":"jdtls-lombok","version":"1.0.0"}
+{
+  "description": "JDTLS with Lombok via scoop + mason",
+  "name": "jdtls-lombok",
+  "version": "1.0.0"
+}
+
