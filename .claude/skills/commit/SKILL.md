@@ -1,11 +1,10 @@
 ---
 name: commit
-description: >
-  Create git commits with automatically generated messages. Groups unrelated
-  changes into separate commits when appropriate (max 2-3). Trigger when the
-  user types /commit or says "commit", "make a commit", "create a commit",
-  "stage and commit", "提交", "创建提交".
+description: Create git commits with automatically generated messages. Groups unrelated changes into separate commits when appropriate (max 2-3).
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*), Bash(git diff --cached:*), Bash(git log:*), Bash(git restore --staged:*)
+context: fork
+agent: general-purpose
+disable-model-invocation: true
 ---
 
 ## Context
@@ -47,6 +46,3 @@ For each logical group, in sequence:
 2. `git diff --cached` to verify the right changes are staged
 3. `git commit` with a message that follows the repo's existing style (check
    recent commits for convention). Describe WHY, not WHAT.
-
-Create all commits in a single response. Do not use other tools or send other
-text. Each commit message must end with:
