@@ -5,9 +5,6 @@ return {
     settings = {
       java = {
         format = { comments = { enabled = false } },
-        saveActions = {
-          organizeImports = true,
-        },
       },
     },
 
