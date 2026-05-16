@@ -64,7 +64,7 @@ bindWindow(key) {
 }
 
 ; 窗口隐藏，默认从环境变量寻找
-#^w::toggleWindowVisibility("org.wezfurlong.wezterm", "wezterm-gui.exe")
+#^w::toggleWindowVisibility("Window Class", "alacritty.exe")
 #^o::toggleWindowVisibility("Chrome_WidgetWin_1", "Obsidian.exe")
 #^z::toggleWindowVisibility("MozillaWindowClass", "zen.exe")
 
