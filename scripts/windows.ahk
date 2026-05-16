@@ -26,7 +26,7 @@ isWindow(hWnd) {
     return false
 
   dwExStyle := WinGetExStyle("ahk_id " . hWnd)
-  if ((dwExStyle & 0x00000080) || (dwExStyle & 0x00040000) || (dwExStyle & 0x00000008))
+  if (dwExStyle & 0x00000080)
     return false
 
   if isWindowCloaked(hWnd)
