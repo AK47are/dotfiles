@@ -1,8 +1,6 @@
 ---
 name: independent-exercise
 Description: Creates a self-contained exercise environment with test files, skeleton code, and solution reference. For learning new concepts (design patterns, concurrency, algorithms, language features) through hands-on practice, independent of any existing project code.
-context: fork
-agent: general-purpose
 disable-model-invocation: true
 ---
 
@@ -11,7 +9,7 @@ disable-model-invocation: true
 > **Note:** Generate this `README.md` file **last**, after completing all other files.
 
 ```
-.claude/exercises/<topic-slug>/
+./.claude/exercises/<topic-slug>/
 ├── README.md          # Exercise instructions, learning objectives, hints
 ├── <test-file>        # Test code
 ├── <skeleton-file>    # Skeleton code
@@ -23,7 +21,7 @@ disable-model-invocation: true
 Multi-task progressive exercise:
 
 ```
-.claude/exercises/<topic-slug>/
+./.claude/exercises/<topic-slug>/
 ├── README.md            # Overall instructions and learning path
 ├── task-01-<sub-topic>/
 │   ├── README.md

@@ -1,8 +1,6 @@
 ---
 name: concept-qa
 description: Generates a concept Q&A exercise with question list and reference answers. Designed for deep understanding of concepts, distinguishing similar concepts, or theoretical questions that cannot be verified with code.
-context: fork
-agent: general-purpose
 disable-model-invocation: true
 ---
 
@@ -11,7 +9,7 @@ disable-model-invocation: true
 > **Note:** Generate this `README.md` file **last**, after completing all other files.
 
 ```
-.claude/exercises/<topic-slug>-qa/
+./.claude/exercises/<topic-slug>-qa/
 ├── questions.md       # Question list (user answer area)
 ├── answers.md         # Reference answers (includes in-depth explanations and examples)
 └── README.md          # Explains learning objectives and prerequisites

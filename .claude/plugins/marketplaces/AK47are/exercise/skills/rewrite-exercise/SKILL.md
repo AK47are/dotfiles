@@ -1,8 +1,6 @@
 ---
 name: rewrite-exercise
 description: Backs up the original project code, then allows the user to rewrite the implementation in the original file locations, verifying understanding by comparing against the backup.
-context: fork
-agent: general-purpose
 disable-model-invocation: true
 ---
 
@@ -13,7 +11,7 @@ disable-model-invocation: true
 Directly operates on project files while preserving the original files as reference:
 
 ```
-.claude/exercises/rewrite-<module-name>/
+./.claude/exercises/rewrite-<module-name>/
 ├── README.md # Explains what to delete, rewrite goals, checklist for comparison
 └── backup/   # Backup of original project files
 ```
