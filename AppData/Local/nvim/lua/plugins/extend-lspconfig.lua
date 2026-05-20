@@ -4,6 +4,17 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      ["*"] = {
+        keys = {
+          {
+            "<localleader>l",
+            function()
+              vim.cmd("lsp restart")
+            end,
+            desc = "Restart LSP",
+          },
+        },
+      },
       vue_ls = {
         settings = {
           vue = {
