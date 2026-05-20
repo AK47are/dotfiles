@@ -1,0 +1,5 @@
+{
+  "description": "OfficeCLI integration - create, analyze, proofread, and modify Office documents (.docx, .xlsx, .pptx) using the officecli CLI tool.",
+  "name": "officecli",
+  "version": "1.0.0"
+}
