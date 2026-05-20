@@ -1,0 +1,47 @@
+theme:
+  dark: dark-catppuccin
+  light: light-catppuccin
+symbolPreset: unicode
+colorBlindMode: false
+statusLine:
+  separator: powerline-thin
+display:
+  showTokenUsage: true
+clearOnShrink: true
+hideThinkingBlock: true
+autoResume: true
+steeringMode: one-at-a-time
+treeFilterMode: default
+startup:
+  checkUpdate: false
+collapseChangelog: true
+edit:
+  mode: hashline
+memory:
+  backend: local
+todo:
+  eager: true
+calc:
+  enabled: true
+renderMermaid:
+  enabled: true
+inspect_image:
+  enabled: true
+github:
+  enabled: true
+dev:
+  autoqa: true
+secrets:
+  enabled: true
+disabledProviders:
+  - claude
+  - claude-plugins
+branchSummary:
+  enabled: true
+commands:
+  enableClaudeUser: false
+  enableClaudeProject: false
+  enableOpencodeUser: false
+  enableOpencodeProject: false
+skills:
+  enableSkillCommands: true
