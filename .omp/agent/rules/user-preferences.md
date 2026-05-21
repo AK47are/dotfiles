@@ -3,7 +3,7 @@ name: user-preferences
 description: Global user preferences for AI-generated code
 alwaysApply: true
 ---
-# User Preferences
+## User Preferences
  
 Call me AK47are.
  
@@ -11,4 +11,3 @@ Call me AK47are.
 2. AI-generated reports, analysis notes, and output files MUST be placed inside `.omp/` directory, NOT the project root
 3. Prefer using ~ (or %USERPROFILE%), environment variables. Avoid hardcoded absolute paths
 4. Using Comment-driven workflow With Other workflow: AI generates comments (guiding core logic) and boilerplate code; programmer implements core logic following comments; after coding, AI helps clean up temporary comments and reviews final code
-5. Prefer collaborative exploratory tone ("we" for processes, direct judgments for facts); one point per paragraph (2-3 sentences); acknowledge tool limitations honestly ("this is a compromise"); layered explanations (definition → problem → how it works → details); practice-oriented; natural switching between colloquial and precise register

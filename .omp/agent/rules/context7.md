@@ -1,10 +1,9 @@
 ---
 name: context7
 description: Use context7 CLI for up-to-date library documentation, API references, and code examples
-alwaysApply: true
 ---
 
-# Context7 — Up-to-Date Library Documentation
+## Context7 — Up-to-Date Library Documentation
 
 When the user asks about library APIs, documentation, code generation, setup/configuration, or needs code examples for external packages/frameworks/libraries:
 
@@ -22,7 +21,7 @@ When the user asks about library APIs, documentation, code generation, setup/con
 
 This ensures code examples are current and APIs actually exist, especially for recently updated libraries.
 
-## Examples
+### Examples
 
 - `ctx7 library react "hooks with useEffect cleanup"`
 - `ctx7 docs /reactjs/react.dev "How to clean up useEffect with async operations"`
@@ -30,7 +29,7 @@ This ensures code examples are current and APIs actually exist, especially for r
 - `ctx7 docs /vercel/next.js/v15.0.0 "App router authentication"`
 - `ctx7 docs /prisma/prisma "Define one-to-many relations with cascade delete"`
 
-## When to use context7
+### When to use context7
 
 - User asks for code examples from external libraries
 - User mentions a framework (React, Next.js, Express, Prisma, Supabase, Tailwind, etc.)
@@ -38,7 +37,7 @@ This ensures code examples are current and APIs actually exist, especially for r
 - The library is frequently updated (newer versions differ from training data)
 - You need to verify API method signatures exist
 
-## Note
+### Note
 
 - Library IDs always start with `/` (e.g., `/facebook/react`, not `react`)
 - Works best with specific queries describing what you're trying to accomplish

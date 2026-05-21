@@ -8,7 +8,7 @@ scope:
   - "tool:ast-edit(**/*.{java,py,ts,rs,lua,html,js})"
 interruptMode: never
 ---
-# Comment Specification
+## Comment Specification
 
 All Claude-generated code comments must uniformly adopt the `tag: description` format. `[]` tags are optional, and a comment block may use multiple `[]` tags. The keyword is mandatory, with only one keyword per comment block, placed on the last line.
 
@@ -26,7 +26,7 @@ All Claude-generated code comments must uniformly adopt the `tag: description` f
 | `TEST` | Testing requirements |
 | `HACK` | Temporary workaround |
 
-## Rules
+### Rules
 
 - `[]` tags are optional; a comment block may use multiple `[]` tags (e.g., `[DESIGN]` + `[WHY]` + `[IMPL]` combination) to describe design intent from different perspectives
 - The keyword must be followed by a description, e.g., `// NOTE: xxxx`, not just `// NOTE`
@@ -51,7 +51,7 @@ Should be:
 //       xxxx
 ```
 
-## File References
+### File References
 
 When referencing other files, use the `file:line` format:
 
@@ -60,7 +60,7 @@ See auth.js:42
 Route definition routes/user.js:15
 ```
 
-## Examples
+### Examples
 
 Single tag + keyword:
 
