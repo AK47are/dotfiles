@@ -1,0 +1,14 @@
+{
+  "java": {
+    "command": "pwsh.exe",
+    "args": [
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "C:/Users/ASUS1/.omp/agent/bin/jdtls-lombok.ps1"
+    ],
+    "fileTypes": [".java"],
+    "rootMarkers": ["pom.xml", "build.gradle", "build.gradle.kts", "settings.gradle", ".project"]
+  }
+}
