@@ -1,47 +1,55 @@
-theme:
+theme: 
   dark: dark-catppuccin
   light: light-catppuccin
 symbolPreset: unicode
 colorBlindMode: false
-statusLine:
+statusLine: 
   separator: powerline-thin
-display:
+display: 
   showTokenUsage: true
 clearOnShrink: true
 hideThinkingBlock: true
 autoResume: true
 steeringMode: one-at-a-time
 treeFilterMode: default
-startup:
+startup: 
   checkUpdate: false
 collapseChangelog: true
-edit:
+edit: 
   mode: hashline
-memory:
+memory: 
   backend: local
-todo:
+todo: 
   eager: true
-calc:
+calc: 
   enabled: true
-renderMermaid:
+renderMermaid: 
   enabled: true
-inspect_image:
+inspect_image: 
   enabled: true
-github:
+github: 
   enabled: true
-dev:
+dev: 
   autoqa: true
-secrets:
+secrets: 
   enabled: true
-disabledProviders:
+disabledProviders: 
   - claude
   - claude-plugins
-branchSummary:
+branchSummary: 
   enabled: true
-commands:
+commands: 
   enableClaudeUser: false
   enableClaudeProject: false
   enableOpencodeUser: false
   enableOpencodeProject: false
-skills:
+skills: 
   enableSkillCommands: true
+modelRoles: 
+  default: deepseek/deepseek-v4-flash:high
+  smol: deepseek/deepseek-v4-flash:off
+  commit: deepseek/deepseek-v4-flash:off
+  task: deepseek/deepseek-v4-flash:off
+  slow: deepseek/deepseek-v4-pro:xhigh
+  plan: deepseek/deepseek-v4-pro:high
+  designer: deepseek/deepseek-v4-pro:high
