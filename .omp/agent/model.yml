@@ -15,6 +15,10 @@ providers:
         input: [text]
         contextWindow: 1000000
         maxTokens: 384000
+        cost:
+          input: 0.435
+          output: 0.87
+          cacheRead: 0.003625
         compat:
           supportsDeveloperRole: false
           supportsReasoningEffort: true
@@ -38,6 +42,10 @@ providers:
         input: [text]
         contextWindow: 1000000
         maxTokens: 384000
+        cost:
+          input: 0.14
+          output: 0.28
+          cacheRead: 0.0028
         compat:
           supportsDeveloperRole: false
           supportsReasoningEffort: true
