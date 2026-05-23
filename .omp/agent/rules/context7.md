@@ -1,6 +1,7 @@
 ---
 name: context7
 description: Use context7 CLI for up-to-date library documentation, API references, and code examples
+alwaysApply: true
 ---
 
 ## Context7 — Up-to-Date Library Documentation
