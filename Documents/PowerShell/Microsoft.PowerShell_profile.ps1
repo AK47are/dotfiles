@@ -5,13 +5,13 @@ Set-PSReadLineOption -EditMode Emacs
 
 # PSCompletions
 if (-not (Get-Module -ListAvailable PSCompletions)) {
-  Write-Host "Installing PSCompletions..."
-  Install-Module PSCompletions -Scope CurrentUser
-  Import-Module PSCompletions
-  psc add git scoop 7z cargo docker node npm powershell python pwsh pnpm pip
+    Write-Host "Installing PSCompletions..."
+    Install-Module PSCompletions -Scope CurrentUser
+    Import-Module PSCompletions
+    psc add git scoop 7z cargo docker node npm powershell python pwsh pnpm pip
 } else {
-  import-Module PSCompletions
-  wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
+    import-Module PSCompletions
+    wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
 }
 
 # ==================================
@@ -25,23 +25,17 @@ $env:Editor = 'nvim'
 # 自定义函数
 # ==================================
 
-Set-Alias claude happy
-
 function config {
-  if ($args.Count -eq 0) {
-    config add -u
-    config commit
-  } else {
-    git --git-dir=$HOME/.cfg/ --work-tree=$HOME $args
-  }
+    if ($args.Count -eq 0) {
+        config add -u
+        config commit
+    } else {
+        git --git-dir=$HOME/.cfg/ --work-tree=$HOME $args
+    }
 }
 
 function lzdot {
     lazygit --git-dir="$HOME\.cfg" --work-tree="$HOME"
-}
-
-function cc {
-    claude -c
 }
 
 function y {
@@ -62,7 +56,6 @@ Set-Alias vi nvim
 function .. { cd .. }
 function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
 function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
-
 
 # ==================================
 # 命令行交互设置
