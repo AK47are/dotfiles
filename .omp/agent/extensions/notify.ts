@@ -1,24 +1,23 @@
-let lastBeep = 0;
+let beepTimer = null;
 
-function canBeep(): boolean {
-  const now = Date.now();
-  if (now - lastBeep >= 10000) {
-    lastBeep = now;
-    return true;
+function scheduleBeep(pi) {
+  if (beepTimer) {
+    clearTimeout(beepTimer);
   }
-  return false;
+  beepTimer = setTimeout(() => {
+    pi.exec("powershell", ["-NoProfile", "-Command", "[Console]::Beep()"]);
+    beepTimer = null;
+  }, 10000);
 }
 
 export default function (pi) {
   pi.on("agent_end", (event, ctx) => {
-    if (canBeep()) {
-      pi.exec("powershell", ["-NoProfile", "-Command", "[Console]::Beep()"]);
-    }
+    scheduleBeep(pi);
   });
 
   pi.on("tool_call", (event, ctx) => {
-    if (event.toolName === "ask" && ctx.hasUI && canBeep()) {
-      pi.exec("powershell", ["-NoProfile", "-Command", "[Console]::Beep()"]);
+    if (event.toolName === "ask" && ctx.hasUI) {
+      scheduleBeep(pi);
     }
   });
 }

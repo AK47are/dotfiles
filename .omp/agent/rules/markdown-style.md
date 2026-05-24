@@ -6,7 +6,7 @@ scope: ["tool:edit(**/*.md)", "tool:write(**/*.md)"]
 interruptMode: never
 ---
 
-## Makrdown Style
+## Markdown Style
 
 ### Lists
 
@@ -25,6 +25,7 @@ interruptMode: never
 
 - Only use for keyword emphasis, do not bold entire sentences or list items
 - Avoid multiple bold words in a single sentence
+- Do not use bold on repeated fields
 
 ### Chinese quotes
 
@@ -32,21 +33,17 @@ interruptMode: never
 
 ### Punctuation spacing
 
-- No spaces around Chinese punctuation（。，：（））
 - Add spaces around English punctuation and code spans in mixed text
-
-### Extended syntax
-
-- Only use necessary extended syntax (tables, lists, etc.)
-- Exception: Callouts are allowed
+- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content; only follow the Chinese-English spacing rule. For example: `一个 [Test 链接](xxx)在这里`
 
 ### Colons
 
 - When a paragraph is not finished but needs to insert other elements (e.g., code blocks, images), add `:` at the end
 
-### Content overview
+### Heading
 
 - Each heading (including the filename) should have an overview paragraph before the next level heading
+- Do not use list numbers in headings
 
 ### Tables
 
