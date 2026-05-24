@@ -1,5 +1,0 @@
-{
-  "name": "rtk",
-  "description": "RTK - Rust Token Killer integration. Token-optimized CLI proxy (60-90% savings on dev operations). Hooks Bash commands through rtk for transparent output compression.",
-  "version": "1.0.0"
-}
