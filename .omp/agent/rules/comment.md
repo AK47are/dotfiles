@@ -51,15 +51,6 @@ Should be:
 //       xxxx
 ```
 
-### File References
-
-When referencing other files, use the `file:line` format:
-
-```
-See auth.js:42
-Route definition routes/user.js:15
-```
-
 ### Examples
 
 Single tag + keyword:
