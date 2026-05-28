@@ -70,3 +70,4 @@ task:
     mode: auto
 contextPromotion: 
   enabled: false
+lastChangelogVersion: 15.5.2
