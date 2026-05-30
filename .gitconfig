@@ -6,6 +6,7 @@
 	quotepath = false
 	symlinks = true
 	autocrlf = input
+	longpaths = true
 [i18n]
 	logOutputEncoding = utf-8
 [difftool]
