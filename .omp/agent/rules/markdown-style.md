@@ -23,9 +23,8 @@ interruptMode: never
 
 ### Bold text
 
-- Only use for keyword emphasis, do not bold entire sentences or list items
-- Avoid multiple bold words in a single sentence
-- Do not use bold on repeated fields
+- Only for keyword emphasis — never bold entire sentences, list items, or table cells
+- Repeated organizational patterns (list markers, table headers, recurring labels) should not use bold; bold is reserved for content-level emphasis, not structural highlighting
 
 ### Chinese quotes
 
