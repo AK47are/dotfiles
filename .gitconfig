@@ -3,9 +3,11 @@
 	email = 3318517070@qq.com
 [core]
 	editor = nvim
+    pager = delta
 	quotepath = false
 	symlinks = true
 	autocrlf = input
+    safecrlf = false
 	longpaths = true
 [i18n]
 	logOutputEncoding = utf-8
@@ -21,3 +23,11 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    side-by-side = true
+    dark = true
+[merge]
+    conflictStyle = zdiff3
