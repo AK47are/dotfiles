@@ -41,9 +41,15 @@ interruptMode: never
 
 ### Heading
 
+- Treat the filename as the outermost first-level heading
 - Don't use the first-level heading `# `
 - Each heading (including the filename) should have an overview paragraph before the next level heading
-- Don't use list numbers in headings
+- **Never** use numeric headings like `## 1` or `## 方式一`, nor any enumerative organizational scheme
+- Headings should be as concise and clear as possible, eliminating any redundant words, and should not exceed 10 Chinese characters or 3 English Words
+
+### Horizontal rules
+
+- Do not use horizontal rules: `---` are not allowed.
 
 ### Tables
 

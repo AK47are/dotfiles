@@ -1,19 +1,6 @@
 ---
 name: context7-docs
-description: >-
-  Fetch up-to-date documentation and code examples for any library, framework,
-  SDK, CLI tool, or cloud service. Use whenever the user asks about a specific
-  library — even well-known ones like React, Next.js, Prisma, Express, Tailwind,
-  Django, or Spring Boot — because training data may not reflect recent API
-  changes or version updates.
-
-  Always use for: API syntax questions, configuration options, version migration
-  issues, "how do I" questions mentioning a library name, debugging that involves
-  library-specific behavior, setup instructions, and CLI tool usage.
-
-  Use even when you think you know the answer. Do not rely on training data for
-  API details, signatures, or configuration options — they are frequently out of
-  date. Prefer this over web search for library documentation.
+description: "Retrieve up-to-date documentation and code examples from Context7 for any library, framework, SDK, CLI tool, or cloud service. Use when the user asks about API usage, configuration, or examples for a specific technology."
 license: MIT
 ---
 
