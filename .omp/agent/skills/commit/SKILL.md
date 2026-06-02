@@ -32,6 +32,6 @@ For each logical group, in sequence:
 
 1. `git add` only the specific files for that commit (never use `git add .`)
 2. `git diff --cached` to verify the right changes are staged
-3. `git commit` with a message that follows the repo's existing style (check recent commits for convention). Describe WHY, not WHAT. Commit message header must not exceed 72 characters
+3. `git commit` with a message that follows the repo's existing style (check recent commits for convention). Summary line max 50 chars, description lines max 72 chars. Describe WHY, not WHAT.
 
 If there are no recent commits to reference, use Conventional Commits specification.

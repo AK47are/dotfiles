@@ -41,8 +41,9 @@ interruptMode: never
 
 ### Heading
 
+- Don't use the first-level heading `# `
 - Each heading (including the filename) should have an overview paragraph before the next level heading
-- Do not use list numbers in headings
+- Don't use list numbers in headings
 
 ### Tables
 
