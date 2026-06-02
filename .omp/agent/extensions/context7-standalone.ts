@@ -54,7 +54,10 @@ interface SearchResponse {
   searchFilterApplied?: boolean;
 }
 
-async function searchLibraries(query: string, libraryName: string): Promise<SearchResponse> {
+async function searchLibraries(
+  query: string,
+  libraryName: string,
+): Promise<SearchResponse> {
   const url = new URL(`${BASE_URL}/v2/libs/search`);
   url.searchParams.set("query", query);
   url.searchParams.set("libraryName", libraryName);
@@ -66,7 +69,10 @@ async function searchLibraries(query: string, libraryName: string): Promise<Sear
   return (await response.json()) as SearchResponse;
 }
 
-async function fetchLibraryContext(query: string, libraryId: string): Promise<string> {
+async function fetchLibraryContext(
+  query: string,
+  libraryId: string,
+): Promise<string> {
   const url = new URL(`${BASE_URL}/v2/context`);
   url.searchParams.set("query", query);
   url.searchParams.set("libraryId", libraryId);
@@ -84,7 +90,7 @@ async function fetchLibraryContext(query: string, libraryId: string): Promise<st
 }
 
 function getSourceReputationLabel(
-  sourceReputation?: number
+  sourceReputation?: number,
 ): "High" | "Medium" | "Low" | "Unknown" {
   if (sourceReputation === undefined || sourceReputation < 0) return "Unknown";
   if (sourceReputation >= 7) return "High";
@@ -130,7 +136,7 @@ function formatSearchResults(searchResponse: SearchResponse): string {
 
   if (searchResponse.searchFilterApplied) {
     parts.push(
-      "**Note:** Your results only include libraries matching your teamspace's library filters. To adjust quality thresholds or blocked libraries, update your filters at https://context7.com/dashboard?tab=policies"
+      "**Note:** Your results only include libraries matching your teamspace's library filters. To adjust quality thresholds or blocked libraries, update your filters at https://context7.com/dashboard?tab=policies",
     );
   }
 
@@ -200,12 +206,23 @@ IMPORTANT: Do not call this tool more than 3 times per question. If you cannot f
       },
       required: ["query", "libraryName"],
     },
-    async execute(_toolCallId: string, params: { query: string; libraryName: string }) {
-      const searchResponse = await searchLibraries(params.query, params.libraryName);
+    async execute(
+      _toolCallId: string,
+      params: { query: string; libraryName: string },
+    ) {
+      const searchResponse = await searchLibraries(
+        params.query,
+        params.libraryName,
+      );
       if (!searchResponse.results || searchResponse.results.length === 0) {
-        return toToolResult(searchResponse.error ?? "No libraries found matching the provided name.");
+        return toToolResult(
+          searchResponse.error ??
+            "No libraries found matching the provided name.",
+        );
       }
-      return toToolResult(`Available Libraries:\n\n${formatSearchResults(searchResponse)}`);
+      return toToolResult(
+        `Available Libraries:\n\n${formatSearchResults(searchResponse)}`,
+      );
     },
   });
 
@@ -233,7 +250,10 @@ Do not call this tool more than 3 times per question.`,
       },
       required: ["libraryId", "query"],
     },
-    async execute(_toolCallId: string, params: { libraryId: string; query: string }) {
+    async execute(
+      _toolCallId: string,
+      params: { libraryId: string; query: string },
+    ) {
       const text = await fetchLibraryContext(params.query, params.libraryId);
       return toToolResult(text);
     },
