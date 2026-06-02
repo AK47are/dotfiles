@@ -1,7 +1,7 @@
 theme: 
   dark: dark-catppuccin
   light: light-catppuccin
-symbolPreset: unicode
+symbolPreset: nerd
 colorBlindMode: false
 statusLine: 
   separator: powerline-thin
@@ -19,7 +19,7 @@ collapseChangelog: true
 edit: 
   mode: hashline
 memory: 
-  backend: local
+  backend: mnemopi
 todo: 
   eager: true
 calc: 
@@ -47,13 +47,13 @@ commands:
 skills: 
   enableSkillCommands: true
 modelRoles: 
-  default: deepseek/deepseek-v4-flash:high
+  default: deepseek/deepseek-v4-flash
   smol: deepseek/deepseek-v4-flash:off
   commit: deepseek/deepseek-v4-flash:off
   task: deepseek/deepseek-v4-flash:off
   slow: deepseek/deepseek-v4-pro:xhigh
-  plan: deepseek/deepseek-v4-pro:high
-  designer: deepseek/deepseek-v4-pro:high
+  plan: deepseek/deepseek-v4-pro
+  designer: deepseek/deepseek-v4-pro
 lsp: 
   formatOnWrite: true
   diagnosticsOnEdit: true
@@ -71,3 +71,11 @@ task:
 contextPromotion: 
   enabled: false
 lastChangelogVersion: 15.5.2
+setupVersion: 1
+defaultThinkingLevel: auto
+mnemopi: 
+  scoping: per-project-tagged
+  autoRecall: true
+ttsr: 
+  repeatMode: once
+  contextMode: discard
