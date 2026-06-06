@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
   group = augroup("save_settings"),
   callback = function()
     Settings.colorscheme = vim.g.colors_name
+    Settings.autoformat = vim.g.autoformat
     local file = io.open(SETTINGS_PATH, "w")
     if file then
       file:write(vim.json.encode(Settings))
