@@ -1,9 +1,7 @@
 ---
 name: markdown-style
 description: Markdown file formatting style guide
-condition: [".*"]
-scope: ["tool:edit(**/*.md)", "tool:write(**/*.md)"]
-interruptMode: never
+alwaysApply: true
 ---
 
 ## Markdown Style

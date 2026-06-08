@@ -1,12 +1,7 @@
 ---
 name: comment
 description: Comment format specification for AI-generated code
-condition: [".*"]
-scope:
-  - "tool:edit(**/*.{java,py,ts,rs,lua,js})"
-  - "tool:write(**/*.{java,py,ts,rs,lua,js})"
-  - "tool:ast-edit(**/*.{java,py,ts,rs,lua,js})"
-interruptMode: never
+alwaysApply: true
 ---
 ## Comment Specification
 All Ai-generated code comments must uniformly adopt the `tag: description` format. `[]` tags are optional, and a comment block may use multiple `[]` tags. The keyword is mandatory, with only one keyword per comment block, placed on the last line.
