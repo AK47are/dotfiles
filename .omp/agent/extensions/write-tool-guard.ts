@@ -34,14 +34,16 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
     const content = String(input.content ?? "");
     if (!content) return;
 
+    const violations: string[] = [];
+
+    // Markdown 样式检查
     if (filePath.endsWith(".md")) {
       for (const { re, msg } of MARKDOWN_PATTERNS) {
-        if (re.test(content))
-          return { block: true, reason: msg + FORBID_BYPASS };
+        if (re.test(content)) violations.push(msg);
       }
-      return;
     }
 
+    // 代码文件注释重复标签检查
     const ext = filePath.split(".").pop();
     const comment = ext && COMMENT_MAP[ext];
     if (comment) {
@@ -50,13 +52,15 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
         "m",
       );
       if (repeatRegex.test(content)) {
-        return {
-          block: true,
-          reason:
-            "Repeating the same label (e.g., NOTE:) on consecutive comment lines is forbidden. Write the label only once, then indent subsequent lines." +
-            FORBID_BYPASS,
-        };
+        violations.push(
+          "Repeating the same label (e.g., NOTE:) on consecutive comment lines is forbidden. Write the label only once, then indent subsequent lines.",
+        );
       }
+    }
+
+    if (violations.length > 0) {
+      const reason = violations.join(" ") + " " + FORBID_BYPASS;
+      return { block: true, reason };
     }
   });
 }
