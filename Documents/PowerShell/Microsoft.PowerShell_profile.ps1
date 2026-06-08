@@ -38,7 +38,26 @@ function lzdot {
     lazygit --git-dir="$HOME\.cfg" --work-tree="$HOME"
 }
 
-function y {
+function watch {
+    $watcher = [powershell]::Create()
+    $watcher.AddScript({
+        while ($true) {
+            if ([Console]::KeyAvailable -and ([Console]::ReadKey($true)).Key -eq 'Enter') {
+                [Console]::WriteLine('---------------------------------')
+            }
+            Start-Sleep -Milliseconds 200
+        }
+    }).BeginInvoke() > $null
+
+    try {
+        Get-Content -Wait @args
+    } finally {
+        $watcher.Stop()
+        $watcher.Dispose()
+    }
+}
+
+function yazicd {
     $tmp = (New-TemporaryFile).FullName
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp -Encoding UTF8
@@ -48,14 +67,15 @@ function y {
     Remove-Item -Path $tmp
 }
 
-Set-Alias -Name dot -Value config
-
 function leet { nvim leetcode }
-Set-Alias vi nvim
-
 function .. { cd .. }
 function traceroute { Test-Connection -ComputerName $args[0] -Traceroute }
 function wget { aria2c -c -R --retry-wait=5 -x16 -s16 -j16 -k1M $args }
+
+Set-Alias dot config
+Set-Alias y yazicd
+Set-Alias vi nvim
+Set-Alias w watch
 
 # ==================================
 # 命令行交互设置
