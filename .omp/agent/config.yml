@@ -10,11 +10,12 @@ display:
   shimmer: classic
 clearOnShrink: true
 hideThinkingBlock: true
-autoResume: true
+autoResume: false
 steeringMode: one-at-a-time
 treeFilterMode: default
 startup: 
   checkUpdate: false
+  quiet: true
 collapseChangelog: true
 edit: 
   mode: hashline
