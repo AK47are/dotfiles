@@ -11,7 +11,7 @@ const MARKDOWN_PATTERNS = [
   },
   {
     re: /^\s*- \*\*.*\*\*[:：] /m,
-    msg: "The pattern '- **...**: ' (bold text followed by a colon in a list item) is not allowed.",
+    msg: "The pattern '- **...**' (bold text followed in a list item) is not allowed.",
   },
   { re: /^\s*---+\s*$/m, msg: "Horizontal rule '---' is not allowed." },
 ];
