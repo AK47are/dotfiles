@@ -17,8 +17,8 @@ const MARKDOWN_PATTERNS = [
     msg: "Heading is too long (max 20 characters).",
   },
   {
-    re: /^\s*- \*\*.*\*\*[:：] /m,
-    msg: "The pattern '- **...**' (bold text followed in a list item) is not allowed.",
+    re: /^\s*(?:-|\d+\.) \*\*.*?\*\*/m,
+    msg: "The pattern '- **...**' or '1. **...**' (bold text in a list item) is not allowed.",
   },
   { re: /^\s*---+\s*$/m, msg: "Horizontal rule '---' is not allowed." },
 ];
