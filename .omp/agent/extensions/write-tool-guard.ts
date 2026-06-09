@@ -1,13 +1,20 @@
 import type { ExtensionAPI } from "@oh-my-pi/pi-coding-agent";
 
 const FORBID_BYPASS =
-  "Remember don't bypass this rule. If you cannot comply, ask the user for permission.";
+  "If you cannot comply, ask the user for permission. Remember: do not bypass rules.";
 
 const MARKDOWN_PATTERNS = [
-  { re: /^# /m, msg: "H1 headings (# Title) are not allowed." },
+  {
+    re: /^# /m,
+    msg: "H1 headings (# Title) are not allowed. The filename serves as the implicit H1, and the content must not repeat the filename as a heading (whether with # or ##).",
+  },
   {
     re: /^#+ \d/m,
     msg: "Numbered headings (# 1., ## 1.1., etc.) are not allowed.",
+  },
+  {
+    re: /^#+ .{20,}/m,
+    msg: "Heading is too long (max 20 characters).",
   },
   {
     re: /^\s*- \*\*.*\*\*[:：] /m,
@@ -15,6 +22,9 @@ const MARKDOWN_PATTERNS = [
   },
   { re: /^\s*---+\s*$/m, msg: "Horizontal rule '---' is not allowed." },
 ];
+
+const MD_RULES_REMINDER =
+  "Violation of global Markdown style specification. Please revisit the Markdown style rules already provided to you. Review your output against each of those rules, correct any violations, and ensure full compliance.";
 
 const COMMENT_MAP: Record<string, string> = {
   java: "//",
@@ -38,8 +48,15 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
 
     // Markdown 样式检查
     if (filePath.endsWith(".md")) {
+      let hasViolation = false;
       for (const { re, msg } of MARKDOWN_PATTERNS) {
-        if (re.test(content)) violations.push(msg);
+        if (re.test(content)) {
+          violations.push(msg);
+          hasViolation = true;
+        }
+      }
+      if (hasViolation) {
+        violations.unshift(REMINDER_REVIEW_MD_RULES);
       }
     }
 
