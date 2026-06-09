@@ -6,49 +6,40 @@ alwaysApply: true
 
 ## Markdown Style
 
+### Headings
+
+- Each heading (including the filename) should have an overview paragraph before the next level heading
+- **Never** use numeric headings like `## 1` or `## 方式一`, nor any enumerative organizational scheme
+- The filename serves as the implicit first-level heading. Inside the file body:
+  - Never repeat the filename as any level of heading (no `#`, `##`, etc. that matches the filename)
+  - Start directly with an overview paragraph — no heading before it
+  - Don't use the first-level heading `# `
+  - Only use `##` for sub-sections, and always have an overview before the first `##`
+  - Overview paragraphs should define the core concept in one concise sentence, then provide context on why the sub-topics are grouped together, not merely restate what they are
+
+### Punctuation and quotes
+
+- Do not add any punctuation at the end of **list line**（Unless `:`, `：`）
+- Do not add any punctuation at the end of **table cells**
+- When a paragraph is not finished and needs to insert other elements (e.g., code blocks, images, lists, tables), add an explicit lead-in phrase such as `例如` or `如下`, then end with a colon (`:` or `：`)
+  - A paragraph immediately followed by a list (no blank line) is always considered unfinished and must follow this rule
+- Always use `「」`, do not use `“ ”`
+
 ### Lists
 
-- Do not add any punctuation at the end of list items
 - If a list item is long or needs to contain images/code blocks:
   - Images: Place on the **next line** under the current list item, no indentation
   - Code blocks: Place **two lines** under the current list item, no indentation
   - Multi-line text: Use sub-lists or headings instead
 
-### Links
-
-- Add spaces between Chinese and English text, otherwise do not add spaces
-- Use standard inline links `[text](url)`, do not use Wiki links
-
-### Bold text
+### Text formatting
 
 - Only for keyword emphasis — never bold entire sentences, list items, or table cells
-- Repeated organizational patterns (list markers, table headers, recurring labels) should not use bold; bold is reserved for content-level emphasis, not structural highlighting
-
-### Chinese quotes
-
-- Always use `「」`, do not use `“ ”`
-
-### Punctuation spacing
-
-- Add spaces around English punctuation and code spans in mixed text
-- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content; only follow the Chinese-English spacing rule. For example: `一个 [Test 链接](xxx)在这里`
-
-### Colons
-
-- When a paragraph is not finished but needs to insert other elements (e.g., code blocks, images), add `:` at the end
-
-### Heading
-
-- Treat the filename as the outermost first-level heading
-- Don't use the first-level heading `# `
-- Each heading (including the filename) should have an overview paragraph before the next level heading
-- **Never** use numeric headings like `## 1` or `## 方式一`, nor any enumerative organizational scheme
-- Headings should be as concise and clear as possible, eliminating any redundant words, and should not exceed 10 Chinese characters or 3 English Words
+- Bold is reserved for stand-alone inline emphasis (e.g., a critical term in a paragraph). Never use bold inside any list item, table cell, or heading — even for keywords. List markers, table headers, and recurring labels are inherently structural and must remain plain text.
+- Add spaces between Chinese and English text, otherwise do not add spaces
+- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content, For example: `一个 [Test 链接](xxx)在这里`
+- Use standard inline links `[text](url)`, do not use Wiki links
 
 ### Horizontal rules
 
 - Do not use horizontal rules: `---` are not allowed.
-
-### Tables
-
-- Do not add any punctuation at the end of table cells
