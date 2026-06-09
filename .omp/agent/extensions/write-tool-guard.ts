@@ -56,7 +56,7 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
         }
       }
       if (hasViolation) {
-        violations.unshift(REMINDER_REVIEW_MD_RULES);
+        violations.unshift(MD_RULES_REMINDER);
       }
     }
 
