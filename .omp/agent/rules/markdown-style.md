@@ -8,14 +8,13 @@ alwaysApply: true
 
 ### Headings
 
-- Each heading (including the filename) should have an overview paragraph before the next level heading
+- Each heading (including the filename) should have an overview paragraph before the next level heading. Overview paragraphs should define the core concept in one concise sentence, then provide context on why the sub-topics are grouped together, not merely restate what they are
+- Heading length cannot exceed 20 characters
+- **Never** use the first-level heading `# `
 - **Never** use numeric headings like `## 1` or `## 方式一`, nor any enumerative organizational scheme
 - The filename serves as the implicit first-level heading. Inside the file body:
   - Never repeat the filename as any level of heading (no `#`, `##`, etc. that matches the filename)
   - Start directly with an overview paragraph — no heading before it
-  - Don't use the first-level heading `# `
-  - Only use `##` for sub-sections, and always have an overview before the first `##`
-  - Overview paragraphs should define the core concept in one concise sentence, then provide context on why the sub-topics are grouped together, not merely restate what they are
 
 ### Punctuation and quotes
 
@@ -37,7 +36,7 @@ alwaysApply: true
 - Only for keyword emphasis — never bold entire sentences, list items, or table cells
 - Bold is reserved for stand-alone inline emphasis (e.g., a critical term in a paragraph). Never use bold inside any list item, table cell, or heading — even for keywords. List markers, table headers, and recurring labels are inherently structural and must remain plain text.
 - Add spaces between Chinese and English text, otherwise do not add spaces
-- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content, For example: `一个 [Test 链接](xxx)在这里`
+- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content, For example: `一个 [Test 链接](xxx)在这里` instead of `一个 [Test 链接](xxx) 在这里`(notice the usage of spaces)
 - Use standard inline links `[text](url)`, do not use Wiki links
 
 ### Horizontal rules
