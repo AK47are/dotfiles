@@ -12,6 +12,11 @@ return {
       config.handlers = config.handlers or {}
       config.handlers["$/progress"] = function() end -- 静音进度通知
       -- config.handlers["language/status"] = function() end  -- 静音状态通知
+      vim.list_extend(config.cmd, {
+        "--jvm-arg=-Xmx4G",
+        "--jvm-arg=-Dstdout.encoding=UTF-8",
+        "--jvm-arg=-Dstderr.encoding=UTF-8",
+      })
     end,
 
     on_attach = function(args)
