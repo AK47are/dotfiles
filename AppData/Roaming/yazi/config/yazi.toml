@@ -2,11 +2,21 @@
 edit = [
     { run = "nvim %s", block = true, desc = "Edit" },
 ]
-
+run_bat = [
+    { run = 'cmd /c "%s"', desc = "Run", block = true },
+    { run = 'cmd /k "%s"', desc = "Run (keep)", block = true },
+]
+run_ps1 = [
+    { run = 'pwsh -ExecutionPolicy Bypass -File "%s"', desc = "Run", block = true },
+    { run = 'pwsh -NoExit -ExecutionPolicy Bypass -File "%s"', desc = "Run (keep)", block = true },
+]
+ 
 [open]
 prepend_rules = [
     { url = "*.html", use = [ "edit", "open" ] },
+    { url = "*.ps1", use = ["edit", "run_ps1"]},
+    { url = "*.bat", use = ["edit", "run_bat"]},
 ]
-
+ 
 [mgr]
 show_hidden = true
