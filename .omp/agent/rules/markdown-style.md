@@ -8,7 +8,7 @@ alwaysApply: true
 
 ### Headings
 
-- Each heading (including the filename) should have an overview paragraph before the next level heading. Overview paragraphs should define the core concept in one concise sentence, then provide context on why the sub-topics are grouped together, not merely restate what they are
+- Each heading (including the filename) should have an overview paragraph before the next level heading. Overview paragraphs should define the core concept in one concise sentence, then briefly explain—in up to two succinct paragraphs—why the sub‑topics are grouped together, without restating the heading or expanding into details
 - Heading length cannot exceed 20 characters
 - **Never** use the first-level heading `# `
 - **Never** use numeric headings like `## 1` or `## 方式一`, nor any enumerative organizational scheme
