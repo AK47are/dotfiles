@@ -9,7 +9,7 @@ hide: true
 > **Note:** Generate this `README.md` file **last**, after completing all other files.
 
 ```
-.exercises/<topic-slug>/
+.omp/exercises/<topic-slug>/
 ├── README.md          # Exercise instructions, learning objectives, hints
 ├── .git               # fake git flag to trick editors into treating this as project root
 ├── out/               # Generated/build output directory (optional)
@@ -30,7 +30,7 @@ hide: true
 Multi-task progressive exercise:
 
 ```
-.exercises/<topic-slug>/
+.omp/exercises/<topic-slug>/
 ├── README.md            # Overall instructions and learning path
 ├── task-01-<sub-topic>/
     ├── .git
