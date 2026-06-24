@@ -22,17 +22,15 @@ edit:
 memory: 
   backend: mnemopi
 todo: 
-  eager: true
-calc: 
-  enabled: true
+  eager: always
 renderMermaid: 
   enabled: true
 inspect_image: 
   enabled: true
 github: 
-  enabled: true
+  enabled: false
 dev: 
-  autoqa: true
+  autoqa: false
 secrets: 
   enabled: true
 disabledProviders: 
@@ -48,13 +46,15 @@ commands:
 skills: 
   enableSkillCommands: true
 modelRoles: 
-  default: deepseek/deepseek-v4-flash
-  smol: deepseek/deepseek-v4-flash:off
-  commit: deepseek/deepseek-v4-flash:off
-  task: deepseek/deepseek-v4-flash:off
-  slow: deepseek/deepseek-v4-pro:xhigh
-  plan: deepseek/deepseek-v4-pro
-  designer: deepseek/deepseek-v4-pro
+  default: opencode-go/deepseek-v4-flash:xhigh
+  smol: opencode-go/deepseek-v4-flash:off
+  commit: opencode-go/deepseek-v4-flash:xhigh
+  task: opencode-go/deepseek-v4-flash:xhigh
+  slow: opencode-go/glm-5.2:xhigh
+  plan: opencode-go/deepseek-v4-pro:xhigh
+  designer: opencode-go/deepseek-v4-flash
+  advisor: opencode-go/deepseek-v4-flash:xhigh
+  vision: opencode-go/mimo-v2.5:xhigh
 lsp: 
   formatOnWrite: true
   diagnosticsOnEdit: true
@@ -71,8 +71,6 @@ task:
     mode: auto
 contextPromotion: 
   enabled: false
-lastChangelogVersion: 15.5.2
-setupVersion: 1
 defaultThinkingLevel: auto
 mnemopi: 
   scoping: per-project-tagged
@@ -80,3 +78,23 @@ mnemopi:
 ttsr: 
   repeatMode: once
   contextMode: discard
+setupVersion: 1
+astGrep: 
+  enabled: true
+checkpoint: 
+  enabled: true
+advisor: 
+  enabled: true
+  subagents: true
+  syncBacklog: "off"
+features: 
+  unexpectedStopDetection: true
+retry: 
+  modelFallback: true
+  fallbackChains: 
+    opencode-go/deepseek-v4-flash: 
+      - nvidia/deepseek-ai/deepseek-v4-flash
+      - deepseek/deepseek-v4-flash
+    opencode-go/deepseek-v4-pro: 
+      - nvidia/deepseek-ai/deepseek-v4-pro
+      - deepseek/deepseek-v4-pro
