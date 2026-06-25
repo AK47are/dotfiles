@@ -1,8 +1,10 @@
 ---
-name: independent-exercise
+name: exercise
 description: Creates a self-contained exercise environment with test files, skeleton code, and solution reference. For learning new concepts (design patterns, concurrency, algorithms, language features) through hands-on practice, independent of any existing project code.
 hide: true
 ---
+
+Read ./COMMENT-FORMAT.md for comment specifications.
 
 ## Output Structure
 
