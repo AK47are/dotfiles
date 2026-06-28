@@ -1,5 +1,6 @@
 AGENTS.md
-.omp/
+.omp/*
+!.omp/agent/
 -- nvim 局部配置文件
 .nvim.lua
 .lazy.lua
