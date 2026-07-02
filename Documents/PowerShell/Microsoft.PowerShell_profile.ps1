@@ -115,4 +115,4 @@ Set-Alias -Name unzip -Value Expand-Archive
 Set-Alias -Name which -Value Get-Command
 
 # 初始化 zoxide
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
