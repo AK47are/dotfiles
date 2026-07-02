@@ -73,3 +73,5 @@ WezTerm.on("augment-command-palette", function(window, _)
 end)
 
 Config.default_cursor_style = "BlinkingBar"
+Config.adjust_window_size_when_changing_font_size = false
+Config.font_size = 11.0
