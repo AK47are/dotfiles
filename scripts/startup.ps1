@@ -5,6 +5,8 @@ function Write-Info { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor 
 function Write-Warning { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor Yellow }
 function Write-Error { param($msg) Write-Host "[Dotfiles] $msg" -ForegroundColor Red }
 
+$ErrorActionPreference = "Stop"
+
 Write-Info "=== Auto Setup ==="
 
 Write-Info "Checking and installing scoop..."
@@ -33,15 +35,23 @@ if (-not ([bool](Get-Command git -ErrorAction SilentlyContinue))) {
   Write-Warning "Git already installed, skipping"
 }
 
-$proxyURL = ""
-$proxyResponse = Read-Host "Set up Github proxy? [Y/N]"
-if ($proxyResponse -eq "Y" -or $proxyResponse -eq "y") {
-  $proxyURL = Read-Host "Enter proxy URL"
-
-  if (-not [string]::IsNullOrWhiteSpace($proxyURL)) {
-    $proxyURL = if (-not $proxyURL.StartsWith("https")) { "https://" + $proxyURL } else { $proxyURL }
-    $proxyURL = if (-not $proxyURL.EndsWith("/")) { $proxyURL + "/" } else { $proxyURL }
-  }
+$proxyURL = [Environment]::GetEnvironmentVariable("DOTFILES_PROXY_URL", "User")
+if ($null -eq $proxyURL) {
+    $proxyResponse = Read-Host "Set up Github proxy? [Y/N]"
+    if ($proxyResponse -eq "Y" -or $proxyResponse -eq "y") {
+        $proxyURL = Read-Host "Enter proxy URL"
+        if (-not [string]::IsNullOrWhiteSpace($proxyURL)) {
+            $proxyURL = if (-not $proxyURL.StartsWith("https")) { "https://" + $proxyURL } else { $proxyURL }
+            $proxyURL = if (-not $proxyURL.EndsWith("/")) { $proxyURL + "/" } else { $proxyURL }
+        }
+    } else {
+        $proxyURL = ""
+    }
+    [Environment]::SetEnvironmentVariable("DOTFILES_PROXY_URL", $proxyURL, "User")
+} elseif ($proxyURL -eq "") {
+    Write-Info "Proxy not configured (saved preference)"
+} else {
+    Write-Info "Using saved proxy: $proxyURL"
 }
 
 function Get-ProxiedURL {
@@ -54,12 +64,25 @@ function Get-ProxiedURL {
 }
 
 Write-Info "Setting up Rime input method configuration..."
-if (-not (Test-Path "$env:APPDATA\Rime")) {
-  Write-Info "Pulling rime-ice configuration..."
-  git clone (Get-ProxiedURL "https://github.com/iDvel/rime-ice.git") $env:APPDATA\Rime --depth 1
-  Write-Success "rime-ice configuration pulled successfully"
+if (-not (Test-Path "$env:APPDATA\Rime\.git")) {
+    Write-Info "Pulling rime-ice configuration..."
+    $repo = "https://github.com/iDvel/rime-ice.git"
+    $dest = "$env:APPDATA\Rime"
+    try {
+        if (Test-Path $dest) {
+            git -C $dest init 2>$null
+            git -C $dest remote add origin (Get-ProxiedURL $repo) 2>$null
+            git -C $dest fetch origin --depth 1
+            git -C $dest reset --hard origin/master
+        } else {
+            git clone (Get-ProxiedURL $repo) $dest --depth 1
+        }
+        Write-Success "rime-ice configuration pulled successfully"
+    } catch {
+        Write-Warning "Failed to pull rime-ice: $($_.Exception.Message)"
+    }
 } else {
-  Write-Warning "rime-ice configuration(.git) already exists, skipping"
+    Write-Warning "rime-ice configuration(.git) already exists, skipping"
 }
 
 if (-not (Test-Path "$env:APPDATA\Rime\wanxiang-lts-zh-hans.gram")) {
@@ -71,32 +94,71 @@ if (-not (Test-Path "$env:APPDATA\Rime\wanxiang-lts-zh-hans.gram")) {
 }
 
 if (-not (Test-Path "$HOME\.cfg")) {
-  Write-Info "Pulling dotfiles..."
-  git clone --bare (Get-ProxiedURL "https://github.com/AK47are/dotfiles.git") $HOME\.cfg
-  git --git-dir=$HOME\.cfg\ --work-tree=$HOME checkout -f
-  git --git-dir=$HOME\.cfg\ --work-tree=$HOME config --local status.showUntrackedFiles no
-  Write-Success "Dotfiles pulled successfully"
+    Write-Info "Pulling dotfiles..."
+    git clone --bare (Get-ProxiedURL "https://github.com/AK47are/dotfiles.git") $HOME\.cfg
+    $checkoutResponse = Read-Host "Overwrite home directory files with dotfiles? [Y/N]"
+    if ($checkoutResponse -eq "Y" -or $checkoutResponse -eq "y") {
+        git --git-dir=$HOME\.cfg\ --work-tree=$HOME checkout -f
+        Write-Success "Dotfiles files checked out"
+    } else {
+        Write-Warning "Skipped checkout, dotfiles bare repo is at $HOME\.cfg"
+    }
+    git --git-dir=$HOME\.cfg\ --work-tree=$HOME config --local status.showUntrackedFiles no
+    New-Item -ItemType File -Path "$HOME\.cfg\.dotfiles-applied" -Force | Out-Null
+    Write-Success "Dotfiles pulled successfully"
+} elseif (-not (Test-Path "$HOME\.cfg\.dotfiles-applied")) {
+    Write-Info "Dotfiles repo exists, creating sentinel..."
+    git --git-dir=$HOME\.cfg\ --work-tree=$HOME config --local status.showUntrackedFiles no
+    New-Item -ItemType File -Path "$HOME\.cfg\.dotfiles-applied" -Force | Out-Null
+    Write-Success "Dotfiles sentinel created"
 } else {
-  Write-Warning ".cfg already exists, skipping dotfiles pull"
+    Write-Warning ".cfg already exists and applied, skipping dotfiles pull"
 }
 
 Write-Info "Installing Rime Weasel..."
-scoop install weasel
-Write-Success "Rime Weasel installed/verified successfully"
+$weaselInstalled = (scoop list weasel 2>$null) -match "weasel"
+if (-not $weaselInstalled) {
+  scoop install weasel
+  Write-Success "Rime Weasel installed successfully"
+} else {
+  Write-Warning "weasel already installed, skipping"
+}
 
 Write-Info "Installing Autohotkey"
-scoop install autohotkey
-Write-Success "Autohotkey installed/verified successfully"
+$ahkInstalled = (scoop list autohotkey 2>$null) -match "autohotkey"
+if (-not $ahkInstalled) {
+  scoop install autohotkey
+  Write-Success "Autohotkey installed successfully"
+} else {
+  Write-Warning "autohotkey already installed, skipping"
+}
 
 Write-Info "Running Autohotkey setup script..."
 autohotkey "$HOME\scripts\setup.ahk"
 Write-Success "Autohotkey setup completed"
 
 Write-Info "Installing other programs"
-scoop install pwsh wezterm-nightly neovim fd ripgrep lazygit tree-sitter nodejs mingw clash-verge-rev yazi zoxide jq resvg gh delta
-Write-Success "=== All components installed successfully! ==="
+$packages = @("pwsh", "wezterm-nightly", "neovim", "fd", "ripgrep", "lazygit",
+    "tree-sitter", "nodejs-lts", "mingw", "clash-verge-rev", "yazi", "zoxide", "jq",
+    "resvg", "gh", "delta")
+foreach ($pkg in $packages) {
+    $installed = (scoop list $pkg 2>$null) -match $pkg
+    if (-not $installed) {
+        scoop install $pkg
+        Write-Success "$pkg installed successfully"
+    } else {
+        Write-Warning "$pkg already installed, skipping"
+    }
+}
 
 # 配置 yazi
-[Environment]::SetEnvironmentVariable("YAZI_FILE_ONE", (scoop prefix git) + "\usr\bin\file.exe", "User")
+$currentYazi = [Environment]::GetEnvironmentVariable("YAZI_FILE_ONE", "User")
+if (-not $currentYazi) {
+    [Environment]::SetEnvironmentVariable("YAZI_FILE_ONE",
+        (scoop prefix git) + "\usr\bin\file.exe", "User")
+    Write-Success "YAZI_FILE_ONE set"
+} else {
+    Write-Warning "YAZI_FILE_ONE already set to $currentYazi, skipping"
+}
 
 Write-Info "Note: Neovim, Wezterm initialization requires VPN connection"
