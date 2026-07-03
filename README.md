@@ -29,7 +29,6 @@ irm raw.githubusercontent.com/AK47are/dotfiles/windows/scripts/startup.ps1 | iex
   - fd：搜索文件
   - ripgrep：搜索文件内容
   - lazygit：可视化 git
-    - delta: 更好的高亮支持
   - zoxide：增强目录切换功能
   - jq：JSON 预览
   - resvg：SVG 预览

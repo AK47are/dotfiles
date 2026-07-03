@@ -140,7 +140,7 @@ Write-Success "Autohotkey setup completed"
 Write-Info "Installing other programs"
 $packages = @("pwsh", "wezterm-nightly", "neovim", "fd", "ripgrep", "lazygit",
     "tree-sitter", "nodejs-lts", "mingw", "clash-verge-rev", "yazi", "zoxide", "jq",
-    "resvg", "gh", "delta")
+    "resvg", "gh")
 foreach ($pkg in $packages) {
     $installed = (scoop list $pkg 2>$null) -match $pkg
     if (-not $installed) {

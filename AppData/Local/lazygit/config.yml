@@ -1,9 +1,4 @@
 promptToReturnFromSubprocess: false
-git:
-  pagers:
-    - {}
-    - externalDiffCommand: 'pwsh.exe -NoProfile -File "C:\Users\ASUS1\AppData\Local\lazygit\lazygit-pager.ps1"'
-
 gui:
   language: "en"
   nerdFontsVersion: "3"
