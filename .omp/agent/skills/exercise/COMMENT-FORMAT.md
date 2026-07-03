@@ -1,4 +1,5 @@
 ## Comment Specification
+
 All Ai-generated code comments must uniformly adopt the `tag: description` format. `[]` tags are optional, and a comment block may use multiple `[]` tags. The keyword is mandatory, with only one keyword per comment block, placed on the last line.
 
 | Tag | Purpose |
@@ -15,11 +16,15 @@ All Ai-generated code comments must uniformly adopt the `tag: description` forma
 | `TEST` | Testing requirements |
 | `HACK` | Temporary workaround |
 
+
 ### Rules
+
 - `[]` tags are optional; a comment block may use multiple `[]` tags (e.g., `[DESIGN]` + `[WHY]` + `[IMPL]` combination) to describe design intent from different perspectives
 - The keyword must be followed by a description, e.g., `// NOTE: xxxx`, not just `// NOTE`
 - Keywords must not be **abused** as generic comments, especially `NOTE`. Once abused, it becomes very confusing. Only use for non-obvious decisions worth documenting
+
 ### Examples
+
 ```
 // NOTE: Must use thread-safe collection here
 
