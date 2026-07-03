@@ -1,3 +1,4 @@
+promptToReturnFromSubprocess: false
 git:
   pagers:
     - {}
@@ -5,5 +6,9 @@ git:
 
 gui:
   language: "en"
+  nerdFontsVersion: "3"
+  splitDiff: "auto"
 
 notARepository: quit
+os:
+  editPreset: "nvim"
