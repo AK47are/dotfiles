@@ -1,6 +1,6 @@
 ---
 name: dot
-description: Commit dotfiles (bare repo) — same as skill://commit but with custom git command
+description: Commit dotfiles (bare repo) via skill://commit with custom git command.
 hide: true
 ---
 
