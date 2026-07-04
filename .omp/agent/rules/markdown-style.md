@@ -35,9 +35,12 @@ alwaysApply: true
 
 - Only for keyword emphasis — never bold entire sentences, list items, or table cells
 - Bold is reserved for stand-alone inline emphasis (e.g., a critical term in a paragraph). Never use bold inside any list item, table cell, or heading — even for keywords. List markers, table headers, and recurring labels are inherently structural and must remain plain text.
-- Add spaces between Chinese and English text, otherwise do not add spaces
-- No spaces needed around special styles (bold, italic, links, etc.) to separate from other content, For example: `一个 [Test 链接](xxx)在这里` instead of `一个 [Test 链接](xxx) 在这里`(notice the usage of spaces)
 - Use standard inline links `[text](url)`, do not use Wiki links
+- Add spaces between Chinese and English text (including in filenames); otherwise, do not add spaces. Spaces are
+ determined by visible characters only — markup syntax (bold, italic, links, etc.) is ignored. Such as:
+    - Prefer `一个 [Test 链接](xxx)在这里` over `一个 [Test 链接](xxx) 在这里`
+    - Prefer `一个**例子 Example** 在这里` over `一个 **例子 Example** 在这里`
+    - Prefer `文件名 Report.pdf` over `文件名Report.pdf`
 
 ### Horizontal rules
 

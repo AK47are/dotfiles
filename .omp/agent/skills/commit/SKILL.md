@@ -26,7 +26,7 @@ Then commit the changes. The commit message should follow the repo's existing st
 A commit must be self-contained. The message has three parts:
 
 - Header: *where* and *what*. Lets scanners quickly judge relevance, Prefer conciseness over detail; additional context can go in the body. Max 50 characters
-- Body: *why*: explains why (context, reasoning, tradeoffs) and provides a high-level concise summary of the changes. Do not repeat what the code already shows
+- Body: *why*: explains why (context, reasoning, tradeoffs) and provides a high-level concise summary of the changes. **Do not repeat** what the code already shows
 - Code: *how* (the implementation)
 
 Together, they form a complete picture without redundancy.

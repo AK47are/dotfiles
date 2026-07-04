@@ -1,6 +1,7 @@
 ---
 name: grilling
-description: Interview the user relentlessly about a plan or design. If PLAN mode is active, read this skill first before committing to any plan.
+description: Interview the user relentlessly about a plan or design.
+hide: true
 ---
 
 Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
