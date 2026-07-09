@@ -64,25 +64,32 @@ function Get-ProxiedURL {
 }
 
 Write-Info "Setting up Rime input method configuration..."
-if (-not (Test-Path "$env:APPDATA\Rime\.git")) {
+$rimeDir = "$env:APPDATA\Rime"
+$rimeKeyFiles = @(
+    "$rimeDir\cn_dicts\base.dict.yaml",
+    "$rimeDir\en_dicts\en.dict.yaml",
+    "$rimeDir\opencc\emoji.txt",
+    "$rimeDir\lua\date_translator.lua"
+)
+$rimeReady = ($rimeKeyFiles | ForEach-Object { Test-Path $_ }) -notcontains $false
+
+if (-not $rimeReady) {
     Write-Info "Pulling rime-ice configuration..."
     $repo = "https://github.com/iDvel/rime-ice.git"
-    $dest = "$env:APPDATA\Rime"
     try {
-        if (Test-Path $dest) {
-            git -C $dest init 2>$null
-            git -C $dest remote add origin (Get-ProxiedURL $repo) 2>$null
-            git -C $dest fetch origin --depth 1
-            git -C $dest reset --hard origin/master
-        } else {
-            git clone (Get-ProxiedURL $repo) $dest --depth 1
-        }
+        # Remove stale .git that blocked retry
+        if (Test-Path "$rimeDir\.git") { Remove-Item -Recurse -Force "$rimeDir\.git" -ErrorAction SilentlyContinue }
+
+        git -C $rimeDir init 2>$null
+        git -C $rimeDir remote add origin (Get-ProxiedURL $repo) 2>$null
+        git -C $rimeDir fetch origin --depth 1
+        git -C $rimeDir reset --hard origin/master
         Write-Success "rime-ice configuration pulled successfully"
     } catch {
         Write-Warning "Failed to pull rime-ice: $($_.Exception.Message)"
     }
 } else {
-    Write-Warning "rime-ice configuration(.git) already exists, skipping"
+    Write-Warning "rime-ice configuration already exists, skipping"
 }
 
 if (-not (Test-Path "$env:APPDATA\Rime\wanxiang-lts-zh-hans.gram")) {
