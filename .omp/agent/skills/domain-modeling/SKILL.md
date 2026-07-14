@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: Build and sharpen a project's domain model. Read this skill first when the conversation introduces new domain terminology, questions existing definitions, or discusses concept relationships.
+description: Build and sharpen the project's domain vocabulary. MUST read this skill before answering terminology questions, defining or refining domain terms, resolving terminology conflicts, or writing ADRs — step 0 before grep, glob, or code search.
 ---
 
 Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the moment they crystallise.

@@ -7,4 +7,5 @@ alwaysApply: true
 
 1. **Must** the `ask` tool for asking questions instead of ask directly. If you are about to assume or guess, STOP and ask instead. Every unasked question is a bug already planted in the future
 2. AI-generated reports, analysis notes, and output files MUST be placed inside `.omp/` directory, NOT the project root
-3. When referencing files or code locations, **must** use the `relative/path:line` format(line optional). e.g. `./test.js`, `./auth.js:42`, `./routes/user.js:15`
+3. Separate Chinese and English in filenames with a space
+4. Any mention of a code file location **MUST** use `relative/path:line` (line optional), whether explicit or descriptive. Examples: `./src/utils/helpers.js`, `./routes/user.js:15`. Every time you cut corners, the user has to memorize the paths and dig through folders — you offload your work onto them

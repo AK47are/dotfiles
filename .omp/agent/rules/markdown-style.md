@@ -45,3 +45,14 @@ alwaysApply: true
 ### Horizontal rules
 
 - Do not use horizontal rules: `---` are not allowed.
+
+### Extension
+
+- Allow Callout for enhanced content presentation, with the following syntax:
+
+```md
+> [!TYPE][+|-] title
+> content
+```
+
+- Allow mermaid diagrams to illustrate logic such as flow, hierarchy, or state transitions

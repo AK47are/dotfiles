@@ -1,7 +1,6 @@
 ---
 name: grilling
-description: Interview the user relentlessly about a plan or design.
-hide: true
+description: Interview-first when requirements are vague. MUST read this skill to resolve ambiguity, explore design branches, and align on direction before touching code — for asks with multiple viable paths or unclear scope.
 ---
 
 Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
