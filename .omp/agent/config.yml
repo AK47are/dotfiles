@@ -5,9 +5,13 @@ symbolPreset: nerd
 colorBlindMode: false
 statusLine: 
   separator: powerline-thin
+  transparent: false
+  compactThinkingLevel: false
+  preset: default
 display: 
   showTokenUsage: true
   shimmer: classic
+  cacheMissMarker: true
 clearOnShrink: true
 hideThinkingBlock: true
 autoResume: false
@@ -22,11 +26,12 @@ edit:
 memory: 
   backend: mnemopi
 todo: 
-  eager: always
+  eager: preferred
+  reminders: true
 renderMermaid: 
   enabled: true
 inspect_image: 
-  enabled: true
+  enabled: false
 github: 
   enabled: false
 dev: 
@@ -46,47 +51,53 @@ commands:
 skills: 
   enableSkillCommands: true
 modelRoles: 
-  default: opencode-go/deepseek-v4-flash:xhigh
+  default: opencode-go/kimi-k2.7-code
   smol: opencode-go/deepseek-v4-flash:off
-  commit: opencode-go/deepseek-v4-flash:xhigh
+  commit: opencode-go/deepseek-v4-flash:off
   task: opencode-go/deepseek-v4-flash:xhigh
   slow: opencode-go/glm-5.2:xhigh
-  plan: opencode-go/deepseek-v4-pro:xhigh
-  designer: opencode-go/deepseek-v4-flash
-  advisor: opencode-go/deepseek-v4-flash:xhigh
+  plan: opencode-go/kimi-k2.7-code:high
+  designer: opencode-go/glm-5.2:xhigh
+  advisor: opencode-go/deepseek-v4-flash:off
   vision: opencode-go/mimo-v2.5:xhigh
+  tiny: opencode-go/deepseek-v4-flash:off
 lsp: 
-  formatOnWrite: true
-  diagnosticsOnEdit: true
+  formatOnWrite: false
+  diagnosticsOnEdit: false
+  lazy: true
 read: 
   toolResultPreview: false
   summarize: 
     enabled: true
 compaction: 
   handoffSaveToDisk: true
+  idleEnabled: false
 python: 
   kernelMode: session
 task: 
   isolation: 
-    mode: auto
+    mode: none
+  showResolvedModelBadge: true
 contextPromotion: 
   enabled: false
 defaultThinkingLevel: auto
 mnemopi: 
   scoping: per-project-tagged
   autoRecall: true
+  autoRetain: true
+  polyphonicRecall: false
 ttsr: 
   repeatMode: once
   contextMode: discard
 setupVersion: 1
 astGrep: 
-  enabled: true
+  enabled: false
 checkpoint: 
-  enabled: true
+  enabled: false
 advisor: 
   enabled: true
-  subagents: true
-  syncBacklog: "off"
+  subagents: false
+  syncBacklog: "1"
 features: 
   unexpectedStopDetection: true
 retry: 
@@ -98,3 +109,28 @@ retry:
     opencode-go/deepseek-v4-pro: 
       - nvidia/deepseek-ai/deepseek-v4-pro
       - deepseek/deepseek-v4-pro
+  maxRetries: 3
+providers: 
+  webSearch: auto
+astEdit: 
+  enabled: false
+tools: 
+  discoveryMode: auto
+  outputMaxColumns: 768
+terminal: 
+  showProgress: true
+tui: 
+  tight: false
+temperature: -1
+autolearn: 
+  enabled: true
+  autoContinue: false
+readLineNumbers: true
+bashInterceptor: 
+  enabled: false
+plan: 
+  defaultOnStartup: false
+git: 
+  enabled: true
+recap: 
+  enabled: false
