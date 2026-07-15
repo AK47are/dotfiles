@@ -9,7 +9,7 @@ Run the following command and analyze the diff to determine how to group the cha
 git status && git diff HEAD && git log -10 --format="%h %s %n%b"
 ```
 
-> If the diff alone does not provide enough context to identify distinguishing labels for the header, read related files as needed.
+> If the diff alone does not provide enough context to write a high-quality message, run the `/grilling` skill to interact with the user and gather the necessary information. Never fabricate. This prevents back-and-forth corrections later.
 
 Each commit should represent exactly one logical change — a single bug fix, feature, or refactor. Never dump unrelated changes into one commit or split a single logical change across multiple.
 
@@ -27,8 +27,13 @@ Then commit the changes. The commit message should follow the repo's existing st
 
 A commit must be self-contained. The message has three parts:
 
-- Header: *where*. Provide enough distinguishing labels (the where) to differentiate this commit from others. Keep it concise
-- Body: *why*. Explains the reason, context, tradeoffs, or constraints that are not obvious from the code. Do not repeat the header, do not list file paths or implementation steps
-- Code: *how* (the implementation)
+- Header: *where*. Provide enough distinguishing labels (the where) to differentiate this commit from others
+    - Keep it concise, within 60 chars
+- Body: *why*. Explains the reason, context, tradeoffs, or constraints that are not obvious from the code
+    - Never invent reasons, context, or tradeoffs not supported by the diff, codebase, or user input
+    - Never repeat the header
+    - Never list file paths or implementation steps
+    - Never manually wrap text to a fixed column width
+- Diff: *how*. The files and changes being committed
 
 Together, they form a complete picture without redundancy.
