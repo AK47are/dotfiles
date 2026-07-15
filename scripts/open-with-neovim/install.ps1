@@ -12,6 +12,21 @@ if (-not $weztermGui) {
     exit 1
 }
 
+# Locate the Neovim icon that will be shown in the context menu.
+$nvim = (Get-Command nvim.exe -ErrorAction SilentlyContinue).Source
+if (-not $nvim) {
+    Write-Error "nvim.exe was not found in PATH. Installation aborted."
+    exit 1
+}
+
+$nvimRuntimeLine = & $nvim --headless -u NONE -c 'lua io.stdout:write(vim.env.VIMRUNTIME)' -c 'q' 2>&1 | Select-Object -First 1
+$nvimRuntime = if ($nvimRuntimeLine) { $nvimRuntimeLine.Trim() } else { $null }
+$nvimIcon = Join-Path $nvimRuntime "neovim.ico"
+if (-not (Test-Path $nvimIcon)) {
+    Write-Warning "Could not find neovim.ico under the Neovim runtime directory; falling back to the nvim executable icon."
+    $nvimIcon = $nvim
+}
+
 # Ensure the installation directory exists.
 $installDir = Join-Path $env:USERPROFILE "scripts\open-with-neovim"
 if (-not (Test-Path $installDir)) {
@@ -39,7 +54,7 @@ function Register-NeovimVerb {
 
     $appKey = [Microsoft.Win32.Registry]::CurrentUser.CreateSubKey("$RootPath\OpenWithNeovim")
     $appKey.SetValue("MUIVerb", "Open with Neovim")
-    $appKey.SetValue("Icon", $weztermGui)
+    $appKey.SetValue("Icon", $nvimIcon)
     if ($MultiSelectModel) {
         $appKey.SetValue("MultiSelectModel", $MultiSelectModel)
     }
@@ -71,5 +86,17 @@ Register-NeovimVerb -RootPath "Software\Classes\Directory\shell" `
 Register-NeovimVerb -RootPath "Software\Classes\Directory\Background\shell" `
     -ArgumentTemplate '"%V"' `
     -MultiSelectModel "Single"
+
+# Notify Windows Explorer that file associations have changed so the new icon
+# appears immediately without requiring a manual restart.
+Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+public class ShellNotify {
+    [DllImport("shell32.dll")]
+    public static extern void SHChangeNotify(int wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
+}
+"@
+[ShellNotify]::SHChangeNotify(0x08000000, 0, [IntPtr]::Zero, [IntPtr]::Zero)
 
 Write-Output "Open with Neovim context menu installed successfully."
