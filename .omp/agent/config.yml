@@ -114,8 +114,7 @@ providers:
   webSearch: auto
 astEdit: 
   enabled: false
-tools: 
-  discoveryMode: auto
+tools:
   outputMaxColumns: 768
 terminal: 
   showProgress: true
