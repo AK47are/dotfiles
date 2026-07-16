@@ -1,7 +1,8 @@
 ---
 name: markdown-style
 description: Markdown file formatting style guide
-alwaysApply: true
+condition:
+  - '**/*.md'
 ---
 
 ## Markdown Style
