@@ -1,9 +1,4 @@
-import type { ExtensionAPI } from "@oh-my-pi/pi-coding-agent";
-
-const CONTEXT7_TOOLS: Record<string, true> = {
-  "resolve-library-id": true,
-  "query-docs": true,
-};
+import type { ExtensionAPI, ToolCallEvent } from "@earendil-works/pi-coding-agent";
 
 const FORBID_BYPASS =
   "If you cannot comply, ask the user for permission. Remember: do not bypass rules.";
@@ -11,15 +6,18 @@ const FORBID_BYPASS =
 export default function context7FirstGuard(pi: ExtensionAPI) {
   let context7Used = false;
 
-  pi.on("tool_call", (event) => {
-    const { toolName } = event;
+  pi.on("tool_call", (event: ToolCallEvent) => {
+    const invokedToolName =
+      event.toolName === "write"
+        ? /^xd:\/\/(.+)/.exec(String(event.input.path ?? ""))?.[1]
+        : event.toolName;
 
-    if (CONTEXT7_TOOLS[toolName]) {
+    if (invokedToolName === "resolve-library-id" || invokedToolName === "query-docs") {
       context7Used = true;
       return;
     }
 
-    if (toolName === "web_search" && !context7Used) {
+    if (invokedToolName === "web_search" && !context7Used) {
       return {
         block: true,
         reason:

@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@oh-my-pi/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const FORBID_BYPASS =
   "If you cannot comply, ask the user for permission. Remember: do not bypass rules.";
