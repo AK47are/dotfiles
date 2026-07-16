@@ -27,7 +27,7 @@ memory:
   backend: mnemopi
 todo: 
   eager: preferred
-  reminders: true
+  reminders: false
 renderMermaid: 
   enabled: true
 inspect_image: 
@@ -87,7 +87,8 @@ mnemopi:
   autoRetain: true
   polyphonicRecall: false
 ttsr: 
-  repeatMode: once
+  enabled: true
+  repeatMode: after-gap
   contextMode: discard
 setupVersion: 1
 astGrep: 
@@ -114,7 +115,7 @@ providers:
   webSearch: auto
 astEdit: 
   enabled: false
-tools:
+tools: 
   outputMaxColumns: 768
 terminal: 
   showProgress: true
@@ -122,7 +123,7 @@ tui:
   tight: false
 temperature: -1
 autolearn: 
-  enabled: true
+  enabled: false
   autoContinue: false
 readLineNumbers: true
 bashInterceptor: 
@@ -133,3 +134,5 @@ git:
   enabled: true
 recap: 
   enabled: false
+disabledExtensions: 
+  []
