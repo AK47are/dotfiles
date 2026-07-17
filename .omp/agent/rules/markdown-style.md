@@ -43,10 +43,6 @@ condition:
     - Prefer `一个**例子 Example** 在这里` over `一个 **例子 Example** 在这里`
     - Prefer `文件名 Report.pdf` over `文件名Report.pdf`
 
-### Horizontal rules
-
-- Do not use horizontal rules: `---` are not allowed.
-
 ### Extension
 
 - Allow Callout for enhanced content presentation, with the following syntax:
@@ -57,3 +53,9 @@ condition:
 ```
 
 - Allow mermaid diagrams to illustrate logic such as flow, hierarchy, or state transitions
+
+### Never Used
+
+- Never use horizontal rules: `---`
+- Never use em dashes
+
