@@ -1,4 +1,16 @@
+/**
+ * Auto-Grilling Extension
+ */
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { existsSync } from "fs";
+
+function detectSkill(): string {
+  const cwd = process.cwd();
+  if (existsSync(cwd + "/.git")) return "grill-with-docs";
+  if (existsSync(cwd + "/.omp/CONTEXT.md")) return "grill-with-docs";
+  if (existsSync(cwd + "/.omp/CONTEXT-MAP.md")) return "grill-with-docs";
+  return "grilling";
+}
 
 export default function (pi: ExtensionAPI) {
   let grillingEnabled = true;
@@ -12,7 +24,8 @@ export default function (pi: ExtensionAPI) {
     if (!grillingEnabled || !firstTurnPending) return;
     if (event.text?.startsWith("/")) return;
     firstTurnPending = false;
-    return { text: `/skill:grilling ${event.text}` };
+    const skill = detectSkill();
+    return { text: `/skill:${skill} ${event.text}` };
   });
 
   pi.registerCommand("grilling-off", {
