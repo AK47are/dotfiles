@@ -12,6 +12,7 @@ function scheduleBeep(pi) {
 
 export default function (pi) {
   pi.on("agent_end", (event, ctx) => {
+    if (!ctx.hasUI) return;
     scheduleBeep(pi);
   });
 
