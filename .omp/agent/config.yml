@@ -51,15 +51,15 @@ commands:
 skills: 
   enableSkillCommands: true
 modelRoles: 
-  default: opencode-go/kimi-k2.7-code
+  default: opencode-go/deepseek-v4-pro:max
   smol: opencode-go/deepseek-v4-flash:off
   commit: opencode-go/deepseek-v4-flash:off
   task: opencode-go/deepseek-v4-flash:xhigh
-  slow: opencode-go/glm-5.2:xhigh
-  plan: opencode-go/kimi-k2.7-code:high
+  slow: opencode-go/glm-5.2:max
+  plan: opencode-go/glm-5.2:max
   designer: opencode-go/glm-5.2:xhigh
   advisor: opencode-go/deepseek-v4-flash:off
-  vision: opencode-go/mimo-v2.5:xhigh
+  vision: opencode-go/mimo-v2.5:high
   tiny: opencode-go/deepseek-v4-flash:off
 lsp: 
   formatOnWrite: false
@@ -97,7 +97,7 @@ checkpoint:
   enabled: false
 advisor: 
   enabled: true
-  subagents: false
+  subagents: true
   syncBacklog: "1"
 features: 
   unexpectedStopDetection: true
@@ -117,6 +117,7 @@ astEdit:
   enabled: false
 tools: 
   outputMaxColumns: 768
+  xdev: false
 terminal: 
   showProgress: true
 tui: 
