@@ -23,6 +23,28 @@ const MARKDOWN_PATTERNS = [
   { re: /^\s*---+\s*$/m, msg: "Horizontal rule '---' is not allowed." },
 ];
 
+/** Strip YAML frontmatter (--- ... ---) from the beginning of content.
+ *  Returns the body after the closing ---, or the original content if no frontmatter found. */
+function stripFrontmatter(content: string): string {
+  const lines = content.split("\n");
+  let firstNonEmpty = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].trim() !== "") {
+      firstNonEmpty = i;
+      break;
+    }
+  }
+  if (firstNonEmpty < 0 || !/^\s*---+\s*$/.test(lines[firstNonEmpty])) {
+    return content;
+  }
+  for (let i = firstNonEmpty + 1; i < lines.length; i++) {
+    if (/^\s*---+\s*$/.test(lines[i])) {
+      return lines.slice(i + 1).join("\n");
+    }
+  }
+  return content;
+}
+
 const MD_RULES_REMINDER =
   "Violation of global Markdown style specification. Please revisit the Markdown style rules already provided to you. Review your output against each of those rules, correct any violations, and ensure full compliance.";
 
@@ -42,15 +64,14 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
 
     const filePath = String(input.path ?? input.file_path ?? "");
     const content = String(input.content ?? "");
-    if (!content) return;
-
     const violations: string[] = [];
 
     // Markdown 样式检查
     if (filePath.endsWith(".md")) {
+      const body = stripFrontmatter(content);
       let hasViolation = false;
       for (const { re, msg } of MARKDOWN_PATTERNS) {
-        if (re.test(content)) {
+        if (re.test(body)) {
           violations.push(msg);
           hasViolation = true;
         }
