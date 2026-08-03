@@ -33,7 +33,8 @@ A commit must be self-contained. The message has three parts:
     - Never invent reasons, context, or tradeoffs not supported by the diff, codebase, or user input
     - Never repeat the header
     - Never list file paths or implementation steps
-    - Never manually wrap text to a fixed column width
+    - Must wrap text to a fixed column width
+    - Allow appropriate blank lines to separate visual sections
 - Diff: *how*. The files and changes being committed
 
 Together, they form a complete picture without redundancy.
