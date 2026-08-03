@@ -6,8 +6,16 @@ const FORBID_BYPASS =
 
 type MarkdownPattern = {
   re: RegExp;
-  msg: string | ((match: RegExpMatchArray, line: string) => string);
+  msg: string | ((match: RegExpMatchArray, line: string) => string | null);
 };
+/** Weighted character count: Han script characters count 2, everything else 1.
+ *  Whitespace is ignored; iteration is code-point based so surrogate pairs count once. */
+function countWeight(text: string): number {
+  return [...text.replace(/\s+/g, "")].reduce(
+    (total, ch) => total + (/\p{Script=Han}/u.test(ch) ? 2 : 1),
+    0,
+  );
+}
 
 const MARKDOWN_PATTERNS: MarkdownPattern[] = [
   {
@@ -15,19 +23,34 @@ const MARKDOWN_PATTERNS: MarkdownPattern[] = [
     msg: "H1 headings (# Title) are not allowed. The filename serves as the implicit H1, and the content must not repeat the filename as a heading (whether with # or ##).",
   },
   {
-    re: /^#+ \d/gm,
-    msg: "Numbered headings (# 1., ## 1.1., etc.) are not allowed.",
+    re: /^#+ \d+(?:[.、.)）]|$)/gm,
+    msg: "Numbered headings (digits followed by an enumerative marker, e.g. # 1., ## 1.1., 1、, 1)) are not allowed.",
   },
   {
-    re: /^#+ .{20,}/gm,
+    re: /^#+ .+/gm,
     msg: (_match, line) => {
       const headingText = line.replace(/^#+\s+/, "");
-      return `Heading is too long (max 20 characters). The offending line is "${line}", whose heading text (after the '# ' markers) is ${headingText.length} characters; shorten it to 19 characters or fewer.`;
+      const count = countWeight(headingText);
+      if (count <= 20) return null;
+      return `Heading is too long (max 20 weighted characters; a Chinese character counts as 2, others as 1). The offending line is "${line}", whose heading text (after the '# ' markers) has weight ${count}; shorten it to 20 or fewer.`;
     },
   },
   {
     re: /^\s*(?:-|\d+\.) \*\*.*?\*\*/gm,
     msg: "The pattern '- **...**' or '1. **...**' (bold text in a list item) is not allowed.",
+  },
+  {
+    re: /—/g,
+    msg: (_match, line) =>
+      `Em dash '—' (including Chinese '——') is not allowed. The offending line is "${line}". Hyphen '-' and en dash '–' are fine.`,
+  },
+  {
+    re: /\*\*(?!\*)[^*\n]+?\*\*(?!\*)/g,
+    msg: (match) => {
+      const count = countWeight(match[0].slice(2, -2));
+      if (count <= 20) return null;
+      return `Bold text is too long (max 20 weighted characters; a Chinese character counts as 2, others as 1). "${match[0]}" has weight ${count}; shorten it to 20 or fewer.`;
+    },
   },
   { re: /^\s*---+\s*$/gm, msg: "Horizontal rule '---' is not allowed." },
 ];
@@ -53,8 +76,9 @@ function stripFrontmatter(content: string): string {
   }
   return content;
 }
-/** Collect markdown style violations. For long headings, the message
- *  names the whole offending line and its heading text length. */
+/** Collect markdown style violations. Long heading and em dash messages name
+ *  the whole offending line; long bold messages name the text and its
+ *  weighted character count (Han = 2, others = 1, whitespace ignored). */
 function checkMarkdown(body: string): string[] {
   const violations: string[] = [];
   for (const { re, msg } of MARKDOWN_PATTERNS) {
@@ -63,7 +87,8 @@ function checkMarkdown(body: string): string[] {
       const lineEnd = body.indexOf("\n", lineStart);
       const line =
         lineEnd === -1 ? body.slice(lineStart) : body.slice(lineStart, lineEnd);
-      violations.push(typeof msg === "function" ? msg(match, line) : msg);
+      const text = typeof msg === "function" ? msg(match, line) : msg;
+      if (text) violations.push(text);
     }
   }
   return violations;
