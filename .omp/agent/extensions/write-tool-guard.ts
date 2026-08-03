@@ -1,26 +1,35 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const FORBID_BYPASS =
-  "If you cannot comply, ask the user for permission. Remember: do not bypass rules.";
+  "If the current warning conflicts with requirements given earlier in this conversation, ask the user promptly; " +
+  "do not decide based on whether you can apply the rule. Remember: do not bypass rules.";
 
-const MARKDOWN_PATTERNS = [
+type MarkdownPattern = {
+  re: RegExp;
+  msg: string | ((match: RegExpMatchArray, line: string) => string);
+};
+
+const MARKDOWN_PATTERNS: MarkdownPattern[] = [
   {
-    re: /^# /m,
+    re: /^# /gm,
     msg: "H1 headings (# Title) are not allowed. The filename serves as the implicit H1, and the content must not repeat the filename as a heading (whether with # or ##).",
   },
   {
-    re: /^#+ \d/m,
+    re: /^#+ \d/gm,
     msg: "Numbered headings (# 1., ## 1.1., etc.) are not allowed.",
   },
   {
-    re: /^#+ .{20,}/m,
-    msg: "Heading is too long (max 20 characters).",
+    re: /^#+ .{20,}/gm,
+    msg: (_match, line) => {
+      const headingText = line.replace(/^#+\s+/, "");
+      return `Heading is too long (max 20 characters). The offending line is "${line}", whose heading text (after the '# ' markers) is ${headingText.length} characters; shorten it to 19 characters or fewer.`;
+    },
   },
   {
-    re: /^\s*(?:-|\d+\.) \*\*.*?\*\*/m,
+    re: /^\s*(?:-|\d+\.) \*\*.*?\*\*/gm,
     msg: "The pattern '- **...**' or '1. **...**' (bold text in a list item) is not allowed.",
   },
-  { re: /^\s*---+\s*$/m, msg: "Horizontal rule '---' is not allowed." },
+  { re: /^\s*---+\s*$/gm, msg: "Horizontal rule '---' is not allowed." },
 ];
 
 /** Strip YAML frontmatter (--- ... ---) from the beginning of content.
@@ -44,9 +53,23 @@ function stripFrontmatter(content: string): string {
   }
   return content;
 }
+/** Collect markdown style violations. For long headings, the message
+ *  names the whole offending line and its heading text length. */
+function checkMarkdown(body: string): string[] {
+  const violations: string[] = [];
+  for (const { re, msg } of MARKDOWN_PATTERNS) {
+    for (const match of body.matchAll(re)) {
+      const lineStart = match.index!;
+      const lineEnd = body.indexOf("\n", lineStart);
+      const line =
+        lineEnd === -1 ? body.slice(lineStart) : body.slice(lineStart, lineEnd);
+      violations.push(typeof msg === "function" ? msg(match, line) : msg);
+    }
+  }
+  return violations;
+}
 
-const MD_RULES_REMINDER =
-  "Violation of global Markdown style specification. Please revisit the Markdown style rules already provided to you. Review your output against each of those rules, correct any violations, and ensure full compliance.";
+const MD_RULES_REMINDER = "Violation of global Markdown style specification.";
 
 const COMMENT_MAP: Record<string, string> = {
   java: "//",
@@ -69,15 +92,9 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
     // Markdown 样式检查
     if (filePath.endsWith(".md")) {
       const body = stripFrontmatter(content);
-      let hasViolation = false;
-      for (const { re, msg } of MARKDOWN_PATTERNS) {
-        if (re.test(body)) {
-          violations.push(msg);
-          hasViolation = true;
-        }
-      }
-      if (hasViolation) {
-        violations.unshift(MD_RULES_REMINDER);
+      const mdViolations = checkMarkdown(body);
+      if (mdViolations.length > 0) {
+        violations.push(MD_RULES_REMINDER, ...mdViolations);
       }
     }
 
@@ -97,7 +114,7 @@ export default function markdownStyleGuard(pi: ExtensionAPI) {
     }
 
     if (violations.length > 0) {
-      const reason = violations.join(" ") + " " + FORBID_BYPASS;
+      const reason = [...new Set(violations)].join(" ") + " " + FORBID_BYPASS;
       return { block: true, reason };
     }
   });
