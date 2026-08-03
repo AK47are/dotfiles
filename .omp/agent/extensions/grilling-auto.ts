@@ -18,7 +18,11 @@ export default function (pi: ExtensionAPI) {
   });
 
   pi.on("session_switch", (event: { reason: string }) => {
-    grillingEnabled = event.reason === "new";
+    grillingEnabled = event.reason === "new" || event.reason === "handoff";
+  });
+
+  pi.on("session_compact", () => {
+    grillingEnabled = true;
   });
 
   pi.on("input", (event: { text?: string }) => {
