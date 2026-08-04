@@ -108,10 +108,15 @@ const COMMENT_MAP: Record<string, string> = {
 export default function markdownStyleGuard(pi: ExtensionAPI) {
   pi.on("tool_call", (event) => {
     const { toolName, input } = event;
-    if (toolName !== "write") return;
+    if (toolName !== "write" && toolName !== "edit") return;
 
     const filePath = String(input.path ?? input.file_path ?? "");
-    const content = String(input.content ?? "");
+    // edit 事件只携带替换片段（path/old_string/new_string），校验 new_string
+    // 保证编辑不能引入违规；整文件重写走 write 时仍做全量校验
+    const content =
+      toolName === "edit"
+        ? String(input.new_string ?? "")
+        : String(input.content ?? "");
     const violations: string[] = [];
 
     // Markdown 样式检查
