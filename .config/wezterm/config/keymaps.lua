@@ -43,19 +43,3 @@ extend_key_table("search_mode", {
     }),
   },
 })
-
--- Ctrl+1..8 → jump to tab 1-8; Ctrl+9 → jump to last tab
-local keys = WezTerm.gui.default_keys()
-for i = 1, 8 do
-  table.insert(keys, {
-    key = tostring(i),
-    mods = "CTRL",
-    action = act.ActivateTab(i - 1),
-  })
-end
-table.insert(keys, {
-  key = "9",
-  mods = "CTRL",
-  action = act.ActivateTab(-1),
-})
-Config.keys = keys
