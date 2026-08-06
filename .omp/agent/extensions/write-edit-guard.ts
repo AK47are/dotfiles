@@ -2,7 +2,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const FORBID_BYPASS =
   "If the current warning conflicts with requirements given earlier in this conversation, ask the user promptly; " +
-  "do not decide based on whether you can apply the rule. Remember: do not bypass rules.";
+  "Remember: do not bypass rules.";
 
 type MarkdownPattern = {
   re: RegExp;
@@ -32,7 +32,7 @@ const MARKDOWN_PATTERNS: MarkdownPattern[] = [
       const headingText = line.replace(/^#+\s+/, "");
       const count = countWeight(headingText);
       if (count <= 20) return null;
-      return `Heading is too long (max 20 weighted characters; a Chinese character counts as 2, others as 1). The offending line is "${line}", whose heading text (after the '# ' markers) has weight ${count}; shorten it to 20 or fewer.`;
+      return `Heading is too long (max 20 weighted characters; a Chinese character counts as 2, others as 1). The offending line is "${line}", whose heading text has weight ${count}.`;
     },
   },
   {

@@ -1,7 +1,7 @@
-import type { ExtensionAPI, ToolCallEvent } from "@earendil-works/pi-coding-agent";
-
-const FORBID_BYPASS =
-  "If you cannot comply, ask the user for permission. Remember: do not bypass rules.";
+import type {
+  ExtensionAPI,
+  ToolCallEvent,
+} from "@earendil-works/pi-coding-agent";
 
 export default function context7FirstGuard(pi: ExtensionAPI) {
   let context7Used = false;
@@ -12,7 +12,10 @@ export default function context7FirstGuard(pi: ExtensionAPI) {
         ? /^xd:\/\/(.+)/.exec(String(event.input.path ?? ""))?.[1]
         : event.toolName;
 
-    if (invokedToolName === "resolve-library-id" || invokedToolName === "query-docs") {
+    if (
+      invokedToolName === "resolve-library-id" ||
+      invokedToolName === "query-docs"
+    ) {
       context7Used = true;
       return;
     }
@@ -21,8 +24,8 @@ export default function context7FirstGuard(pi: ExtensionAPI) {
       return {
         block: true,
         reason:
-          "You MUST try Context7 tools (resolve-library-id, query-docs) before using web_search. If Context7 yields no useful results, then web_search is permitted. " +
-          FORBID_BYPASS,
+          "You MUST try Context7 before using web_search, regardless of whether you think it applies." +
+          "Do not use other tools to bypass this rule.",
       };
     }
   });
