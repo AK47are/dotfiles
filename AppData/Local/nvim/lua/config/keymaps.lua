@@ -46,3 +46,5 @@ map("n", "<leader>Q", "q", { desc = "Record Macro" })
 map("n", "<localleader>y", function()
   vim.fn.setreg("*", vim.fn.expand("%:p"))
 end, { desc = "Copy current file absolute path" })
+
+vim.keymap.set("n", "gf", "gF")
