@@ -29,12 +29,12 @@ A commit must be self-contained. The message has three parts:
 
 - Header: *where*. Provide enough distinguishing labels (the where) to differentiate this commit from others
     - Keep it concise, within 60 chars
-- Body: *why*. Explains the reason, context, tradeoffs, or constraints that are not obvious from the code
+- Body: *why*. Explains the reason, context, tradeoffs, or constraints that are not **obvious** from the code
     - Never invent reasons, context, or tradeoffs not supported by the diff, codebase, or user input
     - Never repeat the header
     - Never list file paths or implementation steps
     - Must wrap text to a fixed column width
-    - Allow appropriate blank lines to separate visual sections
+    - Prefer blank lines or list items as visual separators
 - Diff: *how*. The files and changes being committed
 
 Together, they form a complete picture without redundancy.
