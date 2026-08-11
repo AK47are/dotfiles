@@ -20,18 +20,18 @@ treeFilterMode: default
 startup: 
   checkUpdate: false
   quiet: true
-collapseChangelog: true
+  changelogMode: summary
 edit: 
   mode: hashline
 memory: 
   backend: mnemopi
 todo: 
-  eager: preferred
+  eager: always
   reminders: false
 renderMermaid: 
   enabled: true
 inspect_image: 
-  enabled: false
+  mode: auto
 github: 
   enabled: false
 dev: 
@@ -51,16 +51,16 @@ commands:
 skills: 
   enableSkillCommands: true
 modelRoles: 
-  default: opencode-go/deepseek-v4-pro:max
+  default: opencode-go/deepseek-v4-flash:max
   smol: opencode-go/deepseek-v4-flash:off
   commit: opencode-go/deepseek-v4-flash:off
-  task: opencode-go/deepseek-v4-flash:xhigh
-  slow: opencode-go/glm-5.2:max
-  plan: opencode-go/glm-5.2:max
-  designer: opencode-go/glm-5.2:xhigh
+  task: opencode-go/deepseek-v4-flash:max
+  plan: opencode-go/deepseek-v4-flash:max
+  designer: opencode-go/glm-5.2:max
   advisor: opencode-go/deepseek-v4-flash:off
   vision: opencode-go/mimo-v2.5:high
   tiny: opencode-go/deepseek-v4-flash:off
+  slow: opencode-go/deepseek-v4-flash:max
 lsp: 
   formatOnWrite: false
   diagnosticsOnEdit: false
@@ -70,7 +70,7 @@ read:
   summarize: 
     enabled: true
 compaction: 
-  handoffSaveToDisk: true
+  handoffSaveToDisk: false
   idleEnabled: false
 python: 
   kernelMode: session
@@ -112,12 +112,15 @@ retry:
       - deepseek/deepseek-v4-pro
   maxRetries: 3
 providers: 
-  webSearch: auto
+  tinyModel: online
+  webSearchOrder: 
+    - exa
+    - jina
 astEdit: 
   enabled: false
 tools: 
   outputMaxColumns: 768
-  xdev: false
+  xdev: true
 terminal: 
   showProgress: true
 tui: 
@@ -137,3 +140,16 @@ recap:
   enabled: false
 disabledExtensions: 
   []
+cycleOrder: 
+  - smol
+  - default
+  - slow
+security: 
+  enabled: true
+browser: 
+  headless: true
+bash: 
+  enabled: true
+shellMinimizer: 
+  sourceOutlineLevel: default
+  enabled: true
