@@ -1,0 +1,31 @@
+#!/bin/sh
+# Global commit-msg hook: rewrap the commit message body to a fixed width
+# (via rewrap.py, requires python on PATH), then chain any repo-local
+# commit-msg hook (global core.hooksPath shadows .git/hooks, so the chaining
+# is done manually here).
+#
+# Fail-safe: if the formatter is missing or fails, the message is left
+# untouched and the commit proceeds (exit 0). Use `git commit --no-verify`
+# to bypass this hook entirely.
+
+msg_file="$1"
+[ -n "$msg_file" ] || exit 0
+
+width="$(git config --get rewrap.width 2>/dev/null)"
+[ -n "$width" ] || width=72
+
+hook_dir="$(dirname "$0")"
+if command -v python >/dev/null 2>&1; then
+    python "$hook_dir/rewrap.py" "$msg_file" --width "$width" \
+        || echo "commit-msg: rewrap failed, message left as-is" >&2
+else
+    echo "commit-msg: python not found, message left as-is" >&2
+fi
+
+# Chain repo-local hook if present.
+local_hook="$GIT_DIR/hooks/commit-msg"
+if [ -n "$local_hook" ] && [ -x "$local_hook" ] && [ "$local_hook" != "$0" ]; then
+    exec "$local_hook" "$@"
+fi
+
+exit 0

@@ -8,6 +8,7 @@
 	autocrlf = input
 	longpaths = true
 	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.config/git/hooks
 [i18n]
 	logOutputEncoding = utf-8
 [difftool]
