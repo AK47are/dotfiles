@@ -23,3 +23,7 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[http]
+	proxy = http://127.0.0.1:7000
+[https]
+	proxy = http://127.0.0.1:7000
