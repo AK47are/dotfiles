@@ -1,8 +1,28 @@
 #Requires AutoHotkey v2.0
-#SingleInstance Force 
+#SingleInstance Force
 
-; Win+Ctrl+T 窗口置顶
-#^t::WinSetAlwaysOnTop(-1, "A")
+; Win+Ctrl+T 窗口置顶，置顶窗口边框染红（Win11 22H2+ DWM 原生，随窗口自动对齐/跟随）
+#^t::togglePinTop()
+
+togglePinTop() {
+  hwnd := WinGetID("A")
+  if !hwnd
+    return
+  if (WinGetExStyle(hwnd) & 0x8) {
+    WinSetAlwaysOnTop(0, hwnd)
+    setBorderColor(hwnd, 0xFFFFFFFF)  ; DWMWA_COLOR_DEFAULT 还原系统默认
+  } else {
+    WinSetAlwaysOnTop(1, hwnd)
+    setBorderColor(hwnd, 0xE53935)   ; 红
+  }
+}
+
+; DWMWA_BORDER_COLOR = 34，参数为 BGR 顺序的 COLORREF
+setBorderColor(hwnd, color) {
+  static attr := 34
+  bgr := ((color & 0xFF) << 16) | (color & 0xFF00) | ((color >> 16) & 0xFF)
+  DllCall("dwmapi\DwmSetWindowAttribute", "ptr", hwnd, "int", attr, "int*", bgr, "int", 4)
+}
 
 ; 右Ctrl+Alt+[ 切换最近窗口，基于系统 API，重载不会消失
 >^![::activateLastActiveWindow()
