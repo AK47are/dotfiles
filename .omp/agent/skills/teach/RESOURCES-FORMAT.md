@@ -1,28 +1,21 @@
-The canonical format for `.omp/teach/RESOURCES.md` — the curated set of trusted sources for this topic. Knowledge for explainers should be drawn from here, not from parametric guesses. Wisdom comes from the communities listed here.
+RESOURCES.md format: high-trust knowledge sources that ground teaching. Group by Knowledge / Wisdom; annotate every entry; prune ruthlessly.
 
-## Structure
-
-```md
 ## Knowledge
-
-- [Book: _The Science and Practice of Strength Training_ — Zatsiorsky & Kraemer](https://example.com)
-  Foundational text on programming and adaptation. Use for: anything to do with periodisation, recovery, intensity zones.
-- [Article: "How Much Should I Train?" — Greg Nuckols (Stronger By Science)](https://example.com)
-  Evidence-based review of volume landmarks. Use for: weekly set targets per muscle group.
+- [Book: _The Science and Practice of Strength Training_, Zatsiorsky & Kraemer](https://example.com)
+  Foundational: programming & adaptation. Use: periodisation, recovery, intensity zones
+- [Article: "How Much Should I Train?", Greg Nuckols (Stronger By Science)](https://example.com)
+  Evidence-based volume-landmark review. Use: weekly set targets per muscle group
 
 ## Wisdom (Communities)
-
 - [r/weightroom](https://reddit.com/r/weightroom)
-  High-signal subreddit, moderated against bro-science. Use for: programme critique, plateau troubleshooting.
+  High-signal; moderated against bro-science. Use: programme critique, plateau troubleshooting
 - Local: Tuesday strength class at {gym name}
-  Use for: real-time coaching feedback on lifts.
-```
+  Use: real-time coaching feedback on lifts
 
 ## Rules
-
-- High-trust only. Prefer primary sources, recognised experts, peer-reviewed work, and communities with strong moderation. If a resource is marketing dressed as education, leave it out
-- Annotate every entry. A bare link is useless in three months. Add one line: what it covers and when to reach for it
-- Group by Knowledge / Wisdom. Mirrors the philosophy in [SKILL.md](./SKILL.md). It is fine for a resource to appear in only one group
-- Surface gaps explicitly. If no good resource exists for an area the mission needs, write a `## Gaps` section listing what is missing. This drives future search
-- Prune ruthlessly. A resource that turned out to be wrong, shallow, or off-mission should be removed, not buried. Better five sharp sources than thirty mediocre ones
-- Record community preferences. If the user has opted out of joining communities, note it here so future sessions don't keep proposing them
+- High-trust only: primary sources, recognised experts, peer-reviewed work, strongly moderated communities. Marketing dressed as education ⇒ omit
+- Annotate every entry; bare link useless in 3 months. One line: what it covers + when to reach for it
+- Group by Knowledge / Wisdom (mirrors #philosophy). A resource may appear in one group only
+- Surface gaps: if no good resource for an area the mission needs, write `## Gaps` listing what's missing ⇒ drives future search
+- Prune ruthlessly: wrong, shallow, or off-mission ⇒ remove, not bury. Five sharp > thirty mediocre
+- Record community preferences: if user opted out of joining communities, note it so future sessions stop proposing them

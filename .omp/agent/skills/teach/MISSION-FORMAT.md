@@ -1,27 +1,15 @@
-The canonical format for `.omp/teach/MISSION.md`, which lives at `.omp/teach/` and captures the _reason_ the user is learning this topic. Every teaching decision — what to teach next, which resources to surface, which exercises to design — should trace back to this document.
+MISSION.md format: the user's concrete real-world reason for learning the topic; grounds all lessons. Fill placeholders with observable specifics; avoid abstractions.
 
-## Template
-
-```md
 ## Why
-{1-3 sentences. The concrete real-world goal the user is chasing. What changes in their life or work when they have this skill? Avoid abstract framings like "to understand X" — push for the underlying outcome.}
+{1-3 sentences. Concrete real-world goal the user chases. What changes in life/work with this skill. Avoid abstractions like 「to understand X」; push underlying outcome.}
 
 ## Success looks like
-- {A specific, observable thing the user will be able to do}
-- {Another specific thing}
+- {specific, observable thing the user can do}
+- {another specific thing}
 - {…}
 
 ## Constraints
-- {Time, budget, prior commitments, learning preferences, anything that bounds the approach}
+- {time, budget, prior commitments, learning preferences, anything bounding the approach}
 
 ## Out of scope
-- {Adjacent topics the user explicitly does not want to chase right now — protects the zone of proximal development}
-```
-
-## Rules
-
-- One mission per workspace. If the user wants to learn two unrelated things, that is two workspaces
-- Concrete over abstract. "Run a half marathon by October" beats "get fitter." "Ship a Rust CLI to my team" beats "learn Rust."
-- Push back on vagueness. If the user cannot articulate why, interview them before writing anything. A bad mission is worse than no mission
-- Revise when reality shifts. Missions change. When the user's goal moves, update this file — don't leave a stale mission steering future sessions
-- Keep it short. If `.omp/teach/MISSION.md` runs past a screen, it has stopped being a compass and started being a plan
+- {adjacent topics the user explicitly won't chase now: protects zone of proximal development}
