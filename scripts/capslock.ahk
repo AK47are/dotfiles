@@ -35,7 +35,7 @@ CapsLock::RCtrl
 ; 检查 CapsLock 状态
 checkCapsLockState() {
     if GetKeyState("CapsLock", "T") {
-      Reload()
       TrayTip "CapsLock 状态修正", "已强制关闭 CapsLock", 50
+      Reload()
     }
 }
