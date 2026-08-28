@@ -31,10 +31,12 @@ A commit must be self-contained. The message has three parts:
     - Keep it concise, within 60 chars
 - Body: *why*. Explains the reason, context, tradeoffs, or constraints that are not **obvious** from the code
     - Never invent reasons, context, or tradeoffs not supported by the diff, codebase, or user input
-    - Never repeat the header
+    - Never repeat the header or restate what the diff already shows
     - Never list file paths or implementation steps
     - Must wrap text to a fixed column width
     - Prefer blank lines or list items as visual separators
+    - Prefer a single-line message when the diff needs no explanation
+    - Write from the repository owner's point of view, not from the agent's or a reviewer's
 - Diff: *how*. The files and changes being committed
 
 Together, they form a complete picture without redundancy.
