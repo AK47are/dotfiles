@@ -106,3 +106,38 @@ toggleWindowVisibility(cls, exe, launchPath := "") {
   }
   DetectHiddenWindows(false)
 }
+
+; Alt+` 切换当前应用的下一个窗口（同 exe 的 z-order 顺序，最小化窗口自动还原）
+; 参考 https://gist.github.com/mattheworres/e6a98b00f5a93a6bf3514a872b0d1ed0
+!`::switchAppWindow(1)
+!+`::switchAppWindow(-1)
+
+switchAppWindow(direction) {
+  activeId := WinGetID("A")
+  if !activeId
+    return
+  try exe := WinGetProcessName(activeId)
+  catch
+    return
+  ids := WinGetList("ahk_exe " exe)
+  n := ids.Length
+  if n <= 1
+    return
+  index := 0
+  for i, id in ids {
+    if id = activeId {
+      index := i
+      break
+    }
+  }
+  if index = 0
+    return
+  i := index
+  loop n {
+    i := direction > 0 ? (i = n ? 1 : i + 1) : (i = 1 ? n : i - 1)
+    if i != index && isWindow(ids[i]) {
+      WinActivate("ahk_id " . ids[i])
+      return
+    }
+  }
+}
