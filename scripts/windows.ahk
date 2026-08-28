@@ -29,13 +29,12 @@ setBorderColor(hwnd, color) {
 
 ; 本段代码来自 https://www.autohotkey.com/boards/viewtopic.php?style=23&p=548496# 让我们心怀感激之情！
 activateLastActiveWindow() {
-  oid := WinGetlist(, , "Find",)
+  oid := WinGetList()
   Loop oid.Length {
     this_ID := oid[A_Index]
     if WinActive("ahk_id " this_ID) || !isWindow(this_ID)
       continue
     WinActivate("ahk_id " . this_ID)
-    DllCall("SetForegroundWindow", "UInt", this_ID)
     break
   }
 }
@@ -57,7 +56,8 @@ isWindow(hWnd) {
 
 isWindowCloaked(hwnd) {
   cloaked := 0
-  return DllCall("dwmapi\DwmGetWindowAttribute", "ptr", hwnd, "int", 14, "ptr", cloaked, "int", 4) >= 0 && cloaked
+  ; DWMWA_CLOAKED=14，输出为 4 字节 BOOL，需传变量地址而非值
+  return DllCall("dwmapi\DwmGetWindowAttribute", "ptr", hwnd, "int", 14, "int*", &cloaked, "int", 4) >= 0 && cloaked
 }
 
 ; 窗口绑定切换，重载会消失 https://meta.appinn.net/t/topic/39693
