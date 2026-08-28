@@ -4,14 +4,18 @@
 ; Win+Ctrl+T 窗口置顶，置顶窗口边框染红（Win11 22H2+ DWM 原生，随窗口自动对齐/跟随）
 #^t::togglePinTop()
 
+; 置顶前边框色的快照（按 hwnd），取消置顶时还原
+pinBorders := Map()
+
 togglePinTop() {
   hwnd := WinGetID("A")
   if !hwnd
     return
   if (WinGetExStyle(hwnd) & 0x8) {
     WinSetAlwaysOnTop(0, hwnd)
-    setBorderColor(hwnd, 0xFFFFFFFF)  ; DWMWA_COLOR_DEFAULT 还原系统默认
+    setBorderColor(hwnd, pinBorders.Has(hwnd) ? pinBorders[hwnd] : 0xB5B5B5)  ; 还原置顶前边框色（无快照时回退中性灰）
   } else {
+    pinBorders[hwnd] := snapshotBorderColor(hwnd)
     WinSetAlwaysOnTop(1, hwnd)
     setBorderColor(hwnd, 0xE53935)   ; 红
   }
@@ -22,6 +26,40 @@ setBorderColor(hwnd, color) {
   static attr := 34
   bgr := ((color & 0xFF) << 16) | (color & 0xFF00) | ((color >> 16) & 0xFF)
   DllCall("dwmapi\DwmSetWindowAttribute", "ptr", hwnd, "int", attr, "int*", bgr, "int", 4)
+}
+; 采样窗口边框顶边中心颜色作为置顶前快照；采样无效时回退中性灰 0xB5B5B5
+snapshotBorderColor(hwnd) {
+  if !WinExist("ahk_id " hwnd)
+    return 0xB5B5B5
+  WinGetPos(&x, &y, &w, &h, "ahk_id " hwnd)
+  if (w < 20 || h < 20)
+    return 0xB5B5B5
+  px := x + w // 2
+  py := y
+  if !pointOnScreen(px, py)
+    return 0xB5B5B5
+  try {
+    c := PixelGetColor(px, py, "RGB")
+  } catch
+    return 0xB5B5B5
+  c := StrReplace(c, "0x", "")
+  if (StrLen(c) != 6)
+    return 0xB5B5B5
+  val := Integer("0x" c)
+  r := (val >> 16) & 0xFF, g := (val >> 8) & 0xFF, b := val & 0xFF
+  ; 纯白采样不可靠（无有效边框绘制），回退中性灰
+  if (r >= 0xF5 && g >= 0xF5 && b >= 0xF5)
+    return 0xB5B5B5
+  return val & 0xFFFFFF
+}
+
+pointOnScreen(x, y) {
+  Loop MonitorGetCount() {
+    MonitorGet(A_Index, &l, &t, &r, &b)
+    if (x >= l && x <= r && y >= t && y <= b)
+      return true
+  }
+  return false
 }
 
 ; 右Ctrl+Alt+[ 切换最近窗口，基于系统 API，重载不会消失
