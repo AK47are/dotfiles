@@ -1,14 +1,14 @@
-theme: 
+theme:
   dark: dark-catppuccin
   light: light-catppuccin
 symbolPreset: nerd
 colorBlindMode: false
-statusLine: 
+statusLine:
   separator: powerline-thin
   transparent: false
   compactThinkingLevel: false
   preset: default
-display: 
+display:
   showTokenUsage: true
   shimmer: classic
   cacheMissMarker: true
@@ -17,139 +17,143 @@ hideThinkingBlock: true
 autoResume: false
 steeringMode: one-at-a-time
 treeFilterMode: default
-startup: 
+startup:
   checkUpdate: false
   quiet: true
   changelogMode: summary
-edit: 
+edit:
   mode: hashline
-memory: 
+memory:
   backend: mnemopi
-todo: 
+todo:
   eager: always
   reminders: false
-renderMermaid: 
+renderMermaid:
   enabled: true
-inspect_image: 
-  mode: auto
-github: 
+github:
   enabled: false
-dev: 
+dev:
   autoqa: false
-secrets: 
+secrets:
   enabled: true
-disabledProviders: 
+disabledProviders:
   - claude
   - claude-plugins
-branchSummary: 
+branchSummary:
   enabled: true
-commands: 
+commands:
   enableClaudeUser: false
   enableClaudeProject: false
   enableOpencodeUser: false
   enableOpencodeProject: false
-skills: 
+skills:
   enableSkillCommands: true
-modelRoles: 
-  default: opencode-go/deepseek-v4-flash:max
-  smol: opencode-go/deepseek-v4-flash:off
-  commit: opencode-go/deepseek-v4-flash:off
-  task: opencode-go/deepseek-v4-flash:max
-  plan: opencode-go/deepseek-v4-flash:max
-  designer: opencode-go/glm-5.2:max
-  advisor: opencode-go/deepseek-v4-flash:off
-  vision: opencode-go/mimo-v2.5:high
-  tiny: opencode-go/deepseek-v4-flash:off
-  slow: opencode-go/deepseek-v4-flash:max
-lsp: 
+modelRoles:
+  default: opencode-go/deepseek-flash
+  smol: opencode-go/glm-5.3-flash:off
+  commit: opencode-go/glm-5.3-flash:off
+  task: opencode-go/glm-5.3-flash:max
+  plan: opencode-go/deepseek-pro:max
+  designer: opencode-go/deepseek-pro:max
+  advisor: opencode-go/glm-5.3-flash:off
+  vision: opencode-go/deepseek-flash:off
+  tiny: opencode-go/glm-5.3-flash:off
+  slow: opencode-go/deepseek-pro:max
+lsp:
   formatOnWrite: false
   diagnosticsOnEdit: false
   lazy: true
-read: 
+read:
   toolResultPreview: false
-  summarize: 
+  summarize:
     enabled: true
-compaction: 
+  renderMarkdown: true
+compaction:
   handoffSaveToDisk: false
   idleEnabled: false
-python: 
+python:
   kernelMode: session
-task: 
-  isolation: 
-    mode: none
+task:
+  isolation:
+    enabled: false
   showResolvedModelBadge: true
-contextPromotion: 
+  agentAdvisor:
+    task: "on"
+  disabledAgents:
+    []
+contextPromotion:
   enabled: false
 defaultThinkingLevel: auto
-mnemopi: 
+mnemopi:
   scoping: per-project-tagged
   autoRecall: true
   autoRetain: true
   polyphonicRecall: false
-ttsr: 
+ttsr:
   enabled: true
   repeatMode: after-gap
   contextMode: discard
-setupVersion: 1
-astGrep: 
+setupVersion: 2
+astGrep:
   enabled: false
-checkpoint: 
+checkpoint:
   enabled: false
-advisor: 
+advisor:
   enabled: true
-  subagents: true
-  syncBacklog: "1"
-features: 
-  unexpectedStopDetection: true
-retry: 
+  syncBacklog: "off"
+features:
+  unexpectedStopDetection: smart
+retry:
   modelFallback: true
-  fallbackChains: 
-    opencode-go/deepseek-v4-flash: 
-      - nvidia/deepseek-ai/deepseek-v4-flash
-      - deepseek/deepseek-v4-flash
-    opencode-go/deepseek-v4-pro: 
-      - nvidia/deepseek-ai/deepseek-v4-pro
-      - deepseek/deepseek-v4-pro
+  fallbackChains:
+    {}
   maxRetries: 3
-providers: 
+providers:
   tinyModel: online
-  webSearchOrder: 
+  webSearchOrder:
     - exa
     - jina
-astEdit: 
+astEdit:
   enabled: false
-tools: 
+tools:
   outputMaxColumns: 768
   xdev: true
-terminal: 
+terminal:
   showProgress: true
-tui: 
+tui:
   tight: false
+  scrollbackRebuild: true
+  vimMode: true
+  vimModeDisplay: icon
 temperature: -1
-autolearn: 
+autolearn:
   enabled: false
   autoContinue: false
 readLineNumbers: true
-bashInterceptor: 
+bashInterceptor:
   enabled: false
-plan: 
+plan:
   defaultOnStartup: false
-git: 
+git:
   enabled: true
-recap: 
+recap:
   enabled: false
-disabledExtensions: 
+disabledExtensions:
   []
-cycleOrder: 
+cycleOrder:
   - smol
   - default
   - slow
-security: 
+security:
   enabled: true
-browser: 
+browser:
   headless: true
-bash: 
+bash:
   enabled: true
-shellMinimizer: 
+shellMinimizer:
   sourceOutlineLevel: default
   enabled: true
+composer:
+  shape: box
+followUpMode: one-at-a-time
+interruptMode: immediate
