@@ -13,3 +13,4 @@ alwaysApply: true
 6. `$HOME` defaults to empty in the `bash` tool; set it via the tool's `env` field before using `$HOME`
 7. Prefer using the mathematical symbol `⇒` as arrows instead of `->` or `→`.
 8. Code comments must be self-contained, from the maintainer's perspective: explain what and why (API semantics, fallback reasons, edge cases)
+9. Prefer using `pwsh` instead of `powershell` to avoid syntax issues
