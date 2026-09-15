@@ -22,6 +22,12 @@ return {
       -- stylua: ignore end
     },
     completion = {
+      list = {
+        -- see Saghen/blink.cmp#1736 issue
+        selection = {
+          auto_insert = false,
+        },
+      },
       menu = {
         draw = {
           columns = { { "item_idx" }, { "kind_icon" }, { "label", "label_description", gap = 1 } },
