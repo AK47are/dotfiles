@@ -11,6 +11,7 @@ alwaysApply: true
 4. Any mention of a **code** file location **MUST** use `project/root/relative/path:line` (full path relative to project root, line optional), whether explicit or descriptive. Examples: `src/utils/helpers.js`, `routes/user.js:15`. Every time you cut corners, the user has to memorize the paths and dig through folders
 5. Never use dashes of any kind, anywhere
 6. `$HOME` defaults to empty in the `bash` tool; set it via the tool's `env` field before using `$HOME`
-7. Prefer using the mathematical symbol `⇒` as arrows instead of `->` or `→`.
-8. Code comments must be self-contained, from the maintainer's perspective: explain what and why (API semantics, fallback reasons, edge cases)
-9. Prefer using `pwsh` instead of `powershell` to avoid syntax issues
+7. `TMPDIR` resolves to the nonexistent `C:/tmp`; set it via the tool's `env` field to a real directory
+8. Prefer using the mathematical symbol `⇒` as arrows instead of `->` or `→`.
+9. Code comments must be self-contained, from the maintainer's perspective: explain what and why (API semantics, fallback reasons, edge cases)
+10. Prefer using `pwsh` instead of `powershell` to avoid syntax issues
