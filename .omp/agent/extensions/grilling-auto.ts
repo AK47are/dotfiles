@@ -21,10 +21,6 @@ export default function (pi: ExtensionAPI) {
     grillingEnabled = event.reason === "new" || event.reason === "handoff";
   });
 
-  pi.on("session_compact", () => {
-    grillingEnabled = true;
-  });
-
   pi.on("input", (event: { text?: string }) => {
     const text = event.text ?? "";
     if (!grillingEnabled) return;
