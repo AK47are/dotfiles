@@ -123,10 +123,10 @@ bindWindow(key) {
 
 ; 窗口隐藏，默认从环境变量寻找
 #^w::toggleWindowVisibility("org.wezfurlong.wezterm", "wezterm-gui.exe")
-#^o::toggleWindowVisibility("Chrome_WidgetWin_1", "Obsidian.exe", EnvGet("USERPROFILE") . "\scoop\apps\obsidian\current\Obsidian.exe")
+#^o::toggleWindowVisibility("Chrome_WidgetWin_1", EnvGet("LOCALAPPDATA") . "\Programs\Obsidian\Obsidian.exe")
 #^z::toggleWindowVisibility("MozillaWindowClass", "zen.exe")
 
-toggleWindowVisibility(cls, exe, launchPath := "") {
+toggleWindowVisibility(cls, exe) {
   DetectHiddenWindows(true)
   winSpec := "ahk_class " cls " ahk_exe " exe
   if WinExist(winSpec) {
@@ -138,9 +138,7 @@ toggleWindowVisibility(cls, exe, launchPath := "") {
       WinActivate(winSpec)
     }
   } else {
-    if (launchPath == "")
-      launchPath := exe
-    Run(launchPath)
+      Run(exe)
   }
   DetectHiddenWindows(false)
 }
