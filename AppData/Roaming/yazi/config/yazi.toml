@@ -13,6 +13,7 @@ run_ps1 = [
  
 [open]
 prepend_rules = [
+    { url = "*.md", use = [ "edit", "open" ] },
     { url = "*.html", use = [ "edit", "open" ] },
     { url = "*.ps1", use = ["edit", "run_ps1"]},
     { url = "*.bat", use = ["edit", "run_bat"]},
