@@ -27,3 +27,9 @@
 	proxy = http://127.0.0.1:7000
 [https]
 	proxy = http://127.0.0.1:7000
+[credential "https://github.com"]
+	helper = 
+	helper = !~/scoop/apps/gh/current/bin/gh.exe auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !~/scoop/apps/gh/current/bin/gh.exe auth git-credential
